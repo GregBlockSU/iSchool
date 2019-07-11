@@ -26,8 +26,12 @@ for i in range(len(listing)):
         with open(os.path.join(path, file_name)) as current_file:
             file_text = current_file.read()
             file_as_list = file_text.splitlines()
+            current_line_count = 0
             for line in file_as_list:
-                print(line)
+                current_line_count += 1
+                print(f"{current_line_count} {line}")
+                if current_line_count >= 5:
+                    break
 # endregion
 
 # region NBA-Attendance-1989
