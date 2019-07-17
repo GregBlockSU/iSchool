@@ -34,16 +34,6 @@ for i in range(len(listing)):
                     break
 # endregion
 
-# region NBA-Attendance-1989
-nba_list = []
-with open('NBA-Attendance-1989.txt') as nba_file:
-    for each_line in nba_file:
-        team, attendance, ticket = each_line.strip().split()
-        nba_list.append([team, attendance, ticket])
-print('Number of teams: {0}'.format(len(nba_list)))
-for team, attendance, ticket in nba_list:
-    print('Team {0} had attendance {1} with ticket price {2}'.format(team, attendance, ticket))
-# endregion
 
 # region handle multiple file types
 def handle_file(current_path, file_to_handle):
