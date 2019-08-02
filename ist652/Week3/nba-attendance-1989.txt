@@ -1,5 +1,3 @@
-Atlanta		13993	20.06
-Boston		14916	22.54
 Charlotte	23901	17
 Chicago		18404	21.98
 Cleveland	16969	19.63
