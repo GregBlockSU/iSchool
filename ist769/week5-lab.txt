@@ -1,0 +1,49 @@
+#1
+
+hdfs dfs -mkdir text
+cd /datasets/text
+hdfs dfs -put * text
+hdfs dfs -ls text
+cd /
+
+#2
+
+hdfs dfs -mkdir -p clickstream/logs
+hdfs dfs -mkdir -p clickstream/iplookup
+hdfs dfs -put datasets/clickstream/*.log clickstream/logs
+hdfs dfs -ls clickstream/logs
+
+#3
+
+export MREX=/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar
+yarn jar $MREX
+yarn jar $MREX wordcount text/2016-state-of-the-union.txt sotu2016/sotu-wordcount
+hdfs dfs -ls sotu2016/sotu-wordcount
+hdfs dfs -cat sotu2016/sotu-wordcount/part-r-00000
+
+#4
+
+sqoop list-databases --connect jdbc:mysql://cloudera --username=root --password=cloudera
+sqoop list-tables --connect jdbc:mysql://cloudera/fudgemart_v3 --username=root --password=cloudera
+hdfs dfs -mkdir /user/cloudera/fudgemart-clothing
+sqoop eval --connect jdbc:mysql://cloudera/fudgemart_v3 --username=root --password=cloudera --query="SELECT * FROM fudgemart_products WHERE product_department = 'Clothing'" > clothes.txt
+hdfs dfs -put clothes.txt /user/cloudera/fudgemart-clothing
+hdfs dfs -ls fudgemart-clothing
+rm clothes.txt
+
+#5
+hdfs dfs -mkdir tweets
+hdfs dfs -put datasets/tweets/tweets.psv tweets
+hdfs dfs -ls tweets
+mysql -u root -p
+CREATE DATABASE twitter;
+USE twitter;
+CREATE TABLE tweets (id varchar(50), timestamp varchar(50), date_time varchar(50), user_name varchar(50), tweet_text varchar(300));
+SELECT * FROM tweets;
+\q
+
+sqoop export --connect jdbc:mysql://cloudera/twitter --username=root --password=cloudera --table=tweets --export-dir=tweets --input-fields-terminated-by "\t"
+mysql -u root -p
+USE twitter;
+SELECT * FROM tweets;
+\q

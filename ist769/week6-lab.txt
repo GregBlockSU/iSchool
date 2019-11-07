@@ -1,0 +1,46 @@
+echo "log4j.rootLogger=fatal" > nolog.conf
+pig -4 nolog.conf
+fs -ls
+
+#1.
+
+ip_lookup = LOAD 'clickstream/iplookup/*' USING PigStorage(',') AS (IP:chararray, Country:chararray, State:chararray, City:chararray,ApproxLat:float, ApproxLng:float);
+DUMP ip_lookup;
+ip_lookup_rows = FILTER ip_lookup BY IP != 'IP';
+DUMP ip_lookup_rows;
+ip_lookup_sorted = ORDER ip_lookup_rows BY IP;
+DUMP ip_lookup_sorted;
+STORE ip_lookup_sorted INTO 'clickstream/iplookup_noheader' USING PigStorage(',');
+fs -cat clickstream/iplookup_noheader/*;
+
+#2. 
+
+ip_lookup_grouped = GROUP ip_lookup_sorted BY (State);
+ip_lookup_count =  FOREACH ip_lookup_grouped GENERATE group,COUNT(ip_lookup_sorted.IP) AS Count;
+ip_lookup_count_sorted = ORDER ip_lookup_count BY Count DESC;
+DUMP ip_lookup_count_sorted;
+
+#3.
+
+logs = LOAD 'clickstream/logs/*' USING PigStorage(' ') AS (reqdate:chararray, reqtime:chararray, x1:int, method:chararray, uri:chararray, x2:int ,x3:int, x4:int ,ipaddress:chararray, useragent:chararray);
+DESCRIBE logs;
+log_rows = FILTER logs BY NOT STARTSWITH(reqdate, '#');
+DUMP log_rows;
+log_cols = FOREACH log_rows GENERATE reqdate, reqtime, method, uri, ipaddress, useragent;
+STORE log_cols INTO 'clickstream/logs_noheader' USING PigStorage('\t');
+fs -cat clickstream/logs_noheader/*;
+
+#4.
+
+beeline -u jdbc:hive2://localhost:10000/default -n cloudera -p cloudera --silent=true
+show databases;
+show tables;
+describe web_logs;
+CREATE DATABASE IF NOT EXISTS clickstream;
+USE clickstream;
+show tables;
+CREATE EXTERNAL TABLE weblogs (reqdate string, reqtime string, method string, uri string, ipaddress string, useragent string) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LOCATION '/user/cloudera/clickstream/logs_noheader/';
+SELECT COUNT(*) FROM weblogs;
+CREATE EXTERNAL TABLE iplookup (IP string, Country string, State string, City string, ApproxLat float, ApproxLng float) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '/user/cloudera/clickstream/iplookup_noheader/';
+SELECT COUNT(*) FROM iplookup;
+SELECT City, COUNT(*) AS NumberOfRequests FROM iplookup INNER JOIN weblogs ON weblogs.ipaddress = iplookup.IP GROUP BY City ORDER BY NumberOfRequests DESC;

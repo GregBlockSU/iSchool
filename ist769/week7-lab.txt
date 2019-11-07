@@ -1,0 +1,91 @@
+#1
+
+impala-shell
+CONNECT localhost;
+SHOW databases;
+USE clickstream;
+show tables;
+
+a.
+
+SELECT COUNT(*) FROM weblogs WHERE method IN ('GET', 'POST');
+SELECT COUNT(*) FROM weblogs WHERE method NOT IN ('GET', 'POST');
+SELECT method, COUNT(*) FROM weblogs GROUP BY method;
+
+b.
+
+SELECT COUNT(*) FROM weblogs WHERE useragent LIKE '%Mac%';
+SELECT COUNT(*) FROM weblogs WHERE useragent NOT LIKE '%Mac%';
+SELECT COUNT(*) FROM weblogs WHERE useragent LIKE '%mac%';
+
+c.
+
+SELECT COUNT(DISTINCT IP) 
+FROM weblogs AS WEB
+INNER JOIN iplookup AS IP ON IP.IP = WEB.ipaddress
+WHERE useragent LIKE '%Mac%';
+
+2.
+
+a.
+
+hbase shell
+create 'computers', 'info'
+
+b.
+
+put 'computers', '1', 'info:model', 'Dell'
+put 'computers', '1', 'info:ram', '16'
+put 'computers', '1', 'info:disk', '1'
+put 'computers', '2', 'info:model', 'IBM'
+put 'computers', '2', 'info:ram', '32'
+put 'computers', '2', 'info:disk', '1.5'
+put 'computers', '3', 'info:model', 'HP'
+put 'computers', '3', 'info:ram', '8'
+put 'computers', '3', 'info:disk', '1'
+put 'computers', '4', 'info:model', 'Acer'
+put 'computers', '4', 'info:ram', '16'
+put 'computers', '4', 'info:disk', '2'
+scan 'computers'
+
+3.
+
+beeline -u jdbc:hive2://localhost:10000/default -n cloudera -p cloudera --silent=true
+USE clickstream;
+CREATE EXTERNAL TABLE computers 
+(
+  id int,
+  model string,
+  ram int,
+  disk float
+) 
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler' 
+WITH 
+SERDEPROPERTIES ('hbase.columns.mapping'=':key,info:model,info:ram,info:disk') 
+TBLPROPERTIES ('hbase.table.name'='computers');
+SELECT * FROM computers;
+
+4. 
+
+USE clickstream;
+CREATE TABLE iplookup_hbase
+(
+
+	IP string, 
+	Country string, 
+	State string, 
+	City string, 
+	ApproxLat float, 
+	ApproxLng float
+)
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler' 
+WITH 
+SERDEPROPERTIES ('hbase.columns.mapping'=':key,ip:Country,ip:State,ip:City,ip:ApproxLat,ip:ApproxLng') 
+TBLPROPERTIES ('hbase.table.name'='iplookup_hbase', 'hbase.mapred.output.outputtable'='iplookup_hbase');
+INSERT OVERWRITE TABLE iplookup_hbase SELECT * FROM iplookup;
+scan 'iplookup_hbase'
+
+5.
+
+hbase shell
+scan 'iplookup_hbase', {COLUMNS=>['ip:City','ip:State']}
