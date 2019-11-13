@@ -1,0 +1,37 @@
+create keyspace stox with 
+	replication = {'class': 'SimpleStrategy',
+	replication_factor: 3};
+
+describe keyspaces;
+use stox;
+
+create table stocks (symbol text, company_name text);
+describe table stocks;
+insert into stocks (symbol, company_name) values ('AAPL', 'Apple');
+insert into stocks (symbol, company_name) values ('NVDA', 'NVidia');
+insert into stocks (symbol, company_name) values ('AMZN', 'Amazon');
+insert into stocks (symbol, company_name) values ('ENPH', 'Enphase');
+insert into stocks (symbol, company_name) values ('DIS', 'Disney');
+insert into stocks (symbol, company_name) values ('MSFT', 'Microsoft');
+insert into stocks (symbol, company_name) values ('AMD', 'AMD');
+insert into stocks (symbol, company_name) values ('JPM', 'JP Morgan Chase');
+insert into stocks (symbol, company_name) values ('CSCO', 'Cisco');
+select * from stocks;
+
+create table stock_quotes (exchange text, symbol text, offered_on timestamp, bid float, ask float, PRIMARY KEY (exchange, sumbol);
+insert into stock_quotes  (exchange, symbol, offered_on, bid, ask) values ('NSDQ', 'AAPL', '2019/11/01 10:00', 250.00, 251.00);
+insert into stock_quotes  (exchange, symbol, offered_on, bid, ask) values ('NSDQ', 'AAPL', '2019/11/01 10:05', 250.00, 251.00);
+insert into stock_quotes  (exchange, symbol, offered_on, bid, ask) values ('NSDQ', 'AAPL', '2019/11/01 10:10', 250.00, 251.00);
+insert into stock_quotes  (exchange, symbol, offered_on, bid, ask) values ('NSDQ', 'AAPL', '2019/11/01 10:15', 250.00, 251.00);
+insert into stock_quotes  (exchange, symbol, offered_on, bid, ask) values ('NSDQ', 'AAPL', '2019/11/01 10:20', 250.00, 251.00);
+insert into stock_quotes  (exchange, symbol, offered_on, bid, ask) values ('NSDQ', 'AAPL', '2019/11/01 10:25', 250.00, 251.00);
+insert into stock_quotes  (exchange, symbol, offered_on, bid, ask) values ('NSDQ', 'AAPL', '2019/11/01 10:30', 250.00, 251.00);
+insert into stock_quotes  (exchange, symbol, offered_on, bid, ask) values ('NSDQ', 'AAPL', '2019/11/01 10:35', 250.00, 251.00);
+insert into stock_quotes  (exchange, symbol, offered_on, bid, ask) values ('NSDQ', 'AAPL', '2019/11/01 10:40', 250.00, 251.00);
+
+create index ix_stock_quotes on stox.stock_sales (bid, ask);
+select * from stock_quotes where bid > ask;
+create materialized view stock_quotes_by_ask
+	as select * from stock_quotes
+	where exchange is not null nd symbol is not null and offered_on is not null and bid is not null and ask is not null
+	primary key (symbol, sold_on, bid, ask);
