@@ -1,0 +1,50 @@
+cd adv-db-labs\kafka
+docker-compose up -d
+docker-compose ps
+docker-compose run ksql-datagen bash
+cd /datasets/streaming
+pip install kafka
+python kafka-weblogs-datagen.py
+
+-- open 2nd prompt
+cd adv-db-labs\kafka
+docker-compose exec ksql-cli ksql http://ksql-server:8088,
+
+#1
+
+CREATE STREAM weblogs (Timestamp bigint, Browser varchar, OS varchar, \
+	Uri varchar, User varchar) \
+	WITH(KAFKA_TOPIC='weblogs', TIMESTAMP='Timestamp', VALUE_FORMAT='JSON');
+DESCRIBE EXTENDED weblogs;
+SELECT * FROM weblogs;
+
+#2
+
+CREATE STREAM homepage AS \
+	SELECT * FROM weblogs \
+	WHERE Uri = '/';
+SELECT * FROM homepage;
+
+#3
+
+SELECT OS, COUNT(*) \
+	FROM weblogs \
+	WINDOW TUMBLING (SIZE 1 MINUTE) \
+	GROUP BY OS;
+
+#4
+
+CREATE STREAM weblogs2 AS SELECT 1 AS Grp, * FROM weblogs;
+CREATE STREAM user_activity AS \
+	SELECT 1 AS Grp, COUNT(*) \
+	FROM weblogs2 \
+	WINDOW TUMBLING (SIZE 1 MINUTE) \
+	GROUP BY Grp;
+
+#5
+
+SELECT User, COUNT(*) \
+	FROM weblogs \
+	WINDOW TUMBLING (SIZE 1 MINUTE) \
+	GROUP BY User \
+	HAVING COUNT(*) > 10;

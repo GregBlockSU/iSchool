@@ -7,9 +7,9 @@ docker-compose exec mongo mongoimport -u admin -p pass --authenticationDatabase=
 docker-compose exec mongo mongo -u admin -p pass --authenticationDatabase=admin
 db.adminCommand({listDatabases:1, nameOnly: true})
 use demo
-db.runCommand(listCollections: 1.0, nameOnly: true})
-db.countries.findOne()
-db.countries.findOne({}, {name:1, population:1, capital:1})
+db.runCommand({listCollections: 1.0, nameOnly: true});
+db.countries.findOne();
+db.countries.findOne({}, {name:1, population:1, capital:1});
 db.countries.find({}, {name:1, population:1, capital:1})
 
 #2
@@ -36,7 +36,7 @@ hgetall product:2
 
 #5
 
-zadd competition:goldensnowball:2018 97 Syracuse 68 Rochester84 Buffalo
+zadd competition:goldensnowball:2018 97 Syracuse 68 Rochester 84 Buffalo
 zrange competition:goldensnowball:2018 0 -1
 zrange competition:goldensnowball:2018 0 -1 withscores
 zadd competition:goldensnowball:2018 incr 10 Buffalo

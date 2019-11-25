@@ -34,7 +34,7 @@ INSERT INTO stock_quotes  (exchange, symbol, offered_on, bid_price, ask_price) V
 SELECT * FROM stock_quotes WHERE bid_price>250;
 SELECT * FROM stock_quotes WHERE bid_price>250 ALLOW FILTERING;
 
-CREATE INDEX ix_stock_quotes on stox.stock_sales (bid_price);
+CREATE INDEX ix_stock_quotes on stox.stock_quotes (bid_price);
 SELECT * FROM stock_quotes where bid_price>250;
 SELECT * FROM stock_quotes where bid_price=250;
 SELECT * FROM stock_quotes where ask_price=250;
