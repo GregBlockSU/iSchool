@@ -1,0 +1,19 @@
+Week 10 breakout questions
+
+Remember to appoint the following: 
+
+An organizer 
+A scribe 
+A presenter 
+
+--------------------------------------------------------------------------------------------------- 
+
+Answer the question that corresponds with your group number. 
+
+1. Describe at least two windowing operations in Kafka, and explain the difference between them.
+
+2. What is the difference between a Kafka table and a Kafka stream?
+
+3. What is the difference between a cluster key and a partition key in Cassandra?
+
+4. Cassandra supports eventual consistency. When is evenutual consistency useful?

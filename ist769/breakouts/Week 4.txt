@@ -1,0 +1,19 @@
+Week 4 breakout questions
+
+Remember to appoint the following: 
+
+An organizer 
+A scribe 
+A presenter 
+
+--------------------------------------------------------------------------------------------------- 
+
+Answer the question that corresponds with your group number. 
+
+1. Distinguish between a clustered and non-clustered index
+
+2. Distinguish between a columnstore and a "rowstore" index
+
+3. Describe the performance characteristics between a table scan, index scan and index seek
+
+4. Describe the process by which a typical index (that is, an index that is not a columnstore) can reduce the number of reads from a table when performing a covered query

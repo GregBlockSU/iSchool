@@ -1,0 +1,19 @@
+Week 8 breakout questions
+
+Remember to appoint the following: 
+
+An organizer 
+A scribe 
+A presenter 
+
+--------------------------------------------------------------------------------------------------- 
+
+Answer the question that corresponds with your group number. 
+
+1. Describe at least two business cases where a document store, such as Mongo, is most suitable.
+
+2. Describe at least two business cases where a key-value pair database, such as redis, is most suitable
+
+3. How would you confiure a robust key namespace arhchitecture for redis?
+
+4. What other uses would you describe for a leaderboard, as implemented by redis? Define at least two

@@ -1,0 +1,19 @@
+Week 5 breakout questions
+
+Remember to appoint the following: 
+
+An organizer 
+A scribe 
+A presenter 
+
+--------------------------------------------------------------------------------------------------- 
+
+Answer the question that corresponds with your group number. 
+
+1. What's the difference between using sqoop and mysql commands? When is it most suitable to use each command?
+
+2. Describe the key differences between an hdfs file system, and a more conventional file system
+
+3. What is a map-reduce job? How does the hdfs file system contribute to performance advantages of map-reduce?
+
+4. What is a covered query, and what criteria must be satisfied for a query to covered?

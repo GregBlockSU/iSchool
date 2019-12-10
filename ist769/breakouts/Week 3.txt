@@ -1,0 +1,19 @@
+Remember to appoint the following: 
+
+An organizer 
+
+A scribe 
+
+A presenter 
+
+--------------------------------------------------------------------------------------------------- 
+
+Answer the question that corresponds with your group number. 
+
+1. Distinguish between a view and a table-valued function 
+
+2. Describe business logic and explain why it does not belong in a database layer 
+
+3. Contrast the advantages and disadvantages of stored procedures 
+
+4. Are views inherently poor in performance? Explain 
