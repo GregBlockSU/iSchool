@@ -1,0 +1,9 @@
+For your breakout session, appoint the following roles:
+an organizer
+a scribe
+A presenter
+
+1. Distinguish between an operational database and a data warehouse
+2. How can a data warehouse facilitate the integration of multiple disconnected databases
+3. What's the difference bettween a data warehouse and big data?
+4. How would semi-structured or non-structured data fit into a data warehouse?
