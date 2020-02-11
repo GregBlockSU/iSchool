@@ -1,0 +1,1789 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/1/2018 1:57:05 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IST-RL-ALADDIN6"
+  DTS:CreatorName="AD\mtkane"
+  DTS:DTSID="{36EFC85D-0081-497E-89E3-4D9493469DD5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.71"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Stage_Sales"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{51DF5A15-FF42-47FE-96DC-6940F33BA742}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF - Stage Customers"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DA7C8BBE-8697-4AAA-A0BA-B6A01820159C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Stage Customers"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - Stage stgNorthwindCustomers"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stgNorthwindCustomers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Connections[OleDbConnection]"
+                  connectionManagerID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].Columns[CompanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CompanyName"
+                      externalMetadataColumnId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[CompanyName]"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[CompanyName]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].Columns[ContactName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ContactName"
+                      externalMetadataColumnId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[ContactName]"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[ContactName]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].Columns[ContactTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ContactTitle"
+                      externalMetadataColumnId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[ContactTitle]"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[ContactTitle]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[Country]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[CompanyName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CompanyName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactTitle" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Stage Customers\SRC - Northwind Customers"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Northwind Customers"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CustomerID, CompanyName, ContactName, ContactTitle, City, Region, PostalCode, Country FROM Customers</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage Customers\SRC - Northwind Customers.Connections[OleDbConnection]"
+                  connectionManagerID="{AF106150-2C72-4C6C-A891-7045068FFD70}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.Northwind]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      length="5"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[CompanyName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[CompanyName]"
+                      length="40"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[CompanyName]"
+                      name="CompanyName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[ContactName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[ContactName]"
+                      length="30"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[ContactName]"
+                      name="ContactName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[ContactTitle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[ContactTitle]"
+                      length="30"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[ContactTitle]"
+                      name="ContactTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="15"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                      length="15"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      length="10"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      length="15"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[CompanyName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CompanyName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactTitle" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[CompanyName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[CompanyName]"
+                      name="CompanyName" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[ContactName]"
+                      name="ContactName" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[ContactTitle]"
+                      name="ContactTitle" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Stage Customers.Paths[OLE DB Source Output]"
+              endId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Stage Customers\SRC - Northwind Customers.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DF - Stage Employees"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A36352B1-9F85-43B7-9CA8-AB9BB0CABE3A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Stage Employees"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - Stage stgNorthwindEmployees"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stgNorthwindEmployees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Connections[OleDbConnection]"
+                  connectionManagerID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[Title]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Stage Employees\SRC - Northwind Employees"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Northwind Employees"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Employees.EmployeeID, Employees.LastName, Employees.FirstName, Employees.Title, Employees_1.HireDate, Employees_1.EmployeeID AS SupervisorID, Employees_1.LastName AS SupervisorLastName, Employees_1.FirstName as SupervisorFirstName, Employees_1.Title AS SupervisorTitle 
+FROM Employees left JOIN Employees AS Employees_1 ON Employees.ReportsTo  = Employees_1.EmployeeID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage Employees\SRC - Northwind Employees.Connections[OleDbConnection]"
+                  connectionManagerID="{AF106150-2C72-4C6C-A891-7045068FFD70}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.Northwind]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      length="20"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="10"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      length="30"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[SupervisorID]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorID]"
+                      name="SupervisorID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorLastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[SupervisorLastName]"
+                      length="20"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorLastName]"
+                      name="SupervisorLastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorFirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[SupervisorFirstName]"
+                      length="10"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorFirstName]"
+                      name="SupervisorFirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorTitle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[SupervisorTitle]"
+                      length="30"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorTitle]"
+                      name="SupervisorTitle"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      dataType="dbTimeStamp"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[SupervisorID]"
+                      dataType="i4"
+                      name="SupervisorID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[SupervisorLastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="SupervisorLastName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[SupervisorFirstName]"
+                      dataType="wstr"
+                      length="10"
+                      name="SupervisorFirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].ExternalColumns[SupervisorTitle]"
+                      dataType="wstr"
+                      length="30"
+                      name="SupervisorTitle" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[SupervisorID]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[SupervisorID]"
+                      name="SupervisorID" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[SupervisorLastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[SupervisorLastName]"
+                      name="SupervisorLastName" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[SupervisorFirstName]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[SupervisorFirstName]"
+                      name="SupervisorFirstName" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[SupervisorTitle]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[SupervisorTitle]"
+                      name="SupervisorTitle" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Stage Employees.Paths[OLE DB Source Output]"
+              endId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DF - Stage Sales"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5C313936-87C2-48AE-BF6B-ED9721AE5017}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Stage Sales"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - Stage stgNorthwindSales"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stgNorthwindSales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Connections[OleDbConnection]"
+                  connectionManagerID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].Columns[OrderID]"
+                      cachedDataType="i4"
+                      cachedName="OrderID"
+                      externalMetadataColumnId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[OrderID]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].Columns[ShippedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ShippedDate"
+                      externalMetadataColumnId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[ShippedDate]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[ShippedDate]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      externalMetadataColumnId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="i2"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].Columns[Discount]"
+                      cachedDataType="r4"
+                      cachedName="Discount"
+                      externalMetadataColumnId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[Discount]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[OrderID]"
+                      dataType="i4"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      name="ShippedDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="i2"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                      dataType="r4"
+                      name="Discount" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Stage Sales\SRC - Northwind Sales"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Northwind Sales"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [Order Details].OrderID, [Order Details].ProductID, Orders.CustomerID, Orders.EmployeeID, Orders.OrderDate, Orders.ShippedDate, [Order Details].UnitPrice, [Order Details].Quantity, [Order Details].Discount
+FROM [Order Details] INNER JOIN Orders ON [Order Details].OrderID = Orders.OrderID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage Sales\SRC - Northwind Sales.Connections[OleDbConnection]"
+                  connectionManagerID="{AF106150-2C72-4C6C-A891-7045068FFD70}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.Northwind]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[OrderID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[OrderID]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[OrderID]"
+                      name="OrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      length="5"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[ShippedDate]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[ShippedDate]"
+                      name="ShippedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[Discount]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].Columns[Discount]"
+                      name="Discount"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[OrderID]"
+                      dataType="i4"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      name="ShippedDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="i2"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      dataType="r4"
+                      name="Discount" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[OrderID]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[OrderID]"
+                      name="OrderID" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      name="OrderDate" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[ShippedDate]"
+                      name="ShippedDate" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      name="UnitPrice" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      dataType="i2"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      dataType="r4"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      name="Discount" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Stage Sales.Paths[OLE DB Source Output]"
+              endId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Stage Sales\SRC - Northwind Sales.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate Stage Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D9F6D0B5-60F5-4821-BC0C-C4E4732B86DF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate Stage Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2294338C-57C0-46E2-9E6E-5F9E3426B895}"
+          SQLTask:SqlStatementSource="truncate table stgNorthwindEmployees;&#xA;truncate table stgNorthwindCustomers;&#xA;truncate table stgNorthwindSales;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5AEE0B1D-6AA8-4068-8335-1F2783E850A7}"
+      DTS:From="Package\SQL - Truncate Stage Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF - Stage Employees" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{4D160A4F-F062-4718-A942-405CD64E7B62}"
+      DTS:From="Package\SQL - Truncate Stage Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DF - Stage Customers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{BD2B7410-6555-4257-B265-0BE1098BE8CA}"
+      DTS:From="Package\SQL - Truncate Stage Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DF - Stage Sales" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182,42"
+          Id="Package\DF - Stage Customers"
+          TopLeft="588,147" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\DF - Stage Employees"
+          TopLeft="373,150" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DF - Stage Sales"
+          TopLeft="802,155" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\SQL - Truncate Stage Tables"
+          TopLeft="606,46" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="713,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-248.5,62"
+              Start="0,0"
+              End="-248.5,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
+                  <mssgle:LineSegment
+                    End="-244.5,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-244.5,31"
+                    Point2="-248.5,31"
+                    Point3="-248.5,35" />
+                  <mssgle:LineSegment
+                    End="-248.5,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="747.333333333333,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-68.3333333333333,59"
+              Start="0,0"
+              End="-68.3333333333333,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.8627087198516" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.8627087198516"
+                    Point2="0,23.8627087198516"
+                    Point3="-4,23.8627087198516" />
+                  <mssgle:LineSegment
+                    End="-64.3333333333333,23.8627087198516" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-64.3333333333333,23.8627087198516"
+                    Point2="-68.3333333333333,23.8627087198516"
+                    Point3="-68.3333333333333,27.8627087198516" />
+                  <mssgle:LineSegment
+                    End="-68.3333333333333,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="764.5,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="116,67"
+              Start="0,0"
+              End="116,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.8830769230769" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.8830769230769"
+                    Point2="0,22.8830769230769"
+                    Point3="4,22.8830769230769" />
+                  <mssgle:LineSegment
+                    End="112,22.8830769230769" />
+                  <mssgle:CubicBezierSegment
+                    Point1="112,22.8830769230769"
+                    Point2="116,22.8830769230769"
+                    Point3="116,26.8830769230769" />
+                  <mssgle:LineSegment
+                    End="116,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF - Stage Customers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="251,42"
+          Id="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers"
+          TopLeft="701,196" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\DF - Stage Customers\SRC - Northwind Customers"
+          TopLeft="621,45" />
+        <EdgeLayout
+          Id="Package\DF - Stage Customers.Paths[OLE DB Source Output]"
+          TopLeft="726,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100.5,109"
+              Start="0,0"
+              End="100.5,101.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50.5"
+                    Point2="0,54.5"
+                    Point3="4,54.5" />
+                  <mssgle:LineSegment
+                    End="96.5,54.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="96.5,54.5"
+                    Point2="100.5,54.5"
+                    Point3="100.5,58.5" />
+                  <mssgle:LineSegment
+                    End="100.5,101.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage Customers\SRC - Northwind Customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DF - Stage Employees">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="211,42"
+          Id="Package\DF - Stage Employees\SRC - Northwind Employees"
+          TopLeft="611,45" />
+        <NodeLayout
+          Size="252,42"
+          Id="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees"
+          TopLeft="592,161" />
+        <EdgeLayout
+          Id="Package\DF - Stage Employees.Paths[OLE DB Source Output]"
+          TopLeft="717.25,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74"
+              Start="0,0"
+              End="0,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage Employees\SRC - Northwind Employees">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DF - Stage Sales">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\DF - Stage Sales\SRC - Northwind Sales"
+          TopLeft="615,41" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\DF - Stage Sales\DST - Stage stgNorthwindSales"
+          TopLeft="602,155" />
+        <EdgeLayout
+          Id="Package\DF - Stage Sales.Paths[OLE DB Source Output]"
+          TopLeft="711.25,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage Sales\DST - Stage stgNorthwindSales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage Sales\SRC - Northwind Sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
