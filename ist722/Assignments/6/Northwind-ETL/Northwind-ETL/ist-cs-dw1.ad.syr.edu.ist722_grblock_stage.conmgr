@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage"
-  DTS:DTSID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}"
+  DTS:ObjectName="ist-cs-dw1.ad.syr.edu.ist722_grblock_stage"
+  DTS:DTSID="{F9714296-1017-4300-8C81-3673CC2764AA}"
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager

@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">IST-RL-ALADDIN6</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhoftYdtKpki+3bzfAxyhOAAAAAACAAAAAAAQZgAAAAEAACAAAADBqasCieL0AyFWlWc8ytt15oJAWN2n3Ipz29SlGh8bDAAAAAAOgAAAAAIAACAAAAD1c1fVH5LLOYAW4biPYoEHnPC0dDVy8+Tx26haVVBVzJAAAADxK9NB1m6EUrn2Ksr0n2aiEapgcax+Fv2ouHSGCcHy+/YXHVIj2xu6xIGzaF9VhIDP6Os4GkXO/JFyFvyeaJ+gmiBmP2Hiu3mCH5YR9PcSanu7VUXUAi5e5V8v2LSlRTVxEjwk3Hlr7JiEa6lbZ1MEXiS/EX05+sbk2k8qxfsY89V7och2AOIIBj+6hEDdY49AAAAAyPiOPy9vlyy7EHShWEt47KRmC3Y2RZSJf9ko8h/rPfP5C5JkARtBdyHPMIgRbQQ7EQ4ZJjPdTRjr1hAmohs3zg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhoftYdtKpki+3bzfAxyhOAAAAAACAAAAAAAQZgAAAAEAACAAAADMYkqaU+ivX3iaAJ7ULN6GTCIi7nJ5gIxhXUgStU07GAAAAAAOgAAAAAIAACAAAAAsP7oG8zaPt6TSuNRqEwrIGiYYBCyBUB/+7w7NT5EYPJAAAACyFL+VUtl0qg/lPUKZW9z27LDlLaWse3VYrRsoroDEVfDqBrQCe5DujzVZMK09nqnl55mDO3hDtAxExCNxhSFUHhPWCj7vC70N6dak92dKeeDpFeMZV00wkyRRmTvpH7CG8WNnDFXgGmq53tXfQj4NcwggwptTEKZGtiEeaXxj2RZd63dX8vXlquJRe8xpcCNAAAAAhb846Syj/a3RF9QqeRsGRu0cBcJi0Yvkn+/TSpGfhz1IcdnL5D0qfwGdaOdN59y9/ZoK7gTfvseJDK5oFBDiHA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -280,7 +280,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_dw.ConnectByProxy">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_dw.ConnectByProxy">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -295,7 +295,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_dw.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_dw.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -310,7 +310,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_dw.ConnectUsingManagedIdentity">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_dw.ConnectUsingManagedIdentity">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -325,7 +325,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_dw.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_dw.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -340,7 +340,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_dw.Password">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_dw.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -354,7 +354,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_dw.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_dw.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -369,7 +369,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_dw.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_dw.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -384,7 +384,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_dw.UserName">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_dw.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -398,7 +398,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage.ConnectByProxy">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_stage.ConnectByProxy">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -413,7 +413,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_stage.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -428,7 +428,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage.ConnectUsingManagedIdentity">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_stage.ConnectUsingManagedIdentity">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -443,7 +443,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_stage.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -458,7 +458,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage.Password">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_stage.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -472,7 +472,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_stage.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -487,7 +487,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_stage.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -502,7 +502,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage.UserName">
+            <SSIS:Parameter SSIS:Name="CM.ist-cs-dw1.ad.syr.edu.ist722_grblock_stage.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -558,10 +558,10 @@
                 <SSIS:Property SSIS:Name="Name">Stage_InventoryLevels</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">11</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{0F5B4EAC-1BD6-4A8C-8D3D-8E6FB930521B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DEC333DA-33C0-4F78-A763-1700192BD60B}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -730,8 +730,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -927,8 +925,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -970,10 +966,10 @@
                 <SSIS:Property SSIS:Name="Name">Stage_Sales</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">9</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A48560C9-FE6C-4FD6-A27B-82826D69E3BE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5021C1B9-75AD-426A-B0BD-C34CA1243577}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -987,10 +983,10 @@
                 <SSIS:Property SSIS:Name="Name">DW_InventoryLevels</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">28</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{016BED54-3836-4737-A403-6AA0F88BC733}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{02A021F1-417F-4702-816A-3F2177EB4195}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

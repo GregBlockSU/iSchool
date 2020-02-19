@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Stage_Sales"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{51DF5A15-FF42-47FE-96DC-6940F33BA742}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{5021C1B9-75AD-426A-B0BD-C34CA1243577}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -47,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[stgNorthwindCustomers]</property>
+                  name="OpenRowset">[dbo].[stgNorthwindCustomers]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -90,8 +90,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Stage Customers\DST - Stage stgNorthwindCustomers.Connections[OleDbConnection]"
-                  connectionManagerID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage]"
+                  connectionManagerID="{F9714296-1017-4300-8C81-3673CC2764AA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_stage]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -532,7 +532,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[stgNorthwindEmployees]</property>
+                  name="OpenRowset">[dbo].[stgNorthwindEmployees]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -575,8 +575,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Connections[OleDbConnection]"
-                  connectionManagerID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage]"
+                  connectionManagerID="{F9714296-1017-4300-8C81-3673CC2764AA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_stage]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -975,7 +975,7 @@ FROM Employees left JOIN Employees AS Employees_1 ON Employees.ReportsTo  = Empl
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[stgNorthwindSales]</property>
+                  name="OpenRowset">[dbo].[stgNorthwindSales]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1018,8 +1018,8 @@ FROM Employees left JOIN Employees AS Employees_1 ON Employees.ReportsTo  = Empl
               <connections>
                 <connection
                   refId="Package\DF - Stage Sales\DST - Stage stgNorthwindSales.Connections[OleDbConnection]"
-                  connectionManagerID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage]"
+                  connectionManagerID="{F9714296-1017-4300-8C81-3673CC2764AA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_stage]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1677,12 +1677,12 @@ FROM [Order Details] INNER JOIN Orders ON [Order Details].OrderID = Orders.Order
           Id="Package\DF - Stage Employees\SRC - Northwind Employees"
           TopLeft="611,45" />
         <NodeLayout
-          Size="252,42"
+          Size="261,42"
           Id="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees"
           TopLeft="592,161" />
         <EdgeLayout
           Id="Package\DF - Stage Employees.Paths[OLE DB Source Output]"
-          TopLeft="717.25,87">
+          TopLeft="719.5,87">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"

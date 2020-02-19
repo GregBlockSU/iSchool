@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Stage_InventoryLevels"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{0F5B4EAC-1BD6-4A8C-8D3D-8E6FB930521B}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{DEC333DA-33C0-4F78-A763-1700192BD60B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -174,7 +174,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[stgNorthwindInventory]</property>
+                  name="OpenRowset">[dbo].[stgNorthwindInventory]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -217,8 +217,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Stage Inventory\DST - Stage stgNorthwindInventory.Connections[OleDbConnection]"
-                  connectionManagerID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage]"
+                  connectionManagerID="{F9714296-1017-4300-8C81-3673CC2764AA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_stage]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -265,7 +265,7 @@
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\DF - Stage Inventory\DST - Stage stgNorthwindInventory.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
-                      dataType="i2"
+                      dataType="i4"
                       name="Day" />
                     <externalMetadataColumn
                       refId="Package\DF - Stage Inventory\DST - Stage stgNorthwindInventory.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
@@ -547,7 +547,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[stgNorthwindProducts]</property>
+                  name="OpenRowset">[dbo].[stgNorthwindProducts]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -590,8 +590,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Stage Products\DST - Stage stgNorthwind Products.Connections[OleDbConnection]"
-                  connectionManagerID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage]"
+                  connectionManagerID="{F9714296-1017-4300-8C81-3673CC2764AA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_stage]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -921,7 +921,7 @@ FROM            Categories INNER JOIN
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[stgNorthwindSuppliers]</property>
+                  name="OpenRowset">[dbo].[stgNorthwindSuppliers]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -964,8 +964,8 @@ FROM            Categories INNER JOIN
               <connections>
                 <connection
                   refId="Package\DF - Stage Suppliers\DST - Stage stgNorthwindSuppliers.Connections[OleDbConnection]"
-                  connectionManagerID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage]"
+                  connectionManagerID="{F9714296-1017-4300-8C81-3673CC2764AA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_stage]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1018,6 +1018,13 @@ FROM            Categories INNER JOIN
                       cachedName="Country"
                       externalMetadataColumnId="Package\DF - Stage Suppliers\DST - Stage stgNorthwindSuppliers.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
                       lineageId="Package\DF - Stage Suppliers\SRC - Northwind Suppliers.Outputs[OLE DB Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Suppliers\DST - Stage stgNorthwindSuppliers.Inputs[OLE DB Destination Input].Columns[ContactNAme]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ContactNAme"
+                      externalMetadataColumnId="Package\DF - Stage Suppliers\DST - Stage stgNorthwindSuppliers.Inputs[OLE DB Destination Input].ExternalColumns[ContactName]"
+                      lineageId="Package\DF - Stage Suppliers\SRC - Northwind Suppliers.Outputs[OLE DB Source Output].Columns[ContactNAme]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1339,7 +1346,7 @@ FROM            Categories INNER JOIN
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{2294338C-57C0-46E2-9E6E-5F9E3426B895}"
+          SQLTask:Connection="{F9714296-1017-4300-8C81-3673CC2764AA}"
           SQLTask:SqlStatementSource="truncate table stgNorthwindProducts;&#xA;truncate table stgNorthwindSuppliers;&#xA;truncate table stgNorthwindInventory;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1570,7 +1577,7 @@ FROM            Categories INNER JOIN
     design-time-name="Package\DF - Stage Products">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="246,42"
           Id="Package\DF - Stage Products\DST - Stage stgNorthwind Products"
@@ -1598,7 +1605,9 @@ FROM            Categories INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

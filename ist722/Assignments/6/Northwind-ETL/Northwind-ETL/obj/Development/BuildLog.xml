@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Northwind-ETL</Name>
-    <LastWriteTime>2020-02-11T21:11:39.6986085Z</LastWriteTime>
+    <LastWriteTime>2020-02-19T14:14:43.872761Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -18,17 +18,17 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Stage_InventoryLevels.dtsx</Name>
-      <LastWriteTime>2020-02-11T21:11:36.9624053Z</LastWriteTime>
+      <LastWriteTime>2020-02-19T16:03:10.2759935Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Stage_Sales.dtsx</Name>
-      <LastWriteTime>2020-02-11T19:51:59.2240651Z</LastWriteTime>
+      <LastWriteTime>2020-02-19T14:14:41.224383Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>DW_InventoryLevels.dtsx</Name>
-      <LastWriteTime>2020-02-11T19:51:44.3172356Z</LastWriteTime>
+      <LastWriteTime>2020-02-19T16:22:34.4831726Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

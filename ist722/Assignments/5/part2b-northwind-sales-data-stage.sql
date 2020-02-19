@@ -1,10 +1,15 @@
 use ist722_grblock_stage;
 go
 
-DROP TABLE stgNorthwindProducts;
+IF OBJECT_ID('stgNorthwindProducts') IS NOT NULL
+	DROP TABLE stgNorthwindProducts;
+IF OBJECT_ID('stgNorthwindEmployees') IS NOT NULL
 DROP TABLE stgNorthwindEmployees;
+IF OBJECT_ID('stgNorthwindCustomers') IS NOT NULL
 DROP TABLE stgNorthwindCustomers;
+IF OBJECT_ID('stgNorthwindSales') IS NOT NULL
 DROP TABLE stgNorthwindSales;
+IF OBJECT_ID('stgNorthwindDates') IS NOT NULL
 DROP TABLE stgNorthwindDates
 go
 
