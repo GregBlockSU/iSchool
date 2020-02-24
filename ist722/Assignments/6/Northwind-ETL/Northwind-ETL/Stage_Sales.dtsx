@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Stage_Sales"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{5021C1B9-75AD-426A-B0BD-C34CA1243577}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{72CFEA5C-B6B5-41DB-B0A6-B5D274C94CF2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -517,11 +517,11 @@
           version="1">
           <components>
             <component
-              refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees"
+              refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="DST - Stage stgNorthwindEmployees"
+              name="DST- stgNorthwindEmployees"
               usesDispositions="true"
               version="4">
               <properties>
@@ -532,7 +532,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[stgNorthwindEmployees]</property>
+                  name="OpenRowset">[stgNorthwindEmployees]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -574,7 +574,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Connections[OleDbConnection]"
+                  refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Connections[OleDbConnection]"
                   connectionManagerID="{F9714296-1017-4300-8C81-3673CC2764AA}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_stage]"
                   description="The OLE DB runtime connection used to access the database."
@@ -582,82 +582,138 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input]"
+                  refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[EmployeeID]"
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[EmployeeID]"
                       cachedDataType="i4"
                       cachedName="EmployeeID"
-                      externalMetadataColumnId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
                       lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[EmployeeID]" />
                     <inputColumn
-                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[LastName]"
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="LastName"
-                      externalMetadataColumnId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
                       lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[LastName]" />
                     <inputColumn
-                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[FirstName]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="FirstName"
-                      externalMetadataColumnId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
                       lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[FirstName]" />
                     <inputColumn
-                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[Title]"
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[Title]"
                       cachedDataType="wstr"
                       cachedLength="30"
                       cachedName="Title"
-                      externalMetadataColumnId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[HireDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[SupervisorID]"
+                      cachedDataType="i4"
+                      cachedName="SupervisorID"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[SupervisorID]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorID]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[SupervisorLastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="SupervisorLastName"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[SupervisorLastName]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorLastName]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[SupervisorFirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="SupervisorFirstName"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[SupervisorFirstName]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorFirstName]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].Columns[SupervisorTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="SupervisorTitle"
+                      externalMetadataColumnId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[SupervisorTitle]"
+                      lineageId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output].Columns[SupervisorTitle]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
                       dataType="i4"
                       name="EmployeeID" />
                     <externalMetadataColumn
-                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
                       dataType="wstr"
                       length="20"
                       name="LastName" />
                     <externalMetadataColumn
-                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
                       dataType="wstr"
                       length="10"
                       name="FirstName" />
                     <externalMetadataColumn
-                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       dataType="wstr"
                       length="30"
                       name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                      dataType="dbTimeStamp"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[SupervisorID]"
+                      dataType="i4"
+                      name="SupervisorID" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[SupervisorLastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="SupervisorLastName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[SupervisorFirstName]"
+                      dataType="wstr"
+                      length="10"
+                      name="SupervisorFirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input].ExternalColumns[SupervisorTitle]"
+                      dataType="wstr"
+                      length="30"
+                      name="SupervisorTitle" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -938,7 +994,7 @@ FROM Employees left JOIN Employees AS Employees_1 ON Employees.ReportsTo  = Empl
           <paths>
             <path
               refId="Package\DF - Stage Employees.Paths[OLE DB Source Output]"
-              endId="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees.Inputs[OLE DB Destination Input]"
+              endId="Package\DF - Stage Employees\DST- stgNorthwindEmployees.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DF - Stage Employees\SRC - Northwind Employees.Outputs[OLE DB Source Output]" />
           </paths>
@@ -1432,7 +1488,7 @@ FROM [Order Details] INNER JOIN Orders ON [Order Details].OrderID = Orders.Order
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{2294338C-57C0-46E2-9E6E-5F9E3426B895}"
+          SQLTask:Connection="{F9714296-1017-4300-8C81-3673CC2764AA}"
           SQLTask:SqlStatementSource="truncate table stgNorthwindEmployees;&#xA;truncate table stgNorthwindCustomers;&#xA;truncate table stgNorthwindSales;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1677,12 +1733,12 @@ FROM [Order Details] INNER JOIN Orders ON [Order Details].OrderID = Orders.Order
           Id="Package\DF - Stage Employees\SRC - Northwind Employees"
           TopLeft="611,45" />
         <NodeLayout
-          Size="261,42"
-          Id="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees"
-          TopLeft="592,161" />
+          Size="226,42"
+          Id="Package\DF - Stage Employees\DST- stgNorthwindEmployees"
+          TopLeft="596,161" />
         <EdgeLayout
           Id="Package\DF - Stage Employees.Paths[OLE DB Source Output]"
-          TopLeft="719.5,87">
+          TopLeft="712.75,87">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1705,19 +1761,6 @@ FROM [Order Details] INNER JOIN Orders ON [Order Details].OrderID = Orders.Order
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF - Stage Employees\DST - Stage stgNorthwindEmployees">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DF - Stage Employees\SRC - Northwind Employees">
     <Properties>
@@ -1782,6 +1825,19 @@ FROM [Order Details] INNER JOIN Orders ON [Order Details].OrderID = Orders.Order
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage Employees\DST- stgNorthwindEmployees">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

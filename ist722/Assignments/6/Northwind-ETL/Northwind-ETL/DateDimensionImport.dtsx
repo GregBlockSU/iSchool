@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DateDimensionImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{BF5A5EFB-C802-4E17-872B-28699730F946}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{3BD4C83A-37F4-4599-95E5-5F01A2BFDA12}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -47,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[stgDate]</property>
+                  name="OpenRowset">[dbo].[stgDate]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -90,8 +90,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Extract From Source to Stage stgDate\DST - Stage stgDate.Connections[OleDbConnection]"
-                  connectionManagerID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage]"
+                  connectionManagerID="{F9714296-1017-4300-8C81-3673CC2764AA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_stage]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -497,7 +497,7 @@
                       name="DayOfQuarter" />
                     <externalMetadataColumn
                       refId="Package\DF - Extract From Source to Stage stgDate\DST - Stage stgDate.Inputs[OLE DB Destination Input].ExternalColumns[DayOfYear]"
-                      dataType="i4"
+                      dataType="i2"
                       name="DayOfYear" />
                     <externalMetadataColumn
                       refId="Package\DF - Extract From Source to Stage stgDate\DST - Stage stgDate.Inputs[OLE DB Destination Input].ExternalColumns[WeekOfMonth]"
@@ -535,7 +535,7 @@
                       name="QuarterName" />
                     <externalMetadataColumn
                       refId="Package\DF - Extract From Source to Stage stgDate\DST - Stage stgDate.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
-                      dataType="i4"
+                      dataType="i2"
                       name="Year" />
                     <externalMetadataColumn
                       refId="Package\DF - Extract From Source to Stage stgDate\DST - Stage stgDate.Inputs[OLE DB Destination Input].ExternalColumns[YearName]"
@@ -1876,8 +1876,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Load from stgDate to DimDate\DST - Slowly Changing Dimension DimDate.Connections[LookupConnection]"
-                  connectionManagerID="{08802AD7-BEE3-43A2-8195-F3646C5CC48A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_dw]"
+                  connectionManagerID="{6C4C24C6-FA74-4A4F-A3FC-453EF56F3A3F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_dw]"
                   description="Defines the connection to use for lookups in the dimension table"
                   name="LookupConnection" />
               </connections>
@@ -1888,7 +1888,7 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\DF - Load from stgDate to DimDate\DST - Slowly Changing Dimension DimDate.Inputs[Slowly Changing Dimension Input].Columns[Date]"
-                      cachedDataType="dbDate"
+                      cachedDataType="dbTimeStamp"
                       cachedName="Date"
                       externalMetadataColumnId="Package\DF - Load from stgDate to DimDate\DST - Slowly Changing Dimension DimDate.Inputs[Slowly Changing Dimension Input].ExternalColumns[Date]"
                       lineageId="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate.Outputs[OLE DB Source Output].Columns[Date]">
@@ -2064,7 +2064,7 @@
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\DF - Load from stgDate to DimDate\DST - Slowly Changing Dimension DimDate.Inputs[Slowly Changing Dimension Input].ExternalColumns[Date]"
-                      dataType="dbDate"
+                      dataType="dbTimeStamp"
                       name="Date" />
                     <externalMetadataColumn
                       refId="Package\DF - Load from stgDate to DimDate\DST - Slowly Changing Dimension DimDate.Inputs[Slowly Changing Dimension Input].ExternalColumns[DateKey]"
@@ -2231,8 +2231,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Load from stgDate to DimDate\Insert Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{08802AD7-BEE3-43A2-8195-F3646C5CC48A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_dw]"
+                  connectionManagerID="{6C4C24C6-FA74-4A4F-A3FC-453EF56F3A3F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_dw]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2252,7 +2252,7 @@
                       lineageId="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate.Outputs[OLE DB Source Output].Columns[DateKey]" />
                     <inputColumn
                       refId="Package\DF - Load from stgDate to DimDate\Insert Destination.Inputs[OLE DB Destination Input].Columns[Date]"
-                      cachedDataType="dbDate"
+                      cachedDataType="dbTimeStamp"
                       cachedName="Date"
                       externalMetadataColumnId="Package\DF - Load from stgDate to DimDate\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
                       lineageId="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate.Outputs[OLE DB Source Output].Columns[Date]" />
@@ -2341,7 +2341,7 @@
                       name="DateKey" />
                     <externalMetadataColumn
                       refId="Package\DF - Load from stgDate to DimDate\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
-                      dataType="dbDate"
+                      dataType="dbTimeStamp"
                       name="Date" />
                     <externalMetadataColumn
                       refId="Package\DF - Load from stgDate to DimDate\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullDateUSA]"
@@ -2450,8 +2450,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Load from stgDate to DimDate\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="{08802AD7-BEE3-43A2-8195-F3646C5CC48A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_dw]"
+                  connectionManagerID="{6C4C24C6-FA74-4A4F-A3FC-453EF56F3A3F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_dw]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2465,7 +2465,7 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\DF - Load from stgDate to DimDate\OLE DB Command.Inputs[OLE DB Command Input].Columns[Date]"
-                      cachedDataType="dbDate"
+                      cachedDataType="dbTimeStamp"
                       cachedName="Date"
                       externalMetadataColumnId="Package\DF - Load from stgDate to DimDate\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       lineageId="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate.Outputs[OLE DB Source Output].Columns[Date]" />
@@ -2550,7 +2550,7 @@
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\DF - Load from stgDate to DimDate\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      dataType="dbDate"
+                      dataType="dbTimeStamp"
                       name="Param_0">
                       <properties>
                         <property
@@ -2781,8 +2781,8 @@
               <connections>
                 <connection
                   refId="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate.Connections[OleDbConnection]"
-                  connectionManagerID="{2294338C-57C0-46E2-9E6E-5F9E3426B895}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_mtkane_stage]"
+                  connectionManagerID="{F9714296-1017-4300-8C81-3673CC2764AA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ist-cs-dw1.ad.syr.edu.ist722_grblock_stage]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2802,7 +2802,7 @@
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate.Outputs[OLE DB Source Output].Columns[Date]"
-                      dataType="dbDate"
+                      dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate.Outputs[OLE DB Source Output].ExternalColumns[Date]"
@@ -3296,7 +3296,7 @@
                       name="DateKey" />
                     <externalMetadataColumn
                       refId="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate.Outputs[OLE DB Source Output].ExternalColumns[Date]"
-                      dataType="dbDate"
+                      dataType="dbTimeStamp"
                       name="Date" />
                     <externalMetadataColumn
                       refId="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate.Outputs[OLE DB Source Output].ExternalColumns[FullDateUK]"
@@ -3535,7 +3535,7 @@
                       name="DateKey" />
                     <outputColumn
                       refId="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate.Outputs[OLE DB Source Error Output].Columns[Date]"
-                      dataType="dbDate"
+                      dataType="dbTimeStamp"
                       lineageId="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate.Outputs[OLE DB Source Error Output].Columns[Date]"
                       name="Date" />
                     <outputColumn
@@ -3863,7 +3863,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{2294338C-57C0-46E2-9E6E-5F9E3426B895}"
+          SQLTask:Connection="{F9714296-1017-4300-8C81-3673CC2764AA}"
           SQLTask:SqlStatementSource="truncate table stgDate;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -4063,13 +4063,13 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="175,42"
-          Id="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate"
-          TopLeft="230.5,5.5" />
-        <NodeLayout
           Size="283,42"
           Id="Package\DF - Load from stgDate to DimDate\DST - Slowly Changing Dimension DimDate"
           TopLeft="176.5,107.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate"
+          TopLeft="230.5,5.5" />
         <EdgeLayout
           Id="Package\DF - Load from stgDate to DimDate.Paths[OLE DB Source Output]"
           TopLeft="318,47.5">
@@ -4176,19 +4176,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DF - Load from stgDate to DimDate\DST - Slowly Changing Dimension DimDate">
     <Properties>
       <Property>
@@ -4196,7 +4183,7 @@
         <Value
           type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionID&gt;{08802AD7-BEE3-43A2-8195-F3646C5CC48A}&lt;/ConnectionID&gt;
+  &lt;ConnectionID&gt;{6C4C24C6-FA74-4A4F-A3FC-453EF56F3A3F}&lt;/ConnectionID&gt;
   &lt;TableName&gt;[northwind].[DimDate]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
@@ -4300,6 +4287,19 @@
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Load from stgDate to DimDate\SRC - Stage stgDate">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -2,18 +2,18 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Northwind-ETL</Name>
-    <LastWriteTime>2020-02-19T14:14:43.872761Z</LastWriteTime>
+    <LastWriteTime>2020-02-24T16:35:50.409354Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Package.dtsx</Name>
-      <LastWriteTime>2018-12-02T00:13:26Z</LastWriteTime>
+      <LastWriteTime>2020-02-24T18:35:40.0751989Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>DateDimensionImport.dtsx</Name>
-      <LastWriteTime>2020-02-11T14:36:09.674234Z</LastWriteTime>
+      <LastWriteTime>2020-02-24T18:41:01.9453785Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -23,12 +23,17 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Stage_Sales.dtsx</Name>
-      <LastWriteTime>2020-02-19T14:14:41.224383Z</LastWriteTime>
+      <LastWriteTime>2020-02-24T16:38:09.4869259Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>DW_InventoryLevels.dtsx</Name>
       <LastWriteTime>2020-02-19T16:22:34.4831726Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DW_Sales.dtsx</Name>
+      <LastWriteTime>2020-02-24T18:25:53.404799Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
