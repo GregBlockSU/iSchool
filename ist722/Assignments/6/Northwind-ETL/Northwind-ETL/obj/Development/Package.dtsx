@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{BA868736-0113-4ADA-99F7-1F159009290C}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{7DD89D5A-3C3F-4666-B1F2-B09CA9EEF7C3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,6 +21,7 @@
       DTS:refId="Package\PKG - DateDimensionImport"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{02D32E91-1E1E-4E22-91F0-E6E7F52D7D72}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -154,11 +155,11 @@
           Id="Package\PKG - DateDimensionImport"
           TopLeft="265,26" />
         <NodeLayout
-          Size="174,42"
-          Id="Package\PKG - Stage_Sales"
-          TopLeft="117,129" />
+          Size="213,42"
+          Id="Package\PKG - DW_InventoryLevels"
+          TopLeft="403,222" />
         <NodeLayout
-          Size="164,42"
+          Size="156,42"
           Id="Package\PKG - DW_Sales"
           TopLeft="117,231" />
         <NodeLayout
@@ -166,35 +167,35 @@
           Id="Package\PKG - Stage_InventoryLevels"
           TopLeft="405,136" />
         <NodeLayout
-          Size="213,42"
-          Id="Package\PKG - DW_InventoryLevels"
-          TopLeft="403,222" />
+          Size="166,42"
+          Id="Package\PKG - Stage_Sales"
+          TopLeft="117,129" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="374,68">
+          TopLeft="339,68">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-170,61"
+              EndConnector="-139,61"
               Start="0,0"
-              End="-170,53.5">
+              End="-139,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.5" />
+                    End="0,20.6666666666667" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.5"
-                    Point2="0,30.5"
-                    Point3="-4,30.5" />
+                    Point1="0,20.6666666666667"
+                    Point2="0,24.6666666666667"
+                    Point3="-4,24.6666666666667" />
                   <mssgle:LineSegment
-                    End="-166,30.5" />
+                    End="-135,24.6666666666667" />
                   <mssgle:CubicBezierSegment
-                    Point1="-166,30.5"
-                    Point2="-170,30.5"
-                    Point3="-170,34.5" />
+                    Point1="-135,24.6666666666667"
+                    Point2="-139,24.6666666666667"
+                    Point3="-139,28.6666666666667" />
                   <mssgle:LineSegment
-                    End="-170,53.5" />
+                    End="-139,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -205,7 +206,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="201.5,171">
+          TopLeft="197.5,171">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
