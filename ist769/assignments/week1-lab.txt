@@ -1,0 +1,69 @@
+
+1.	Open the PowerShell prompt on Windows or the Terminal on MacOS.
+2.	Type:
+cd adv-dv-labs
+to change into the repository folder.
+3.	In this example, we will use the mssql database, so we need to change the working directory to that folder, type:
+cd mssql
+if you are in the correct folder, your command prompt should have mssql in it. 
+We are now in the folder containing the configuration data for the Microsoft SQL Server environment. The specifics of each environment will be covered in other labs. Each folder contains a docker-compose.yml file which defines the dependencies (networks, storage and software) specific to each environment. What’s important at this juncture is that the commands you use to manage any environment are the same.
+Docker Compose Commands
+Here’s a quick summary of the common docker-compose commands we will use in the course:
+Command	What it does
+docker-compose up -d	Creates and runs the environment specified in the docker-compose.yml file. The first time you do this it might take some time as your system will need to download the images associated with the containers.
+docker-compose ps	This command will show you what services are running as part of the environment. It is a useful command to check the status of your environment to see if its up or down. 
+docker-compose stop	This command stops the running containers, but keeps the changes made in them. This is crucial if you want to shut down an environment but not lose any data or changes you’ve made. You can restart the containers with docker-compose start or docker-compose restart, or even docker-compose up -d
+docker-compose down	This command stops and removes all running containers and removes any dependencies. It does a complete tear-down of the environment and will reset the container data back to its initial state. Only do this when you are done using the environment, or desire a reset of the environment’s data. To completely reset an environment, type: 
+docker-compose down -v –rmi all
+
+ 
+Walk-Through the Commands
+Let’s walk-through the docker commands connect to SQL Server, and create our databases:
+1.	Bring up the environment, type: 
+docker-compose up -d
+2.	It might take some time for the process to complete the first time as images need to be downloaded. When it’s done, check what’s running, type: 
+docker-compose ps
+You should see the mssql service running on port 1433 
+3.	Let’s connect to SQL server open SQL Server Management Studio (on Windows) or SQL Server Operations Studio (if you’re on a Mac). From this point forward we will call this your SQL Client. Use the SQL Client to connect to SQL server with:
+a.	Server name: localhost
+b.	Authentication: SQL Server Authentication
+c.	Login: sa
+d.	Password: SU2Orange!
+4.	After you’ve connected, open a new query window by pressing CTRL+n.
+5.	Create the fudgemart and demo databases from the query window, type:
+CREATE DATABASE fudgemart_v3
+GO
+CREATE DATABASE demo
+GO
+SELECT name FROM sys.databases
+6.	Press the Run or Execute button (A green triangle in the toolbar) to execute the query on the server. In the output you should see both databases were created:
+ 
+7.	Next you need to run the script to create the tables and data for fudgemart_v3. 
+a.	Open a new query window, by pressing CTRL+n:
+b.	Get the SQL Script at the following url: https://raw.githubusercontent.com/mafudge/datasets/master/fudgemart/mssql.sql 
+c.	Press CTRL+a to select the script on the webpage.
+d.	Press CTRL+c to copy the script
+e.	Switch back to the query window and press CTRL+v to paste the script.
+f.	Execute the script. It will take a bit to complete the script.  
+8.	Check to make sure the fudgemart_v3 database has tables and those tables have data. This is left as an exercise for the reader. When you are done, exit your SQL Client.
+9.	From the command-line, type:
+docker-compose stop
+To stop the mssql service.
+10.	Verify it has stopped. Type:
+docker-compose ps
+Notice how the state no longer says Up but instead says Exit 0
+11.	As an exercise, start the environment back up and reconnect your SQL Client. Are your databases still there? They should be!
+12.	This next part is going to demonstrate that the environment can be reset back to the initial state whenever this is required. Type the following:
+docker-compose down -v --rmi all
+This will destroy all artifacts dependent on the environment. Now repeat steps 1-9 of this lab so that you have the necessary environment created.
+Summary
+Throughout the video coursework your professor will provide live demos of using the technology of this course. You are encouraged to follow along with these demos. You can find the instructions for how to setup the environment in the Setup section of your weekly homework.
+Exercises
+1.	What would be the command to bring up the redis environment? How is the command different from the mssql environment? How is it the same?
+2.	Where is the specific configuration information about each environment stored?
+3.	Explain the difference between stopping an environment and bringing it down. Elaborate with use-cases for each.
+4.	What happens when you bring up an environment that is already up?
+5.	What was the most difficult aspect of this lab? What changes could be made to make it less difficult?
+Turning it in
+Take your copy and paste each of the solutions to the exercises into the submission template file included with this assignment. Make sure your name and SU email are at the top and turn in your work through the course learning management system.
+

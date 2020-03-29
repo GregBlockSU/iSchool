@@ -12,7 +12,7 @@ A key takeaway from this course is you should be able to match your data-oriente
 
 Please bear in mind that a key scaffold of this class is tooling. Oftentimes, students are challenged working in an environment where conditions change unexpectedly, and there are multiple steps to accomplish a task, and the omission of any step can yield hours of fruitless labor when struggling with obscure error messages. I will expect you to exercise your problem-solving skills in this course. You cannot rely on the instructor to help you work through every problem! That approach is not representative of the workplace, where organizations expect us to bring solutions, rather than be overcome by obstacles.
 
-From a housekeeping perspective, there are a few dates to keep in mind. Please note you won't have access to the course content until 09/25. Our first live session will be Sunday, 10/06 at 4:00 PM eastern time.
+From a housekeeping perspective, there are a few dates to keep in mind. Please note you won't have access to the course content until later this month. Our first live session will be Thursday, 04/02 at 7:00 PM eastern time.
 
 Thank you for your time; I look forward taking the journey with you!
 
