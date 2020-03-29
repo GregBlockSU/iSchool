@@ -12,9 +12,9 @@ docker-compose exec ksql-cli ksql http://ksql-server:8088,
 
 #1
 
-CREATE STREAM weblogs (Timestamp bigint, Browser varchar, OS varchar, \
+CREATE STREAM weblogs (TimeStamp bigint, Browser varchar, OS varchar, \
 	Uri varchar, User varchar) \
-	WITH(KAFKA_TOPIC='weblogs', TIMESTAMP='Timestamp', VALUE_FORMAT='JSON');
+	WITH(KAFKA_TOPIC='weblogs', TIMESTAMP='TimeStamp', VALUE_FORMAT='JSON');
 DESCRIBE EXTENDED weblogs;
 SELECT * FROM weblogs;
 
