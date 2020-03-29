@@ -1,0 +1,19 @@
+Week 7 breakout questions
+
+Remember to appoint the following: 
+
+An organizer 
+A scribe 
+A presenter 
+
+--------------------------------------------------------------------------------------------------- 
+
+Answer the question that corresponds with your group number. 
+
+1. How would you decide whether it's best to use hive or impala as a query processing engine?
+
+2. What business needs would justify use of a column family in hbase?
+
+3. When would you decide to use spark rather than hive?
+
+4. Describe a columnstore data structure

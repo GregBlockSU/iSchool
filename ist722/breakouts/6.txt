@@ -1,0 +1,11 @@
+For your breakout session, appoint the following roles:
+- an organizer
+- a scribe
+- a presenter
+
+Answer the question below that is associated with your breakout room number.
+
+1. Why can you not use the primary key of a dimension (from the source system) as the primary key in a data warehouse?
+2. Contrast type I, II and III slowly changing dimensions
+3. How do you determine which attributes in a dimension should be brought into the data warehouse?
+4. How do you determine which attributes in a dimension should be classified as temporal attributes?

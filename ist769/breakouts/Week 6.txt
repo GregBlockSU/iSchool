@@ -1,0 +1,19 @@
+Week 6 breakout questions
+
+Remember to appoint the following: 
+
+An organizer 
+A scribe 
+A presenter 
+
+--------------------------------------------------------------------------------------------------- 
+
+Answer the question that corresponds with your group number. 
+
+1. What is the difference between sqoop and pig? In which situation is each tool best suited?
+
+2. Describe ETL, and give a step-by-step example.
+
+3. What is an external table in hive, and when would it be best to use an external table?
+
+4. How does hive fit into the CAP theorem?
