@@ -1,0 +1,13 @@
+Week 2 Breakout sessions
+
+For your breakout session, appoint the following roles:
+an organizer
+a scribe
+A presenter
+
+Identify and describe at least five entities one would typically find in the domain area listed below that corresponds to your breakout room number. Also describe how the entities are related.
+1. Clinical studies for new types of medications
+2. Sports leagues
+3. Sensor networks for factories
+4. A fishery
+5. A University system
