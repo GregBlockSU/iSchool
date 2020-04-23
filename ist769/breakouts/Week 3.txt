@@ -8,12 +8,12 @@ A presenter
 
 --------------------------------------------------------------------------------------------------- 
 
-Answer the question that corresponds with your group number. 
+Answer the question that corresponds with your group number. If you are not familiar with the subject matter in the question, please feel free to search on the web.
 
-1. Distinguish between a view and a table-valued function 
+1. Describe how transactions are used in multi-statement database commands
 
 2. Describe business logic and explain why it does not belong in a database layer 
 
-3. Contrast the advantages and disadvantages of stored procedures 
+3. What is READ UNCOMMITTED? When would you use or avoid this type of concurrency?
 
-4. Are views inherently poor in performance? Explain 
+4. Describe 2-3 techniques for error handling

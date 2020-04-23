@@ -1,0 +1,4 @@
+1. What  is a transitive functional dependency?
+2. What is a partial functional dependency?
+3. Define and provide examples of a candidate key.
+​4. Describe the problems associated with data redundancy.

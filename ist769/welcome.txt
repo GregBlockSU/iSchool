@@ -1,0 +1,19 @@
+Welcome!
+
+​Welcome to IST769 Advanced Database Management. I’ve got a great course planned for you, I hope you enjoy it and find the material valuable to your careers in Information Management or Applied Data Science.
+
+In IST659, you learned about the relational data model and how it can be leveraged to solve a variety of data-oriented problems. In this course we introduce different data problems of complexity and scale under which the relational data model might not be the most suitable choice. It is through this familiar lens we introduce new concepts.
+
+After the first lesson, which lays the groundwork for the rest of the course, the material is broken up into 3 parts. The first part takes a deeper dive into the features of a modern relational database system addressing issues of performance, security, transaction management and programming data-oriented logic. The second part covers Hadoop big data systems looking from the perspective of Hadoop as a batch-oriented, distributed processing framework.  Finally we conclude with a tour of popular non-relational database systems, covering architecture, data models and of course common use cases.
+
+This course delivers all of this content with a hands on approach. You will use a variety of database systems so that you can better conceptualize how all of the theory is applied. I’m not out to train you on the latest technologies and tools - that’s a fool’s errand! Instead, I aim to introduce key concepts which have existed for years, explain how they relate to the current landscape and then use the technology so that you can experience how it gets applied in a working system. This helps reinforce the concept which mostly remain the same regardless of how the technology matures.
+
+A key takeaway from this course is you should be able to match your data-oriented problem to the appropriate database solution. You will no longer take a “one size fits all” approach like you might have done after IST659, instead embracing the tools unique and appropriate to the problem at hand. 
+
+Please bear in mind that a key scaffold of this class is tooling. Oftentimes, students are challenged working in an environment where conditions change unexpectedly, and there are multiple steps to accomplish a task, and the omission of any step can yield hours of fruitless labor when struggling with obscure error messages. I will expect you to exercise your problem-solving skills in this course. You cannot rely on the instructor to help you work through every problem! That approach is not representative of the workplace, where organizations expect us to bring solutions, rather than be overcome by obstacles.
+
+From a housekeeping perspective, there are a few dates to keep in mind. Please note you won't have access to the course content until later this month. Our first live session will be Thursday, 04/02 at 7:00 PM eastern time.
+
+Thank you for your time; I look forward taking the journey with you!
+
+Dr. Block 

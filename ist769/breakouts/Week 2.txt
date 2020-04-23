@@ -1,0 +1,19 @@
+Remember to appoint the following: 
+
+An organizer 
+
+A scribe 
+
+A presenter 
+
+--------------------------------------------------------------------------------------------------- 
+
+Answer the question that corresponds with your group number. If you are not familiar with the subject matter in the question, please feel free to search on the web.
+
+1. What is a scalar function and why would you use one? 
+
+2. Describe what a "deterministic" user-defined function is.
+
+3. What is the difference between a parameter and a variable?
+
+4. Are views inherently poor in performance? Explain 

@@ -1,0 +1,18 @@
+"Troubleshooting Etiquette"
+Class, you should fully expect to encounter challenges when completing your assignments in the database courses. If you encounter an issue, you are expected you to take steps to troubleshoot on your own. If you still cannot resolve the issue, you can reach out in any of the following ways:
+
+1. Post to the #769, #659 or #722 channels in slack (preferred)
+2. Send your instructor a direct message in slack
+3. Post to the course wall
+4. Email your instructor
+
+When posting your issue, please be sure to include:
+
+1. a description of what you are trying to do, including steps you took to troubleshoot
+2. a description of the environment
+3. a screen shot of any errors
+4. the full text of any script or command you were trying to execute (not a screen shot of the command)
+
+It is impossible to troubleshoot without providing this background. Although your instructor is happy to help you troubleshoot any issues, if you do not provide this background, you will be referred to the "Troubleshooting Etiquette" before you can be helped. Following these steps will save you time and save your instructor time!
+
+One of the most important learning outcomes in the iSchool is the ability to problem-solve. This skill will be developed throughout the term. It is a skill that will help you throughout the program and in the workplace...

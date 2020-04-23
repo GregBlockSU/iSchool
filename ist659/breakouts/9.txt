@@ -1,0 +1,11 @@
+For your breakout session, appoint the following roles:
+- an organizer
+- a scribe
+- a presenter
+
+Answer the question below that is associated with your breakout room number.
+
+1. Distinguish between a view and a functio (UDF). When would you choose a view over a UDF, and vice versa?
+2. Name some advantages and disadvantages of stored procedures.
+3. What is meant by "hard-coding" identity values, and how can hard-coding be avoided?
+4. Describe some control-of-flow statements in T-SQL that provide branching and looping. When would you use these statements?

@@ -1,0 +1,11 @@
+For your breakout session, appoint the following roles:
+- an organizer
+- a scribe
+- a presenter
+
+Answer the question below that is associated with your breakout room number.
+
+1. Define the term "grain" and provide examples of grains in 2-3 business processes, such as an ecommerce or inventory system
+2. What is the difference between a business process and a fact? Can a business process have more than one fact set?
+3. Can a fact table have dimensional attributes? Why or why not?
+4. What is a role-playing dimension? Provide some examples

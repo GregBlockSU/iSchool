@@ -8,7 +8,7 @@ A presenter
 
 --------------------------------------------------------------------------------------------------- 
 
-Answer the question that corresponds with your group number. 
+Answer the question that corresponds with your group number. If you are not familiar with the subject matter in the question, please feel free to search on the web.
 
 1. How would you decide whether it's best to use hive or impala as a query processing engine?
 
