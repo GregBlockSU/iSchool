@@ -1,0 +1,9 @@
+For your breakout session, appoint the following roles:
+- an organizer
+- a scribe
+- a presenter
+
+Answer the question below that is associated with your breakout room number.
+
+1. Name at least 2 mechanisms for generating a unique value that could be used for a surrogate primary key in SQL Server, as well as the advantages or disadvantages of each
+2. What is meant by a "repeatable script"? Why would you want or need a repeatable script?

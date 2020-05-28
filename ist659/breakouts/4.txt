@@ -1,3 +1,11 @@
+For your breakout session, appoint the following roles:
+- an organizer
+- a scribe
+- A presenter
+
+Answer the question below that is associated with your breakout room number. If you are not familiar with a term, don't be afraid to look it up online.
+
+Relational design separates a system's "actors" into buckets of similar types, or entities.
 1. What  is a transitive functional dependency?
 2. What is a partial functional dependency?
 3. Define and provide examples of a candidate key.

@@ -1,4 +1,4 @@
-Week 10 breakout questions
+Week 9 breakout questions
 
 Remember to appoint the following: 
 
@@ -10,6 +10,10 @@ A presenter
 
 Answer the question that corresponds with your group number. If you are not familiar with the subject matter in the question, please feel free to search on the web.
 
-1. Describe at least two windowing operations in Kafka, and explain the difference between them.
+1. Describe a "shard" and explain the benefits of using a shard.
 
-2. What is the difference between a Kafka table and a Kafka stream?
+2. Where does Cassandra fall on the dimensions of the CAP theorem?
+
+3. What is the difference between a cluster key and a partition key in Cassandra?
+
+4. Cassandra supports eventual consistency. When is evenutual consistency useful?
