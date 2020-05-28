@@ -39,5 +39,7 @@ SELECT * FROM stock_quotes where bid_price>250;
 SELECT * FROM stock_quotes where bid_price=250;
 SELECT * FROM stock_quotes where ask_price=250;
 DROP MATERIALIZED VIEW IF EXISTS stock_quotes_by_ask_price;
-CREATE MATERIALIZED VIEW stock_quotes_by_ask_price AS SELECT * FROM stock_quotes WHERE symbol IS NOT NULL AND offered_on IS NOT NULL AND ask_price IS NOT NULL PRIMARY KEY (symbol, offered_on, ask_price);
+CREATE MATERIALIZED VIEW stock_quotes_by_ask_price AS SELECT * FROM stock_quotes 
+WHERE symbol IS NOT NULL AND offered_on IS NOT NULL AND ask_price IS NOT NULL 
+PRIMARY KEY (symbol, offered_on, ask_price);
 SELECT * FROM stock_quotes_by_ask_price where symbol='AAPL' AND offered_on >='2019-11-01';
