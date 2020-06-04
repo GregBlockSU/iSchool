@@ -13,3 +13,7 @@ Answer the question that corresponds with your group number. If you are not fami
 1. Describe at least two windowing operations in Kafka, and explain the difference between them.
 
 2. What is the difference between a Kafka table and a Kafka stream?
+
+3. Distinguish between a "traditional" relational database and a a windowed operation in a stream.
+
+4. What are topics, and how can they be used by producers and consumers?

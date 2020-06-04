@@ -26,6 +26,9 @@ sqlResult <-sqlQuery(myconn, sqlSelectStatement)
 sqlResult
 
 if (class(sqlResult) != 'data.frame')
+{
+  print('Invalid SQL results')
+}
 #Create a list of days of the week for charting later
 days <- c("Sun", "Mon", "Tue", "Weds", "Thurs", "Fri", "Sat")
 
