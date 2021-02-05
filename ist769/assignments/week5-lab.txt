@@ -1,3 +1,7 @@
+#0
+cd hadoop
+docker-compose exec cloudera bash -c "su -l cloudera"
+
 #1
 
 hdfs dfs -mkdir text
