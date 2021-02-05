@@ -83,52 +83,52 @@ go
 SELECT * FROM dbo.players;
 go
 
-EXEC sp_shots @player_id = 1,@clock_time = '2019-10-18 10:45:30.00',@shot_made = 1;
+EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:45:30.00',@shot_made = 1;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 2,@clock_time = '2019-10-18 10:46:00.00',@shot_made = 1;
+EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:46:00.00',@shot_made = 1;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 1,@clock_time = '2019-10-18 10:46:30.00',@shot_made = 0;
+EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:46:30.00',@shot_made = 0;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 2,@clock_time = '2019-10-18 10:47:00.00',@shot_made = 0;
+EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:47:00.00',@shot_made = 0;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 1,@clock_time = '2019-10-18 10:47:30.00',@shot_made = 1;
+EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:47:30.00',@shot_made = 1;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 2,@clock_time = '2019-10-18 10:48:00.00',@shot_made = 1;
+EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:48:00.00',@shot_made = 1;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 1,@clock_time = '2019-10-18 10:48:30.00',@shot_made = 0;
+EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:48:30.00',@shot_made = 0;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 2,@clock_time = '2019-10-18 10:49:00.00',@shot_made = 0;
+EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:49:00.00',@shot_made = 0;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 1,@clock_time = '2019-10-18 10:49:30.00',@shot_made = 1;
+EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:49:30.00',@shot_made = 1;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 2,@clock_time = '2019-10-18 10:50:00.00',@shot_made = 1;
+EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:50:00.00',@shot_made = 1;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 1,@clock_time = '2019-10-18 10:50:30.00',@shot_made = 0;
+EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:50:30.00',@shot_made = 0;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 2,@clock_time = '2019-10-18 10:45:45.00',@shot_made = 0;
+EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:45:45.00',@shot_made = 0;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 1,@clock_time = '2019-10-18 10:46:45.00',@shot_made = 1;
+EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:46:45.00',@shot_made = 1;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 2,@clock_time = '2019-10-18 10:48:45.00',@shot_made = 1;
+EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:48:45.00',@shot_made = 1;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 1,@clock_time = '2019-10-18 10:49:45.00',@shot_made = 0;
+EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:49:45.00',@shot_made = 0;
 
 WAITFOR DELAY '00:00:20';
-EXEC sp_shots @player_id = 2,@clock_time = '2019-10-18 10:47:45.00',@shot_made = 0;
+EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:47:45.00',@shot_made = 0;
 
 SELECT	* 
 FROM	dbo.players;
