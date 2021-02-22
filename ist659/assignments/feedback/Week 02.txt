@@ -1,0 +1,20 @@
+Great work on this assignment, __
+
+The second assignment is graded using the following rubric:
+
+Case study 1
+complete entities and relations - 1 point, earned 1
+Case study 2
+complete entities and relations - 1 point, earned 1
+
+Case study 3, Publisher
+complete entities and relations - 1 point, earned 1
+primary keys defined correctly - 1 point, earned 1
+relations defined correctly - 1 point, earned 1
+royalty rate defined correctly - 1 point, earned 1
+Case study 4, Vidcast
+complete entities and relations - 2 point, earned 2
+primary keys defined correctly - 1 point, earned 1
+relations defined correctly - 1 point, earned 1
+
+Total points: 10 points

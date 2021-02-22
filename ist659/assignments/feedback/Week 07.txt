@@ -1,0 +1,11 @@
+Excellent work on lab 7, exercising the SELECT, JOIN and aggregation clauses, . Your grade is based on the following:
+
+Simple JOIN - 1 / 1 points
+NOT IN query - 1 / 1 points
+RIGHT JOIN - 1 / 1 points
+Simple aggregation with HAVING - 3 / 3 points
+Complex JOIN with GROUP BY - 4 / 4 points
+
+Total points: 10 / 10
+
+Dr. Block

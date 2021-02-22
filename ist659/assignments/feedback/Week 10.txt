@@ -1,0 +1,14 @@
+Great work on this assignment, . Your grade was scored as follows:
+
+Linking Access to SQL Server
+- Linking Access to SQL Server - 1 point out of 1
+- Creating form/subform for user logins - 2 points out of 2
+- Explanation of form behavior - 1 point out of 1
+
+Linking R to SQL Server
+- Connecting to SQL Server in R - 2 points out of 2
+- Histogram chart - 2 points out of 2
+- Vertical bar chart - 2 points out of 2
+
+Points - 10 / 10
+Dr. Block

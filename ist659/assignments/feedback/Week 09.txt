@@ -1,0 +1,13 @@
+, excellent job on this lab assignment! Your homework is graded on the following points:
+
+Security
+- Creating a guest user - 1 point out of 1
+- Granting and revoking permissions to/from the guest user account - 1 point out of 1
+- Selecting data with the guest user account - 2points out of 2
+
+Error handling
+- Set up tables and data - 2 points out of 2
+- Error-handling logic  - 4 points out of 4
+
+Points - 10 / 10
+Dr. Block

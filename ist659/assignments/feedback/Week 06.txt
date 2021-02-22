@@ -1,0 +1,11 @@
+Great work on this assignment, . Your grade is scored below.
+
+INSERT statements: 3 / 3 points
+UPDATE statement: 1 / 1 points
+DELETE statement: 1 / 1 points
+SELECT statements: 2 / 2 points
+Tag List, INSERT and SELECT statements: 3/ 3 points
+
+Total: 10 / 10 points
+
+Dr. Block

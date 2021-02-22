@@ -1,0 +1,19 @@
+ great job on this assignment! Your diagrams are graded as follows:
+
+Case study 1
+complete entities and relations - 1 point, earned 1
+Case study 2
+complete entities and relations - 1 point, earned 1
+
+Case study 3, Publisher
+complete entities and relations - 2 point, earned 2
+primary and foreign keys defined correctly - 1 point, earned 1
+bridge tables defined correctly - 1 point, earned 1
+
+
+Case study 4, Vidcast
+complete entities and relations - 2 point, earned 2
+primary and foreign keys defined correctly - 1 point, earned 1
+bridge tables defined correctly - 1 point, earned 1
+
+Total points: 10.0 points

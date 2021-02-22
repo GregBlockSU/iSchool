@@ -45,7 +45,7 @@ hist(sqlResult$ActualDuration,
 #Plot a bar chart of video counts by day of the week
 dayCounts <-table(sqlResult$StartDayofWeek)
 barplot(dayCounts,
-        main = "VidCasts by Day of Week", 
+        main = "grblock VidCasts by Day of Week", 
         ylab = "Day of Week",
         xlab = "Count of VidCasts",
         border = "blue",

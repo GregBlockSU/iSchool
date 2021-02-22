@@ -1,0 +1,8 @@
+, great work on the lab assignment! The grade was computed as follows:
+
+Table definitions - 2 / 2
+Column definitions - 2 / 2
+P:rimary key constraints - 2 / 2
+Foreign key constraints - 2 / 2
+Unique constraints - 2 / 2
+Total: 10 / 10

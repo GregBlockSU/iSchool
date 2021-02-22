@@ -1,0 +1,20 @@
+Excellent work on the normalization lab, 
+
+Points were awarded as follows:
+
+Case study 2 - normalized all entities - 4 points
+Order - 1/1
+Order Detail - 1/1
+Product (or Item) - 1/1
+Customer - 1/1
+
+Case study 3 - 2 points
+identify 3NF for authors - 2/2
+
+Part 2 - 1 point per entity - 4 points
+video - 1/1 - only one video table is needed...
+user - 1/1
+user tier - 1/1
+content rating - 1/1
+
+Dr. Block

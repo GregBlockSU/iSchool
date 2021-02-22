@@ -1,0 +1,17 @@
+Great work on this lab assignment, . Your assignment is graded as follows:
+
+Functions
+built-in function - 1 point out of 1
+Creating user-defined function - 2 points out of 2
+Calling user-defined function  - 1 point out of 1
+
+Stored procedures
+Create stored procedures - 1.5 points out of 2
+Calling stored procedures - 2 points out of 2
+
+Views
+Creating view  - 1 points out of 1
+Calling view -  - 1 point out of 1
+
+Points - 10 / 10
+Dr. Block
