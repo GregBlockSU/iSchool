@@ -1,0 +1,37 @@
+@Class, Welcome to April, 2021 IST772 Quantitative Reasoning for Data Science
+
+I'm looking forward to our class this semester. Statistics is a fun course to teach because it includes a set of specific skills to learn (e.g., the statistical tests) backed up with important concepts to master (e.g., what a statistic is).
+
+I wanted to take this opportunity before classes start to set some expectations for the class.
+
+A first expectation is the importance of being prepared for the live sessions, which means that you've done the readings and watched the videos beforehand. The text is now available for purchase (and yes, it is required). A couple hints for the videos: don't forget that you can change the playback speed to either speed up or slow down the playback; and for the software demos, watching in high quality will let you see the screen more clearly.
+
+Second, during the live sessions, your participation is both welcome and required. The live sessions are an opportunity to test and to apply your knowledge and to get feedback. We have a small class, so I do expect everyone to participate in every class. Try to set up an environment that minimizes distractions, so you can focus on and contribute to our discussion (e.g., quit your email, close Facebook, mute your phone). Similarly, feel free to use the chat during class to comment or ask questions, but I ask that you keep those comments on topic. We can experiment with ways of asking questions during class, but the class is relatively large, so you may want to simply ask your question aloud (if you feel comfortable doing so) or posting your question in the chat window. Empirically, there is a strong correlation between asking questions and doing well in the course, so ask away!
+
+Third, when you have questions outside of the live sessions, please feel free to email me. I check email pretty regularly, so you can usually expect a reply within a few hours, though there will be times that I am in all day meetings and can't reply until the next morning. If I'll be away from email for longer than that, I'll post a message so you know. We can discuss in the first class whether a scheduled online office hour will be helpful.
+
+Finally, you'll note that you have an assignment due every week. I sometimes set the due dates before the live sessions, with the intent that I can return and discuss graded work in the live session. However, this plan only works if you submit your assignments on time. As a result, there will not be much flexibility with the due dates.
+
+So, in summary, the key expectations for the course are:
+
+1) watch the videos and do the readings BEFORE the live sessions
+2) you MUST participate during the live sessions
+3) assignments are due AS STATED on the learning management system
+
+The eleven-week format is quite demanding, but I think it will be interesting and engaging at the same time. I'm looking forward to "meeting you" at our first live session.
+
+You may receive this welcome notice before you are able to log into the online course. You can still contact me via email before the class starts, and prior to our first live session. My email address is:
+
+grblock@syr.edu
+
+My office hours are one hour prior to the live session. However, I am always open to scheduling 30 or 60 minutes one-on-one sessions with you, if you feel it will be helpful.
+
+I have also created a Microsoft Teams site for this class. The site is:
+
+https://teams.microsoft.com/l/team/19%3a1d78b617353049138a04cdc6fa87898a%40thread.tacv2/conversations?groupId=6cbbe384-cbe2-4c5a-9db3-aa29b38bbf08&tenantId=4278a402-1a9e-4eb9-8414-ffb55a5fcf1e
+
+We will use 2SU/LMS for course announcements, and to access assignments and the gradebook; we will use Teams for our weekly live sessions, and to communicate.
+
+Finally (I know I already said "finally" three paragraphs ago, so this is "finally finally") I prefer to go by the title "Dr. Block" or "Professor". This is something I learned in my doctoral program several years ago. It's a good practice to refer to professors by their honorific, unless they tell you otherwise!
+
+Dr. Block

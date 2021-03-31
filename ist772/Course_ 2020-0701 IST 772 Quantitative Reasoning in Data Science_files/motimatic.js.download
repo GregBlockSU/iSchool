@@ -1,0 +1,44 @@
+// Update from Motimatic https://www.pivotaltracker.com/story/show/129652093
+(function() {
+    var motc = '6';
+    var motu = i11l.LMSContext.user.uuid;
+    // IE workaround (fix for quirks mode default)
+    try {
+        var iframe = document.createElement('<iframe name="motimatic_iframe"></iframe>');
+        var clientIDInput = document.createElement('<input name="client_id" />');
+        var userIDInput = document.createElement('<input name="user_id" />');
+    } catch(e) {
+        var iframe = document.createElement('iframe');
+        iframe.name = 'motimatic_iframe';
+        var clientIDInput = document.createElement('input');
+        clientIDInput.name = 'client_id';
+        var userIDInput = document.createElement('input');
+        userIDInput.name = 'user_id';
+    }
+    // Create the iframe and add it to the body
+    iframe.id = 'motimatic_iframe';
+    iframe.src = 'about:blank';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    // Create the form and add it to the body
+    var dataForm = document.createElement('form');
+    dataForm.id = 'motimatic_data_form';
+    dataForm.target = 'motimatic_iframe';
+    dataForm.action = '//t.motimatic.com/engine/v2/pixels/secure/';
+    dataForm.method = 'POST';
+    dataForm.style.display = 'none';
+    clientIDInput.type = 'text';
+    clientIDInput.value = '';
+    dataForm.appendChild(clientIDInput);
+    userIDInput.type = 'text';
+    userIDInput.value = '';
+    dataForm.appendChild(userIDInput);
+    var submitInput = document.createElement('input');
+    submitInput.type="submit";
+    dataForm.appendChild(submitInput);
+    document.body.appendChild(dataForm);
+    // Submit the form with the provided client and user IDs
+    dataForm.elements["client_id"].value = motc
+    dataForm.elements["user_id"].value = motu
+    dataForm.submit();
+})();
