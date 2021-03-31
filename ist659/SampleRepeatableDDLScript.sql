@@ -5,42 +5,33 @@
 -- type - P for procedure, V for view, U for table
 
 -- drop all procedures
-IF OBJECT_ID('dbo.InsertAuthor', 'P') IS NOT NULL
-		DROP PROCEDURE dbo.InsertAuthor;
+DROP PROCEDURE IF EXISTS dbo.InsertAuthor;
 go
 
-IF OBJECT_ID('dbo.InsertBook', 'P') IS NOT NULL
-		DROP PROCEDURE dbo.InsertBook;
+DROP PROCEDURE IF EXISTS dbo.InsertBook;
 go
 
-IF OBJECT_ID('dbo.InsertPublisher', 'P') IS NOT NULL
-		DROP PROCEDURE dbo.InsertPublisher;
+DROP PROCEDURE IF EXISTS dbo.InsertPublisher;
 go
 
 -- drop all views
-IF OBJECT_ID('dbo.PublisherAuthorBook', 'V') IS NOT NULL
-		DROP VIEW dbo.PublisherAuthorBook;
+DROP VIEW IF EXISTS dbo.PublisherAuthorBook;
 go
 
 -- drop all tables in reverse order of their dependencies
-IF OBJECT_ID('dbo.RoyaltyPayment', 'U') IS NOT NULL
-		DROP TABLE dbo.RoyaltyPayment;
+DROP TABLE IF EXISTS dbo.RoyaltyPayment;
 go
 
-IF OBJECT_ID('dbo.AuthorBook', 'U') IS NOT NULL
-		DROP TABLE dbo.AuthorBook;
+DROP TABLE IF EXISTS dbo.AuthorBook;
 go
 
-IF OBJECT_ID('dbo.Author', 'U') IS NOT NULL
-		DROP TABLE dbo.Author;
+DROP TABLE IF EXISTS dbo.Author;
 go
 
-IF OBJECT_ID('dbo.Book', 'U') IS NOT NULL
-		DROP TABLE dbo.Book;
+DROP TABLE IF EXISTS dbo.Book;
 go
 
-IF OBJECT_ID('dbo.Publisher', 'U') IS NOT NULL
-		DROP TABLE dbo.Publisher;
+DROP TABLE IF EXISTS dbo.Publisher;
 go
 
 -- create all tables in order of their dependencies
