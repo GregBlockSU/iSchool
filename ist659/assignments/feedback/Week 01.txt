@@ -1,0 +1,8 @@
+Great work on this assignment, __
+
+The first assignment is graded using the following rubric:
+
+Part 1, Challenges for fitting the data into the relational data model - 5 points available, earned 5 points
+Part 2, Entity Relation Diagram exercise - 5 points available, earned 5 points
+
+Total points: 10 / 10 points

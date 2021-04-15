@@ -4,7 +4,15 @@ I'm looking forward to our class this semester. Statistics is a fun course to te
 
 I wanted to take this opportunity before classes start to set some expectations for the class.
 
-A first expectation is the importance of being prepared for the live sessions, which means that you've done the readings and watched the videos beforehand. The text is now available for purchase (and yes, it is required). A couple hints for the videos: don't forget that you can change the playback speed to either speed up or slow down the playback; and for the software demos, watching in high quality will let you see the screen more clearly.
+A first expectation is the importance of being prepared for the live sessions, which means that you've done the readings and watched the videos beforehand. The text is now available for purchase (and yes, it is required). Here is the textbook information:
+
+Stanton (2017), Reasoning with Data: An Introduction to Traditional and Bayesian Statistics Using R (abbreviated below as RwD; ISBN-
+13: 978-1462530267; ISBN-10: 1462530265). The paperback version of this textbook is available from the bookstore. Paperback, hard back, and electronic versions are all
+available on Amazon and other online book sellers:
+
+https://www.amazon.com/Reasoning-Data-Introduction-Traditional-Statistics/dp/1462530265
+
+A couple hints for the videos: don't forget that you can change the playback speed to either speed up or slow down the playback; and for the software demos, watching in high quality will let you see the screen more clearly.
 
 Second, during the live sessions, your participation is both welcome and required. The live sessions are an opportunity to test and to apply your knowledge and to get feedback. We have a small class, so I do expect everyone to participate in every class. Try to set up an environment that minimizes distractions, so you can focus on and contribute to our discussion (e.g., quit your email, close Facebook, mute your phone). Similarly, feel free to use the chat during class to comment or ask questions, but I ask that you keep those comments on topic. We can experiment with ways of asking questions during class, but the class is relatively large, so you may want to simply ask your question aloud (if you feel comfortable doing so) or posting your question in the chat window. Empirically, there is a strong correlation between asking questions and doing well in the course, so ask away!
 
