@@ -1,0 +1,24 @@
+Excellent work on assignment 3, $. The R code and graphs are correct, and your explanations are thorough.
+
+Dr. Block
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I graded on the following responses:
+Exercise 2. (.5 points)
+Name the four variables of the dataset; Describe the second dimension number in the output
+
+Exercise 3. (.5 points)
+Run the summary head and mean commands, say what the command does, report the output, and briefly explain each piece of output
+
+Exercise 4. (1 point)
+Create a histogram for that variable. Then write code that will display the 2.5% and 97.5% quantiles; write an interpretation of the variable, including descriptions of the mean, median and shape of the distribution; Make sure to clearly describe what the 2.5% and 97.5% quantiles signify, then write an interpretation of the variable, including mean, median
+
+Exercise 5. (1 point)
+Use a sample size of n = 9 (sampling with replacement); Show a histogram of this distribution of sample means. Then, write and run R commands that will display the 2.5% and 97.5% quantiles of the sampling distribution on the histogram with a vertical line
+
+Exercise 6. (1 point)
+describe, the difference is between a distribution of raw data and a distribution of sampling means; then comment on why the 2.5% and 97.5% quantiles are so different between the raw data distribution and the sampling distribution of means
+
+Exercise 7 (1 point)
+Redo Exercise 5, but this time use a sample size of n =180 (instead of the original sample size of n = 13 used in Exercise 5); Explain why the 2.5% and 97.5% quantiles are different from the results you got for Exercise 5

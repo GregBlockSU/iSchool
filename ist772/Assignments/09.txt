@@ -1,0 +1,3 @@
+$, good work on the assignment. Your explanation of the glm results for car engine scenario was correct for the intercept and gear/hp variables, as was your explanation of the pseudo-R2 value. You also did a good job analyzing the Chile vote for the intercept, age and statusquo, as well as your explanation of the Bayesian results.
+
+Dr. Block

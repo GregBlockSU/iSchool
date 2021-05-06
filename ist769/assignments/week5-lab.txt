@@ -17,6 +17,7 @@ hdfs dfs -mkdir -p clickstream/iplookup
 hdfs dfs -put datasets/clickstream/*.log clickstream/logs
 hdfs dfs -put datasets/clickstream/*.csv clickstream/iplookup
 hdfs dfs -ls clickstream/logs
+hdfs dfs -ls clickstream/iplookup
 
 #3
 

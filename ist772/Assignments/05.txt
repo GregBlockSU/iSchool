@@ -1,0 +1,4 @@
+$, excellent work evaluating the plan growth weights for the control and two treatment groups. your analysis is correct, from both a frequentist and Bayesian approach, that the first treatment group is not statistically different from the control, whereas the second treatment group is. Your assessment of the small versus large sample size is also correct.
+
+Dr. Block
+

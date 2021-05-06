@@ -1,0 +1,18 @@
+Overall:
+
+GREAT!! analysis here. Your effort has really paid off. See a few notes below.
+
+Introduction (25 / 25 points): 
+
+GREAT!!! You have really set the stage! Your intro motivates the problem and your subsequent methodology.
+Distance Metrics and Experimental Design (25 / 25 points)
+
+GREAT INITIAL EDA!!! You really took a deep dive here and unveiled the character and nature of the data. A true DATA Scientist!!
+Great word cloud!
+MODELS and Clustering (25 / 25 points)
+
+EXCELLENT INVESTIGATION of the cluster analysis! Great job varying the number of clusters and investigating different clustering techniques. – WELL DONE!
+Conclusions (25 / 25 points)
+
+Good conclusions. Comprehensive and clearly follow from the analysis.
+Dr. Block

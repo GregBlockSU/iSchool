@@ -1,0 +1,3 @@
+$, good work analyzing the cars dataset for collinearity. You correctly plotted and interpreted the correlation between variables (including the cylinder plot, which was a bit challenging) using a scatterplot. You did a good job analyzing the linear model and interpreting the coefficients and p-values, as well as constructing a prediction equation. Also, the summary describing the Bayes factor and the posterior distributions was well-written. 
+
+Dr. Block

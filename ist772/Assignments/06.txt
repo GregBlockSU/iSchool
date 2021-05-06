@@ -1,0 +1,3 @@
+Great work on assignment 6, $. You properly identified the degrees of freedom, the F-statistic, the Bayes Factor and determined the null hypothesis could be rejected.  In addition, your graphs were very informative and well formatted.
+
+Dr. Block

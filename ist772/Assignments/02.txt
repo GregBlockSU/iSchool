@@ -1,0 +1,24 @@
+, I graded assignment #2 using the rubric below. Your score is 5 / 5.
+
+Dr. Block
+
+~~~~~~~~~~~~~~~~~
+
+Exercise 1. Flipping a coin
+
+Code: .5/.5 points
+Explanation: .5/.5 points
+Exercise 2. Plotting the coin flip
+
+Histogram and bar plots: .5/.5 points
+explanation of how graphs are related and graph shapes: .5/.5 points
+Exercise 6. Pass & Fail
+
+Pass rate for high school students: .5 points
+Exercise 7.
+
+What percentage of customers both pass the test and have their homes repossessed? 1/1 point
+What percentage of customers both pass the test and do not have their homes repossessed? .5/.5 points
+Exercise 8.
+
+What is the probability that this customer will actually default: 1/1 point
