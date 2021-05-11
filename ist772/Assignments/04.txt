@@ -1,3 +1,0 @@
-$, great work on assignment 4. The histograms and boxplot are correct, as are the t-tests for the control and treatment groups from the PlanGrowth dataset. your explanations of the p-value, confidence interval and sample dispersions are also correct.
-
-Dr. Block

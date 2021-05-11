@@ -1,0 +1,11 @@
+
+model{
+
+for (i in 1:n){
+   y[i] ~ dnorm(beta.0, tau.sq) 
+}
+
+  beta.0 ~ dnorm(0 , 0.0001 ) 
+  tau.sq <- 1/sigma.sq 
+  sigma.sq ~ dunif (0 , 100)
+}

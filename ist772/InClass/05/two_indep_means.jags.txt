@@ -1,0 +1,49 @@
+model {
+  # This code was built upon an example developed by Rasmus Baath
+  # We are creating an acyclic graph that connects all of the terms
+  # to one another with definitions for each term.
+
+  # We need separate setups for including data points from x and y
+  # because the vector lengths may differ
+
+  # First, we need a node in our graph for each value of x
+  for(i in 1:length(x)) {
+    x[i] ~ dt( mu_x , tau_x , nu ) # Modeling x as a function of t
+  }
+  
+  # This proposes the t distribution as the posterior distribution for values of x
+  # note that mu, tau, and nu are defined later in the model
+  x_pred ~ dt( mu_x , tau_x , nu ) # The tilde is distributional notation
+
+
+  # Now, we need a node in our graph for each value of y
+  for(i in 1:length(y)) {
+    y[i] ~ dt( mu_y , tau_y , nu ) # We are also modeling y as a function of t
+  }
+    
+  # This proposes the t distribution as posterior distribution for values of y
+  # note that mu, tau, and nu are defined later in the model  
+  y_pred ~ dt( mu_y , tau_y , nu ) # The tilde is distributional notation
+
+  # Let's track the effect size for each MCMC estimate
+  # pow() is the JAGS command to raise a value to a power
+  eff_size <- (mu_x - mu_y) / sqrt((pow(sigma_x, 2) + pow(sigma_y, 2)) / 2)
+  mu_diff <- mu_x - mu_y 
+  sigma_diff <- sigma_x - sigma_y 
+  
+  # The priors for x
+  mu_x ~ dnorm( mean_mu , precision_mu ) # Normal distribution: non-committal
+  tau_x <- 1/pow( sigma_x , 2 ) # Precision is 1/variance
+  sigma_x ~ dunif( sigmaLow , sigmaHigh ) # Uniform distribution: uninformative
+
+  # The priors for y
+  mu_y ~ dnorm( mean_mu , precision_mu ) # Normal distribution: non-committal
+  tau_y <- 1/pow( sigma_y , 2 ) # Precision is 1/variance
+  sigma_y ~ dunif( sigmaLow , sigmaHigh ) # Uniform distribution: uninformative
+
+  # Set an exponentially distributed prior on nu that starts at 1.
+  # 29 is the threshold between small values of df where t has heavy tails
+  # and large values of df where t approximates the normal distribution
+  nu <- nuMinusOne+1
+  nuMinusOne ~ dexp(1/29)
+}
