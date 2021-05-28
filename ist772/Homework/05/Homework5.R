@@ -21,7 +21,7 @@ t.test(ctrl.weights,trt1.weights)
 # The reported value t is 1.1913, the degrees of freedom is 16.524 and the p-value is 
 # 0.2504. The confidence interval is -0.2875162 to 1.0295162. With an alpha of .05 and 
 # a p-value of 0.2504, we would fail to reject the null hypothesis. 
-
+install.packages("rjags")
 # Exercise 7
 # Run a mcmc simulation with the control group and treatment group weights.
 library(rjags)
@@ -57,7 +57,7 @@ t.test(ctrl.weights,trt2.weights)
 # sample estimates:
 #   mean of x mean of y 
 # 5.032     5.526
-
+o
 PGBest2 <- BESTmcmc(ctrl.weights,trt2.weights)
 plot(PGBest2, main=NULL)
 

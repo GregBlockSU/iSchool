@@ -1,0 +1,9 @@
+Excellent work on the midterm exam, $. Your analysis was correct for questions 1-5, where you provided tests for the Confidence intervals and hypothesis testing, as well as the Bayes simulation. 
+
+For questions 6-7 where you provided detailed narrative of the study that compared the proposed biofilm to traditional mechanical filtering, your descriptions were detailed and persuasive, and tailored correctly to the target audience.
+
+I was highly impressed with how you rewrote the assignment into a holistic narrative that blended the numerical outputs from the R code, graphs and your interpretation of the treatment and control samples. In the future, please be sure to call out a "non-technical" section where you provide plain-language descriptions.
+
+Again, great work!
+
+Dr. Block
