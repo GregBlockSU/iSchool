@@ -1,0 +1,19 @@
+Overall:
+
+Good work on the report comparing the decision tree to the Naïve Bayesian models for the digit classification problem.
+
+These assignments are graded based on the following rubric:
+
+Introduction - 25 points: 
+
+Identifying the data source, data characteristics and experimental setup.
+EDA + Preprocessing - 25 points:
+
+Data cleansing, preparation and exploration, attribute reduction techniques such as PCA,  and validation using crossfold or other techniques
+Modeling - 25 points:
+
+Analyzing the digit data set using the decision tree and Naïve Bayesian classifiers
+Conclusions - 25 points:
+
+Comprehensive summation that clearly followed from the analysis.
+Dr. Block

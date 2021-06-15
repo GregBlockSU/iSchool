@@ -1,9 +1,8 @@
-library(FactoMineR)
-library(dplyr)
-library(caret)
-library(rpart.plot)
-library(ggplot2)
-library(e1071)
+# library(dplyr)
+# library(caret)
+# library(rpart.plot)
+# library(ggplot2)
+# library(e1071)
 
 #First load the training data in csv format, and then convert "label" to nominal variable.
 # setwd("C:/Users/HQRGRS27/source/git/SU/iSchool/ist707/Homework/06")
@@ -15,8 +14,11 @@ dim(DigitTotalDF)
 
 head(DigitTotalDF)
 
+library(FactoMineR)
+
 #Create a random sample of n% of train data set
-pca_digits = PCA(t(select(DigitTotalDF,-label)))
+pca_digits = PCA(t(subset(DigitTotalDF, select = -c(label))))
+
 DigitTotalDF = data.frame(DigitTotalDF$label,pca_digits$var$coord)
 # reduce the total number of data samples used
 percent <- .25

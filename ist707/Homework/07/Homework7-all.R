@@ -290,7 +290,7 @@ prediction <- data.frame(cbind(prediction, random_f))
 rotate <- function(x) t(apply(x, 2, rev)) # reverses (rotates the matrix)
 
 par(mfrow=c(2,3)) # Plotting in 2*3 format (random forest)
-lapply(1:6, 
+lapply(7:12, 
        function(x) image( #norow = 28 because this is 28 pixel image
          rotate(matrix(unlist(test[x,]),nrow = 28,byrow = T)),
          col=grey.colors(255),

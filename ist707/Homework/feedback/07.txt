@@ -1,0 +1,19 @@
+Overall:
+
+A great report that met the requirements for evaluating multiple models.
+
+These assignments are graded based on the following rubric:
+
+Introduction - 25 points: 
+GREAT!!! You have really set the stage! Your intro motivates the problem and your subsequent methodology.
+
+EDA + Preprocessing - 25 points:
+Good job tuning the dataset and exploring the features, especially dimensionality reduction using PCA.
+
+Modeling - 25 points:
+Good work identifying the optimal parameters for each model, comparing accuracy and explaining how the parameters affect each model's output.
+
+Conclusions - 25 points:
+You provided a solid conclusion that was comprehensive and clearly followed from the analysis.
+
+Dr. Block

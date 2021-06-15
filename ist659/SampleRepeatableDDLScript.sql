@@ -127,6 +127,21 @@ VALUES	((SELECT AuthorID FROM dbo.Author WHERE LastName = 'Hemingway'), (SELECT 
 		((SELECT AuthorID FROM dbo.Author WHERE LastName = 'Fitzgerald'), (SELECT BookID FROM dbo.Book WHERE BookTitle = 'The great gatsby'));
 go
 
+-- here is a shortcut for the same result:
+
+DELETE dbo.AuthorBook;
+
+INSERT	dbo.AuthorBook (AuthorID, BookID) 
+SELECT	AU.AuthorID, BK.BookID
+FROM	(
+			VALUES	('Hemingway', 'The sun also rises'), 
+					('Fitzgerald', 'The great gatsby')
+		) AS SRC (AuthorLastName, BookTitle)
+INNER	JOIN dbo.Author AS AU ON AU.LastName = SRC.AuthorLastName
+INNER	JOIN dbo.Book AS BK ON BK.BookTitle = SRC.BookTitle
+
+
+
 -- finally, pull results from the tables
 SELECT	*
 FROM	dbo.Publisher;
