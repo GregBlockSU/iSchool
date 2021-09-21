@@ -8,7 +8,7 @@ python kafka-weblogs-datagen.py
 
 -- open 2nd prompt
 cd adv-db-labs\kafka
-docker-compose exec ksql-cli ksql http://ksql-server:8088,
+docker-compose exec ksql-cli ksql http://ksql-server:8088
 
 #1
 

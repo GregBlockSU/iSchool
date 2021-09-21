@@ -1,9 +1,13 @@
 # Code courtesy of https://rpubs.com/meisenbach/284590 by Mei Eisenbach
 
+#install.packages("readr")
+#install.packages("randomForest")
+#install.packages("nnet")
 library(readr)
 library(randomForest)
 library(nnet)
 
+setwd("C:\\Users\\gregb\\OneDrive\\git\\iSchool\\ist707\\Weeks\\10")
 train_orig <- read_csv("digit_train.csv")
 test_orig <- read_csv("digit_test.csv")
 
@@ -18,23 +22,27 @@ barplot(table(train_orig[,1]), col=rainbow(10, 0.5), main="n Digits in Train")
 # (pixels) which form a 28x28 image. Let's see what the handwritten digits look
 # like by plotting them. Here is a function to plot a selection of digits from
 # the train dataset.
-plotTrain <- function(images, ){
+plotTrain <- function(images, ds, labels){
   op <- par(no.readonly=TRUE)
   x <- ceiling(sqrt(length(images)))
   par(mfrow=c(x, x), mar=c(.1, .1, .1, .1))
   
   for (i in images){ #reverse and transpose each matrix to rotate images
-    m <- matrix(data.matrix(train_orig[i,-1]), nrow=28, byrow=TRUE)
+    m <- matrix(data.matrix(ds[i,-1]), nrow=28, byrow=TRUE)
     m <- apply(m, 2, rev)
     image(t(m), col=grey.colors(255), axes=FALSE)
-    text(0.05, 0.2, col="white", cex=1.2, train_orig[i, 1])
+    text(0.05, 0.2, col="white", cex=1.2, labels[i])
   }
   par(op) #reset the original graphics parameters
 }
 
+test_orig_36 <- test_orig[1:36,]
+test_orig_36$label <- c(2,0,9,0,3,7,0,3,0,3,5,7,4,0,4,3,3,1,9,0,9,1,1,5,7,4,2,7,4,7,7,5,4,2,6,2)
+
 # Now let's use this function to look at the first 36 images. You can look at
 # many images if you wanted too, e.g., plotTrain(1001:1100)
-plotTrain(1:36)
+plotTrain(1:36, train_orig, train_orig$label)
+plotTrain(1:36, test_orig_36, test_orig_36$label)
 
 # first we are going to try a random forest
 numTrees <- 25
@@ -42,7 +50,12 @@ numTrees <- 25
 startTime <- proc.time()
 rf <- randomForest(train_orig[-1], train_orig_labels, xtest=test_orig, ntree=numTrees)
 proc.time() - startTime
+
+##   user  system elapsed 
+## 165.52    6.52  207.74
+
 print(rf)
+plot(rf,type="l")
 
 ## 
 ## Call:
@@ -89,7 +102,9 @@ lapply(1:6,
        )
 )
 
-accuracy <- mean(predictions == test_labels)
+plotTrain(1:36, test_orig_36, predictions$Label)
+predictions_36 <- predictions[1:36,2]
+accuracy <- mean(predictions_36 == test_orig_36$label)
 print(paste('Accuracy:', accuracy))
 
 # split the training data into train and test to do local evaluation

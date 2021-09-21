@@ -1,0 +1,15 @@
+Good work on the report comparing a random forest with a neural network using the MNIST dataset.
+
+This assignment is graded based on the following rubric:
+
+Introduction - 25 / 25 points
+An Introduction is about the area or topic, not about the data or models. Introductions can and should include basis, background, history, the state-of-the-art, images, references, etc.  
+Exploratory Data Analysis - 25 / 25 points
+All the information about the dataset, the variables, the cleaning and prep, checking for an dealing with missing values, checking for and dealing with incorrect values, checking for an dealing with outliers, feature generation, normalization (if needed), etc.  Write about each variable, visualize each variable (as feasible), and talk about what the variable represents. Tables are great for this as well. 
+Modeling - 25 / 25 points
+Offer technical information about what was found in the analysis. For example, if you performed a correlation in the analysis between all pairs of numeric variables, then your results would discuss the r-value and relationship of each pair. Similarly, if you looked at measures of center and variation, the results talk about what those measures are and what they reveal. For example, if the mean is less than the median, the data is skewed, which means…. Each model we will use in this class has results and parameters associated with it.  
+Conclusions - 25 / 25 points
+Explain what was actually found in a way that would make sense to anyone. For example, if your discovered in the analysis that association rule mining with a confidence of .2 and a sup of .3 offered 10 rules, you would talk about the measures and values and rules in the *results*. In the Conclusions, you would talk about what it all means.
+Total points: 100 / 100
+
+Dr. Block

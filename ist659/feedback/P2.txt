@@ -1,0 +1,15 @@
+Great work on the second milestone of the project, . 
+
+Your work is graded according to the rubric below.
+
+Physical database design 20 /  20 points
+Database objects are dropped and created with detailed comments in a repeatable script with no errors
+Data creation and manipulation 25 / 25 points
+INSERT, UPDATE and/or DELETE statements are provided for most tables with detailed comments using named defaults and constraints; views, stored procedures and functions are provided for data manipulation
+Answering data questions 25 / 25 points
+SELECT statements are provided for 5 data questions with detailed comments and results
+Data samples, implementation, reflection, summary 30 / 30 points
+One or more data samples is provided, as well as 5 reports and at least one maintenance form with user-friendly labels and text. A relevant reflection is provided, as well as summary
+Points: 20 / 100
+
+Dr. Block
