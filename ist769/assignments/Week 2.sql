@@ -1,3 +1,4 @@
+-- exercise 1, using CASE
 SELECT	product_id, product_name, 
 		CASE CHARINDEX(' ', product_name) 
 			WHEN 0 THEN product_name 
@@ -6,15 +7,21 @@ SELECT	product_id, product_name,
 FROM	fudgemart_products;
 go
 
-IF OBJECT_ID('f_total_vendor_sales') IS NOT NULL
-	DROP FUNCTION f_total_vendor_sales;
+-- exercise 1, using IF
+SELECT	product_id, product_name, 
+		IIF(CHARINDEX(' ', product_name) = 0, product_name,
+			RIGHT(product_name, CHARINDEX(' ', REVERSE(product_name)) - 1)) AS product_category
+FROM	fudgemart_products;
 go
 
-CREATE FUNCTION dbo.f_total_vendor_sales
+DROP FUNCTION IF EXISTS f_total_vendor_sales;
+go
+
+CREATE OR ALTER FUNCTION dbo.f_total_vendor_sales
 (
 	@vendor_id AS int
 )
-RETURNS int 
+RETURNS money 
 AS
 BEGIN
 RETURN
@@ -32,18 +39,17 @@ FROM	dbo.fudgemart_vendors
 ORDER	BY 1;
 go
 
-IF OBJECT_ID('dbo.p_write_vendor') IS NOT NULL
-	DROP PROCEDURE p_write_vendor;
+DROP PROCEDURE IF EXISTS p_write_vendor;
 go
 
-CREATE PROCEDURE dbo.p_write_vendor 
+CREATE OR ALTER PROCEDURE dbo.p_write_vendor 
 	@vendor_name varchar(50),
 	@vendor_phone varchar(20),
 	@vendor_website varchar(1000)
 AS 
 IF EXISTS (SELECT * FROM fudgemart_vendors WHERE vendor_name = @vendor_name)
 	UPDATE	dbo.fudgemart_vendors 
-	SET		vendor_phone = vendor_phone,
+	SET		vendor_phone = @vendor_phone,
 			vendor_website = @vendor_website
 	WHERE	vendor_name = @vendor_name 
 ELSE
@@ -54,11 +60,10 @@ go
 EXEC dbo.p_write_vendor 'My vendor', '800-555-1212', 'http://www.yahoo.com';
 go
 
-IF OBJECT_ID('dbo.f_employee_timesheets') IS NOT NULL
-	DROP FUNCTION dbo.f_employee_timesheets;
+DROP FUNCTION IF EXISTS dbo.f_employee_timesheets;
 go
 
-CREATE FUNCTION dbo.f_employee_timesheets
+CREATE OR ALTER FUNCTION dbo.f_employee_timesheets
 (
 	@employee_id int
 )

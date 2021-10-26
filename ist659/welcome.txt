@@ -12,7 +12,7 @@ Once you are able to access the course, you will find the syllabus, as well as a
 
 Syllabus
 
-Please review the syllabus at the earliest opportunity. We will take some time to discuss the syllabus and course schedule in our first live session but in the interim, feel free to post any questions you may have to the course wall. You can also email me with your questions, but the wall and slack are preferred (more on that below) so your answer will be shared with your fellow classmates.
+Please review the syllabus at the earliest opportunity. We will take some time to discuss the syllabus and course schedule in our first live session but in the interim, feel free to post any questions you may have to the course wall. You can also email me with your questions, but the Teams channel is preferred (more on that below) so your answer will be shared with your fellow classmates.
 
 Textbook
 
@@ -28,11 +28,13 @@ Please note that the textbook is more of a reference than a guide. Most of the c
 
 Homework
 
-We will have homework almost every week in this course as we practice actual techniques in data warehousing. The homework discussed in the live session will be due before the subsequent session. For example, we will take time to discuss homework assignment 1 during our first live session, but it is not due until midnight the following Sunday, the day before the week 2 live session. I know that due dates can be confusing, so I have published a schedule in the Files section of this course.
+We will have homework almost every week in this course as we practice actual techniques in database design and management. The homework discussed in the live session will be due before the subsequent session. For example, we will take time to discuss homework assignment 1 during our first live session, but it is not due until midnight the following Sunday, the day before the week 2 live session. I know that due dates can be confusing, so I have published a schedule in the Files section of this course.
 
 We have a Microsoft Teams group for this course. The link to this group is:
 
 https://teams.microsoft.com/l/team/19%3ac9251b8805334b44a66200408a41bcb2%40thread.tacv2/conversations?groupId=e5227e94-e65e-4306-9229-016f4b1221eb&tenantId=4278a402-1a9e-4eb9-8414-ffb55a5fcf1e
+
+I have added everyone on the roster to our Teams site, but there are occasional glitches, such as last-minute adds. If you cannot access the Teams site, please email me. We will use Teams during our live sessions for collaboration, for course announcements, and for your questions. We will use 2U for the meeting links, async material and gradebook.
 
 Communication
 

@@ -5,7 +5,7 @@ table(rbinom(n=100,size=6,prob=0.5))
 
 hist(rbinom(n=100,size=6,prob=0.5))
 
-#png("Figure02_1.png", width = 6, height = 6, units = 'in', res = 300)
+#png("Figure02_1.png", width = 6, height = 6,help units = 'in', res = 300)
 hist(rbinom(n=1000,size=6,prob=0.5), main=NULL)
 #dev.off()
 

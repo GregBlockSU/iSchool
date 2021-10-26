@@ -1,0 +1,22 @@
+This is a great start! Please review the following general tips to think about areas that can use improvement. All assignments can always be improved – which is the goal here. The most useful method is employ here is to compare your assignment to the notes below and to think about what is there, what was awesome, what was good, what is missing, and what was OK. Then think about ways to improve. This process of reviewing your own work is a great way to learn and to improve. It is also a very good method for learning to be critical and to perform analysis. Grade descriptions are below as I grade holistically. My notes are below as well.
+
+FORMAT + Writing style - 20 /20 points
+Great work formatting your report in a readable outline. We will discuss this in greater detail in our second live session.
+
+Introduction - 20 /20 points
+Your introduction is very concise and precise; more intro will be expected in upcoming assignments with more detailed data sets.
+
+Exploratory Data Analysis (EDA) - 20 /20 points
+Great work dissecting the details of the data set. More details will be expected as we progress throughout the course (of course).
+
+Visualization - 20 /20 points
+Excellent work with the plots and figures. They really support the discussion well and characterize the key points of the data!
+
+You may wish to introduce more and varied VIZ to help discuss and support your EDA, such as bar charts, histograms, tables, etc …
+
+Summary / Conclusion - 20 /20 points
+As you can imagine, we were looking for targeted outcome in this exercise, and in the coming weeks, more emphasis is placed on the conclusion... 
+
+Total points - 100 / 100
+
+Dr. Block

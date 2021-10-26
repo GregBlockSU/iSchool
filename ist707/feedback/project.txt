@@ -1,0 +1,33 @@
+, your report was graded as follows:
+
+Introduction, background, problem statement (25/25)
+You tackled an innovative and really interesting problem - Kaggle movie data with critic and audience reviews, over 17K observations and 22 variables
+
+Data selection, cleaning and exploration (25/25)
+Dataset selection - good choice of a challenging data set from Kaggle
+
+Data cleaning - fantastic work - you really left nothing to chance with the level of detail in your data cleansing, and the number of attributes you reviewed 
+
+Exploratory data analysis - EDA is a very important part of any data driven process. Blindingly throwing machine learning solutions at data can lead to ill-conceived interpretations and recommendations.  
+
+Plots and graphs - really good integration of background descriptions and plots/graphs, very thorough dissection of categorical and time-series information.
+
+Analysis (25/25)
+Analytical method - Excellent work on the association rule mining for both critic and audience ratings
+
+Great work on the classification models, using decision tree, svm, knn and random forest. You also did a good job explaining the tuning parameters, and comparing and explaining model accuracy
+
+Code integration - code provided support to the discussion of each model, as expected.
+
+Plots and graphs - really good use of graphs to highlight the features of each model and to compare accuracy, training and prediction times
+
+Conclusion, Summary or recommendations (25/25)
+This is the end result. Key decisions and recommendations are often gleaned from the conclusions! What did you learn? What recommendations / results were made and observed? Clarity and accuracy are key here.
+
+Excellent work on your conclusions evaluating the performance characteristics and outcomes of each model.
+
+Good clear conclusion. This was truly an excellent effort and well executed! An amazing overall submission.
+
+Total (100/100)
+
+Dr. Block

@@ -1,0 +1,18 @@
+Overall, fantastic work on this lab assignment, __!
+
+Introduction (20/20 points)
+Good job defining the problem and motivating the solution.
+
+Data / Analysis / Models (25/25 points)
+Great work with your EDA. You investigated and explored the nature and character of the data and it really brought insight to your subsequent investigation and research!
+
+Results (25/25 points)
+investigation of the top, most interesting rules with explanations and supporting discussion.
+
+Visualizations (10/10 points)
+Very informative visualizations selected.
+
+Conclusions (20/20 points)
+Explained the nature of the results and some insight / intuition given the nature of the data.
+
+Dr. Block

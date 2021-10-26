@@ -39,3 +39,4 @@ mean(rpois(n=1000, lambda=1))
 myPoiSample <- rpois(n=1000, lambda=1)
 mean(myPoiSample)
 hist(myPoiSample)
+

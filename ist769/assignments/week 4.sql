@@ -30,11 +30,16 @@ FROM	dbo.timesheets
 GROUP	BY employee_id, employee_firstname, employee_lastname;
 
 -- index seek
-SELECT  employee_id, employee_firstname, employee_lastname, 
-		SUM(timesheet_hourlyrate*timesheet_hours) AS total_hours
+SELECT  employee_id, employee_firstname, employee_lastname --, 
+		--SUM(timesheet_hourlyrate*timesheet_hours) AS total_hours
 FROM	dbo.timesheets
 WHERE	employee_id = 1
-GROUP	BY employee_id, employee_firstname, employee_lastname;
+--GROUP	BY employee_id, employee_firstname, employee_lastname;
+SELECT  *
+		--SUM(timesheet_hourlyrate*timesheet_hours) AS total_hours
+FROM	dbo.timesheets
+WHERE	employee_id = 1
+
 
 SELECT	employee_department, SUM(timesheet_hours) AS total_hours
 FROM	dbo.timesheets 
@@ -72,15 +77,19 @@ go
 
 CREATE VIEW dbo.v_employees WITH SCHEMABINDING
 AS 
-SELECT	employee_id, [employee_firstname], [employee_lastname], [employee_jobtitle], [employee_department], COUNT_BIG(*) AS timesheet_count
+SELECT	employee_id, [employee_firstname], [employee_lastname], 
+		[employee_jobtitle], [employee_department], 
+		COUNT(*) AS timesheet_count
 FROM	dbo.timesheets
-GROUP	BY employee_id, [employee_firstname], [employee_lastname], [employee_jobtitle], [employee_department];
+GROUP	BY employee_id, [employee_firstname], [employee_lastname], 
+		[employee_jobtitle], [employee_department];
 go
 
 DROP INDEX IF EXISTS v_employees.v_employees_IX1;
 go
 
-CREATE UNIQUE CLUSTERED INDEX v_employees_IX1 ON dbo.v_employees (employee_id);
+CREATE UNIQUE CLUSTERED INDEX v_employees_IX1 ON 
+	dbo.v_employees (employee_id);
 go
 
 SELECT	*
@@ -94,7 +103,8 @@ GROUP	BY employee_id, [employee_firstname], [employee_lastname];
 go
 
 -- copy output to https://jsonformatter.curiousconcept.com/
-SELECT	employee_id, [employee_firstname], [employee_lastname], COUNT(*) AS timesheet_count, SUM(timesheet_hours) AS hours_total,
+SELECT	employee_id, [employee_firstname], [employee_lastname], 
+		COUNT(*) AS timesheet_count, SUM(timesheet_hours) AS hours_total,
 		AVG([timesheet_hourlyrate]) AS hourlyrate_average
 FROM	dbo.timesheets
 GROUP	BY employee_id, [employee_firstname], [employee_lastname]

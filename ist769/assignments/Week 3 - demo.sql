@@ -1,19 +1,17 @@
 USE demo;
 go
 
-IF OBJECT_ID('dbo.shots') IS NOT NULL
-	DROP TABLE dbo.shots;
+DROP TABLE IF EXISTS dbo.shots;
 go
 
 IF OBJECT_ID('dbo.players') IS NOT NULL
 BEGIN
-	--ALTER TABLE dbo.players SET (SYSTEM_VERSIONING = OFF);
-	DROP TABLE dbo.players;
+	ALTER TABLE dbo.players SET (SYSTEM_VERSIONING = OFF);
 END
+DROP TABLE IF EXISTS dbo.players;
 go
 
-IF OBJECT_ID('dbo.write_shot') IS NOT NULL
-	DROP PROCEDURE dbo.write_shot;
+DROP PROCEDURE IF EXISTS dbo.write_shot;
 go
 
 CREATE TABLE dbo.players
@@ -53,9 +51,12 @@ BEGIN TRY
 			END
 	WHERE	player_id = @player_id;
 	COMMIT TRANSACTION;
+	PRINT 'Transaction succeeded';
 END TRY
 BEGIN CATCH
 	ROLLBACK TRANSACTION
+	PRINT 'Transaction failed';
+	THROW;
 END CATCH
 go
 
@@ -83,52 +84,52 @@ go
 SELECT * FROM dbo.players;
 go
 
-EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:45:30.00',@shot_made = 1;
+EXEC write_shot @player_id = 1,@clock_time = '2021-10-18 10:45:30.00',@shot_made = 1;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:46:00.00',@shot_made = 1;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 2,@clock_time = '2021-10-18 10:46:00.00',@shot_made = 1;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:46:30.00',@shot_made = 0;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 1,@clock_time = '2021-10-18 10:46:30.00',@shot_made = 0;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:47:00.00',@shot_made = 0;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 2,@clock_time = '2021-10-18 10:47:00.00',@shot_made = 0;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:47:30.00',@shot_made = 1;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 1,@clock_time = '2021-10-18 10:47:30.00',@shot_made = 1;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:48:00.00',@shot_made = 1;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 2,@clock_time = '2021-10-18 10:48:00.00',@shot_made = 1;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:48:30.00',@shot_made = 0;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 1,@clock_time = '2021-10-18 10:48:30.00',@shot_made = 0;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:49:00.00',@shot_made = 0;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 2,@clock_time = '2021-10-18 10:49:00.00',@shot_made = 0;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:49:30.00',@shot_made = 1;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 1,@clock_time = '2021-10-18 10:49:30.00',@shot_made = 1;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:50:00.00',@shot_made = 1;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 2,@clock_time = '2021-10-18 10:50:00.00',@shot_made = 1;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:50:30.00',@shot_made = 0;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 1,@clock_time = '2021-10-18 10:50:30.00',@shot_made = 0;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:45:45.00',@shot_made = 0;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 2,@clock_time = '2021-10-18 10:45:45.00',@shot_made = 0;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:46:45.00',@shot_made = 1;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 1,@clock_time = '2021-10-18 10:46:45.00',@shot_made = 1;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:48:45.00',@shot_made = 1;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 2,@clock_time = '2021-10-18 10:48:45.00',@shot_made = 1;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 1,@clock_time = '2019-10-18 10:49:45.00',@shot_made = 0;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 1,@clock_time = '2021-10-18 10:49:45.00',@shot_made = 0;
 
-WAITFOR DELAY '00:00:20';
-EXEC write_shot @player_id = 2,@clock_time = '2019-10-18 10:47:45.00',@shot_made = 0;
+WAITFOR DELAY '00:00:05';
+EXEC write_shot @player_id = 2,@clock_time = '2021-10-18 10:47:45.00',@shot_made = 0;
 
 SELECT	* 
 FROM	dbo.players;
@@ -136,6 +137,7 @@ go
 
 SELECT	* 
 FROM	dbo.players
-FOR		SYSTEM_TIME BETWEEN '2019-01-01 00:00:00.0000000' AND '2019-11-01 00:00:00.0000000';
+FOR		SYSTEM_TIME BETWEEN '2021-10-15 01:17:06.9700000' AND 
+		'2021-10-15 01:17:10.9700000';
 go
 

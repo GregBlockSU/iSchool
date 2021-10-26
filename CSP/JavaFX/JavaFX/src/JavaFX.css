@@ -1,0 +1,13 @@
+.label {
+    -fx-font-family: cursive;
+    -fx-font-size: 14pt;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+    -fx-border-style: dotted;
+ }
+ .button {
+     -fx-font-size: 10pt;
+     -fx-font-weight: 900;
+     -fx-background-color: red;
+ }
+ 
