@@ -1,0 +1,83 @@
+
+-- window 1
+cd .\advanced-databases
+docker-compose start jupyter namenode datanode hive-server hive-metastore hive-metastore-postgresql
+docker-compose exec hive-server bash
+hadoop fs
+beeline -u jdbc:hive2://hive-server:10000/default
+CREATE DATABASE labc;
+USE labc;
+
+DROP TABLE IF EXISTS tweets;
+
+# one row from tweets.psv
+# 1658183905022391067|1429821034.4679017|Thu Apr 23 16:30:34 +0000 2015|sladd|Just placed an order today. thx @fudgemart
+CREATE EXTERNAL TABLE tweets (tweetno string, tweetid string, tweetedat timestamp, tweetedby string, comment string) 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '|' LOCATION '/user/root/labc/tweets/';
+SELECT COUNT(*) FROM tweets;
+SELECT * FROM tweets WHERE tweetedby = 'jpoole';
+DESCRIBE tweets;
+
+DROP TABLE IF EXISTS customers;
+
+# one row from customers.csv
+# First,Last,Email,Gender,Last IP Address,City,State,Total Orders,Total Purchased,Months Customer
+# Al,Fresco,afresco@dayrep.com,M,74.111.18.161,Syracuse,NY,1,45,1
+CREATE TABLE customers (Fname string, lname string, email string,gender string, 
+ip string, city string, state string, ordered int, ourchased int,months int) 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' 
+tblproperties("skip.header.line.count"="1"); 
+
+LOAD DATA INPATH '/user/root/labc/customers/customers.csv' OVERWRITE INTO TABLE customers;
+SELECT * FROM customers;
+
+# one row from surveys.csv
+# Email,Twitter Username,Marital Status,Household Income,Own Home,Education,Favorite Department
+# ojouglad@einrot.com,ojouglad,Married,65000,No,4 Year Degree,Electronics
+CREATE TABLE surveys (email string, twitter string, maritalstatus string,income int, 
+homeowner string, education string, favdept string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' 
+tblproperties("skip.header.line.count"="1"); 
+
+LOAD DATA INPATH '/user/root/labc/surveys/surveys.csv' OVERWRITE INTO TABLE surveys;
+SELECT * FROM surveys;
+
+SELECT CUS.email, income, education, maritalstatus, gender, city, state
+FROM customers AS cus
+INNER JOIN surveys AS SUR ON SUR.email = CUS.email;
+
+CREATE TABLE marketing STORED AS AVRO AS
+SELECT CUS.email, income, education, maritalstatus, gender, city, state
+FROM customers AS cus
+INNER JOIN surveys AS SUR ON SUR.email = CUS.email;
+
+SHOW TABLES;
+
+SELECT * FROM marketing;
+
+window 2
+cd .\advanced-databases
+docker-compose exec hive-server bash
+ls /datasets
+ls /datasets/customers
+ls /datasets/tweets
+
+hadoop fs -mkdir -p /user/root/labc/customers
+hadoop fs -put /datasets/customers/customers.csv /user/root/labc/customers/customers.csv
+hadoop fs -ls /user/root/labc/customers
+
+hadoop fs -mkdir -p /user/root/labc/surveys
+hadoop fs -put /datasets/customers/surveys.csv /user/root/labc/surveys/surveys.csv
+hadoop fs -ls /user/root/labc/surveys
+
+hadoop fs -mkdir -p /user/root/labc/tweets
+hadoop fs -put /datasets/tweets/tweets.psv /user/root/labc/tweets/tweets.psv
+hadoop fs -ls /user/root/labc/tweets
+
+hadoop fs -cat /user/root/labc/tweets/tweets.psv
+
+hadoop fs -cat /user/root/labc/customers/customers.csv
+
+hadoop fs -ls /user/hive/warehouse
+
+hadoop fs -cat /user/root/labc/surveys/surveys.csv
