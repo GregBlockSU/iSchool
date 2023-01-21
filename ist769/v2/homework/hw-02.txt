@@ -55,6 +55,10 @@ SHOW TABLES;
 
 SELECT * FROM marketing;
 
+INSERT OVERWRITE LOCAL DIRECTORY '/user/root/marketing' 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+SELECT * FROM labc.marketing;
+
 window 2
 cd .\advanced-databases
 docker-compose exec hive-server bash
