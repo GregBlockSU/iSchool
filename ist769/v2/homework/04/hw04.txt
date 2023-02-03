@@ -1,5 +1,5 @@
 # from the command line
-docker-compose start minio jupyter
+docker-compose start jupyter drill minio namenode datanode
 docker run -it --name drill -p 8047:8047 -p 31010:31010 apache/drill
 docker-compose ps
 
@@ -32,16 +32,38 @@ SELECT * FROM labe.`syracuse-ny.csv`
       "extractHeader": true
 
 
--- Write a Drill SQL query to get the overall average min and max temperatures 
+-- 2. Write a Drill SQL query to get the overall average min and max temperatures 
 -- by year and month. Use Drill’s SPLIT() function to separate Year, Month. 
 -- You might need to use cast() to ensure the min and max temperatures are 
 -- numeric types. Your output should include four columns: Year, Month, 
 -- the average minimum temperature for that month, and the average 
 -- maximum temperature for that month.
 -- EST: 1970-01-01
-SELECT SPLIT(EST, '-')[0] AS Year, SPLIT(EST, '-')[1] AS Month, 
-    MaxTemperature_F, MinTemperature_F
-FROM labe.`syracuse-ny.csv`
 
+CREATE VIEW labe.monthly_syracuse_weather_averages
+AS
+WITH
+Source 
+AS
+(
+	SELECT 	cast(split(EST, '-')[0] AS int) AS year, 
+	        cast(split(EST, '-')[1] AS int) AS month, 
+		    cast(Min_TemperatureF AS int) as mintemp, 
+		    cast(Max_TemperatureF AS int) AS maxtemp
+	FROM labe.`syracuse-ny.csv`
+)
+SELECT year, month, AVG(mintemp) AS avgmintemp, AVG(maxtemp) AS avgmaxtemp
+FROM Source
+GROUP BY year, month
+ORDER BY year, month
 
+-- 3 . Create a view called monthly_syracuse_weather_averages from the query you wrote in Question 2 and 
+-- store it back on the labe bucket. (If you cannot get Question 2 working, use a similar query.) Provide your 
+-- Drill SQL code and a screenshot showing the view file is on the Minio bucket.
+-- NOTE: If you get an error about an immutable object, you need to change your storage config so you can 
+-- write to the storage location.
+
+SELECT *
+FROM labe.monthly_syracuse_weather_averages
+WHERE month = 7
 
