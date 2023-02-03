@@ -1,0 +1,47 @@
+# from the command line
+docker-compose start minio jupyter
+docker run -it --name drill -p 8047:8047 -p 31010:31010 apache/drill
+docker-compose ps
+
+# from jupyter console
+mc mb minio/labe
+
+# from browser, view https://raw.githubusercontent.com/mafudge/datasets/master/weather/syracuse-ny.csv
+# save file to downloads
+
+# from minio console on browser (http://localhost:9001)
+browse to labe bucket
+upload file syracuse-ny.csv from Downloads
+
+# from the command line, launch vscode
+# look for drill-storage-plugins folder
+# open file minio-drill.json and put all text into the clipboard
+code .
+
+# in drill browser, click on storage tab
+# create a new storage plugin called labe and paste JSON code
+# be sure to change bucket to labe
+# click on query tab and type:
+# note the back-ticks
+
+SELECT * FROM labe.`syracuse-ny.csv`
+
+# then edit the labe storage profile to add the segment below
+# to the csv section
+,
+      "extractHeader": true
+
+
+-- Write a Drill SQL query to get the overall average min and max temperatures 
+-- by year and month. Use Drill’s SPLIT() function to separate Year, Month. 
+-- You might need to use cast() to ensure the min and max temperatures are 
+-- numeric types. Your output should include four columns: Year, Month, 
+-- the average minimum temperature for that month, and the average 
+-- maximum temperature for that month.
+-- EST: 1970-01-01
+SELECT SPLIT(EST, '-')[0] AS Year, SPLIT(EST, '-')[1] AS Month, 
+    MaxTemperature_F, MinTemperature_F
+FROM labe.`syracuse-ny.csv`
+
+
+
