@@ -1,0 +1,5 @@
+{
+  "type": "mongo",
+  "connection": "mongodb://admin:mongopw@mongo:27017/labf?authSource=admin",
+  "enabled": true
+}

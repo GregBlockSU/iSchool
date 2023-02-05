@@ -1,5 +1,5 @@
 # from the command line
-docker-compose start upyter drill mongo mongoapp mongoexpress
+docker-compose start jupyter drill mongo mongoapp mongoexpress
 docker-compose ps
 docker-compose exec mongo mongo -u admin -p mongopw --authenticationDatabase=admin
 
