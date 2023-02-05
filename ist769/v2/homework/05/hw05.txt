@@ -1,0 +1,39 @@
+# from the command line
+docker-compose start upyter drill mongo mongoapp mongoexpress
+docker-compose ps
+docker-compose exec mongo mongo -u admin -p mongopw --authenticationDatabase=admin
+
+# 2. From the Mongo client, retrieve the firstname lastname, state, and party 
+# for those senators in either the “Republican,” “Democrat,” or “Independent” party.
+
+db.senators.find({party: 'Independent'}, {party:1, person : { firstname: 2, lastname: 3}, state: 4})
+
+# 3. From the Mongo Client, write an MQL index to improve the query performance of 
+# Question 2. Run the getIndexes() function on the collection to prove you created 
+# the index. Then use explain to prove the index is being used.
+
+db.senators.find({party: 'Independent'}, {party:1, person : { firstname: 2, lastname: 3}, state: 4}).explain('executionStats')
+db.senators.createIndex({party:1})
+
+
+# 5. Using Drill, write a query to list the name, premier date, and average rating 
+# of cancelled Netflix 2021 shows. Limit the shows to those with an average rating under 7.
+
+# remember to enable the mongo plugin and add labf to URI...
+
+SELECT NF.name, NF.premiered, NF,rating.average as average_rating
+FROM mongo.labf.nfcan AS NF
+WHERE NF.rating.average < 7
+
+
+# 6. Using Drill, write a query to list the name, premier date, and genre for only those shows in the History or Family genres. Make sure to include a column to display the name of the genre
+
+WITH Source AS
+(
+	SELECT NF.name, NF.premiered, FLATTEN(NF.genres) AS genre
+	FROM mongo.labf.nfcan AS NF
+)
+SELECT *
+FROM Source
+WHERE genre IN ('Family', 'History')
+
