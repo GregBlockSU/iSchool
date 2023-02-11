@@ -1,0 +1,23 @@
+cd advanced-databases
+docker-compose start jupyter cassandras
+
+# 1. InCQL, create a keyspace called glab with a replication factor of 1 and a Simple replication strategy. Use the keyspace.
+docker-compose exec cassandra cqlsh
+DROP KEYSPACE IF EXISTS glab;
+CREATE KEYSPACE glab WITH REPLICATION = {'class':'SimpleStrategy', 'replication_factor': 1};
+DESCRIBE KEYSPACES;
+USE glab;
+DESCRIBE TABLE weather;
+
+# 7. Write a CQL shell query to get the condition, description, and daytime temperatures for 
+# “Syracuse, NY”; include all dates.
+SELECT city, state, condition, description, temperature_day FROM weather WHERE city = 'Syracuse' AND state = 'New York';
+
+# 10. Run the same query in Question 9 from the CQL command line; obviously it requires ALLOW FILTERING. 
+# Figure out how you can do an index or materialized view to avoid a costly 
+# ALLOW FILTERING operation. Include your CQL to create the index or materialized 
+# view and then include a query demonstrating it works in CQL. NOTE: Our version of 
+# Cassandra and the Spark Connector does not support materialized views.
+SELECT city, state, condition, description, temperature_day 
+FROM weather 
+WHERE condition = 'Rain' AND weatherdate = '2021-10-22' ALLOW FILTERING;
