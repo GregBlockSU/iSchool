@@ -1,0 +1,85 @@
+#0 
+cd advanced-databases
+docker-compose start jupyter redis rediscommander retwis
+docker-compose exec redis redis-cli
+
+
+hset snap:msg:1 to "Bob" from "Art" text "You owe me $50"
+lpush snap:inbox:Bob 1
+hset snap:msg:2 to "Che" from "Bob" text "Hello there!!!"
+lpush snap:inbox:Che 2
+hset snap:msg:3 to "Che" from "Dax" text "Is this thing on?"
+lpush snap:inbox:Che 3
+hset snap:msg:4 to "Dax" from "Art" text "When is the meet-up?"
+lpush snap:inbox:Dax 4
+hset snap:msg:5 to "Che" from "Art" text "What is Bob doing. OMG."
+lpush snap:inbox:Che 5
+hset snap:msg:6 to "Bob" from "Dax" text "Who?!?!?"
+lpush snap:inbox:Bob 6
+
+keys snap:msg:*
+
+hgetall snap:msg:1
+
+lrange snap:inbox:Che 0 -1
+
+rpop snap:inbox:Bob
+expire snap:msg:1 60
+
+rpop snap:inbox:Che
+expire snap:msg:2 60
+
+rpop snap:inbox:Art
+
+rpop snap:inbox:Bob
+expire snap:msg:3 60
+
+# 3 - Provide a current state of the Redis database after Questions 1 and 2.
+
+keys snap:msg:*
+
+hgetall snap:msg:1
+hgetall snap:msg:4
+
+keys snap:inbox:*
+
+lrange snap:inbox:Che 0 -1
+
+# 4 It’s first thing in the morning and eight people are waiting outside for the department to open! 
+# Add them to your queue: Amy, Beth, Chris, Dee, Erin, Fran, Greg, Hela	
+
+lpush dmv:queue Amy, Beth Chis Dee Erin Fran Greg Hela
+lrange dmv:queue 0 -1
+
+#5 The department is now open! Assign the first four people to Windows A, B, C, and D, respectively.
+
+hset dmv:windows A empty B empty C empty D empty
+hgetall dmv:windows
+lrange dmv:queue 0 -1
+
+rpop dmv:queue 4
+hset dmv:windows A Amy B Beth C Chris D Dee
+lrange dmv:queue 0 -1
+hgetall dmv:windows
+
+# 6a Iris arrives
+lpush dmv:queue Iris
+lrange dmv:queue 0 -1
+
+# b Window C becomes available—move the next person from the queue to this window! 
+rpop dmv:queue
+hset dmv:windows C Erin
+
+# c. Window B becomes available—move the next person from the queue to this window!
+rpop dmv:queue
+hset dmv:windows B Fran
+lrange dmv:queue 0 -1
+
+# d. Jake arrives. e. Window C becomes available—move the next person from the queue to this 
+# window! Provide all the steps required to accomplish these steps and a view of the queue and windows after the events.
+lpush dmv:queue Jake
+rpop dmv:queue
+hset dmv:windows C Greg
+
+hgetall dmv:windows
+lrange dmv:queue 0 -1
