@@ -1,0 +1,108 @@
+---
+title: "IST 421 Week 5"
+author: "Dr. Gregory Block"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+[**How to use an R Markdown Notebook**]{.underline}
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
+
+To continue building our R notebook, we can add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+[**The Plot Surface**]{.underline}
+
+The R Markdown Notebook is an interactive surface that allows a viewer to edit or execute calculations that can update the values displayed in text, tables and plots. The surface is vertical, similar to a web page that allows you to scroll vertically. This allows the visualization designer to have a very large canvas in which to display plots, and also imposes a linear order on the viewer. A drawback to this visual model is that visualizations scroll off-screen when the viewer pages down. The viewer cannot see a view of multiple visualizations at the same time.
+
+[**The examples**]{.underline}
+
+This first sample shows a single plot. Because there are no adjoining plots, the plot appears on the left and right margins of the notebook... The plot below depicts a boxplot of diamonds, a data set built into R. The boxplot shows the price distribution by the diamond cut, with the outliers emphasized in red.
+
+```{r}
+library(ggplot2)
+
+ggplot(diamonds, aes(x = cut, y = price, fill = cut)) + 
+  geom_boxplot(outlier.colour="red", outlier.shape=16, outlier.size=1.2)+
+  labs(title="Diamond price distribution by cut") 
+```
+
+In this example, we use mfrow to partition the plot surface into 2 rows and columns. Because the y axis is the same for all plots, we suppress the label on the y axis and use a common title for all plots to indicate that vehicle MPG is the common variable.
+
+Note that the scale of the y axis is the same across all plots. Using the same scale reduces the cognitive load on the audience, since they can calculate the scale of the y axis once and carry that scale across all the plots as they gaze through the panels.
+
+```{r}
+
+par(mfrow=c(2,2))
+boxplot(mpg ~ am, data = mtcars, col = "pink", main = "Transmission", ylab=NULL, xlab="(Manual/Automatic)")
+boxplot(mpg ~ cyl, data = mtcars, col = "yellow", main = "Cylinders", ylab=NULL, xlab="(cylinder count)")
+boxplot(mpg ~ gear, data = mtcars, col = "orange", main = "Gears", ylab=NULL, xlab="(gear count)")
+boxplot(mpg ~ hp, data = mtcars, col = "blue", main = "Horsepower", ylab=NULL, xlab="(foot-pounds-per-second)")
+
+mtext(~ bold("Motor Trend Cars - MPG"), side=3, col="blue", line=-1.5,outer=TRUE)
+par(mfrow=c(1,1))
+```
+
+You can see in the plot surface below that the ggplot facet feature works the same way it would in a conventional R document. The plot spans the width of the page. In this plot we can see a faceted plot using the iris species as the facet for 3 separate histograms.
+
+```{r}
+
+library(ggplot2)
+ggplot(iris, aes(Sepal.Length, fill = Species)) +
+  geom_histogram(bins = 20) +
+  scale_fill_viridis_d() +
+  facet_wrap(~ Species)
+
+```
+
+Again, you can use the theme feature to paint the plot surface with different fill colors. The plot below demonstrates the use of themes to provide a rectangular background that spans the width of the page. As always, it's best to be judicious with the use of theme colors, because the user may print the plot and the page becomes saturated if the background colors are overused. Also, it's better to remain color-consistent with the foreground and background colors of all text and plots in a notebook. Use themes sparingly, and for emphasis.
+
+```{r}
+IrisPlot <- ggplot(iris, aes(Sepal.Length, Petal.Length, colour=Species)) + 
+  geom_point() + 
+  theme(legend.title = element_text(color = "blue", size = 10, face = "bold")) +
+  geom_point(color="firebrick") +
+  theme(plot.background = element_rect(fill = 'pink'))
+print(IrisPlot)
+```
+
+This example generates two separate plots in the same code chunk when viewed interactively in an R Markdown notebook. The notebook displays the plots as thumbnails. You can click on either thumbnail, and the full plot is displayed below. The two plots show iris species in a combined density chart, as well as in facets for 3 separate density charts.
+
+When exported to an HTML or PDF document, the two plots are stacked on top of each other.
+
+```{r}
+ggplot(iris, aes(x = Sepal.Length)) +
+  geom_density(aes(fill = Species))+
+  labs(title="Combined") 
+
+
+ggplot(iris, aes(x = Sepal.Length)) +
+  geom_density(aes(color=Species)) +
+  labs(title="Faceted") +
+  facet_wrap(~Species)
+```
+
+In this example, we use ggarange to split the plot surface into 2 columns. Rather than thumbnails, R notebook displays the plots side-by-side. The two plots show iris species in a combined density chart, as well as in facets for 3 separate density charts.
+
+```{r}
+#install.packages("ggpubr")
+library(ggpubr)
+p1 <- ggplot(iris, aes(x = Sepal.Length)) +
+  geom_density(aes(fill = Species))+
+  labs(title="Combined") 
+
+p2 <- ggplot(iris, aes(x = Sepal.Length)) +
+  labs(title="Faceted") +
+  geom_density(aes(color=Species)) +
+  facet_wrap(~Species)
+ggarrange(p1, p2, ncol = 2, nrow = 1)
+
+```

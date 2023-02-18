@@ -1,0 +1,13 @@
+name: census-app
+title: census-app
+username:
+account: suist421
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7901708
+bundleId: 6642200
+url: https://suist421.shinyapps.io/census-app/
+when: 1671147770.82405
+lastSyncTime: 1671147770.82406
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,0 +1,67 @@
+"","table.with.row.headers.in.column.A.and.column.headers.in.rows.3.through.4...leading.dots.indicate.sub.parts.","X","X.1","X.2","X.3","X.4","X.5","X.6","X.7","X.8"
+"1","Table 1. Annual Estimates of the Population for the United States, Regions, States, and Puerto Rico:  April 1, 2010 to July 1, 2011","","","","",NA,NA,NA,NA,NA
+"2","Geographic Area","April 1, 2010","","Population Estimates (as of July 1)","",NA,NA,NA,NA,NA
+"3","","Census","Estimates Base","2010","2011",NA,NA,NA,NA,NA
+"4","United States","308,745,538","308,745,538","309,330,219","311,591,917",NA,NA,NA,NA,NA
+"5","Northeast","55,317,240","55,317,244","55,366,108","55,521,598",NA,NA,NA,NA,NA
+"6","Midwest","66,927,001","66,926,987","66,976,458","67,158,835",NA,NA,NA,NA,NA
+"7","South","114,555,744","114,555,757","114,857,529","116,046,736",NA,NA,NA,NA,NA
+"8","West","71,945,553","71,945,550","72,130,124","72,864,748",NA,NA,NA,NA,NA
+"9",".Alabama","4,779,736","4,779,735","4,785,401","4,802,740",NA,NA,NA,NA,NA
+"10",".Alaska","710,231","710,231","714,146","722,718",NA,NA,NA,NA,NA
+"11",".Arizona","6,392,017","6,392,013","6,413,158","6,482,505",NA,NA,NA,NA,NA
+"12",".Arkansas","2,915,918","2,915,921","2,921,588","2,937,979",NA,NA,NA,NA,NA
+"13",".California","37,253,956","37,253,956","37,338,198","37,691,912",NA,NA,NA,NA,NA
+"14",".Colorado","5,029,196","5,029,196","5,047,692","5,116,796",NA,NA,NA,NA,NA
+"15",".Connecticut","3,574,097","3,574,097","3,575,498","3,580,709",NA,NA,NA,NA,NA
+"16",".Delaware","897,934","897,934","899,792","907,135",NA,NA,NA,NA,NA
+"17",".District of Columbia","601,723","601,723","604,912","617,996",NA,NA,NA,NA,NA
+"18",".Florida","18,801,310","18,801,311","18,838,613","19,057,542",NA,NA,NA,NA,NA
+"19",".Georgia","9,687,653","9,687,660","9,712,157","9,815,210",NA,NA,NA,NA,NA
+"20",".Hawaii","1,360,301","1,360,301","1,363,359","1,374,810",NA,NA,NA,NA,NA
+"21",".Idaho","1,567,582","1,567,582","1,571,102","1,584,985",NA,NA,NA,NA,NA
+"22",".Illinois","12,830,632","12,830,632","12,841,980","12,869,257",NA,NA,NA,NA,NA
+"23",".Indiana","6,483,802","6,483,800","6,490,622","6,516,922",NA,NA,NA,NA,NA
+"24",".Iowa","3,046,355","3,046,350","3,050,202","3,062,309",NA,NA,NA,NA,NA
+"25",".Kansas","2,853,118","2,853,118","2,859,143","2,871,238",NA,NA,NA,NA,NA
+"26",".Kentucky","4,339,367","4,339,362","4,347,223","4,369,356",NA,NA,NA,NA,NA
+"27",".Louisiana","4,533,372","4,533,372","4,545,343","4,574,836",NA,NA,NA,NA,NA
+"28",".Maine","1,328,361","1,328,361","1,327,379","1,328,188",NA,NA,NA,NA,NA
+"29",".Maryland","5,773,552","5,773,552","5,785,681","5,828,289",NA,NA,NA,NA,NA
+"30",".Massachusetts","6,547,629","6,547,629","6,555,466","6,587,536",NA,NA,NA,NA,NA
+"31",".Michigan","9,883,640","9,883,635","9,877,143","9,876,187",NA,NA,NA,NA,NA
+"32",".Minnesota","5,303,925","5,303,925","5,310,658","5,344,861",NA,NA,NA,NA,NA
+"33",".Mississippi","2,967,297","2,967,297","2,970,072","2,978,512",NA,NA,NA,NA,NA
+"34",".Missouri","5,988,927","5,988,927","5,995,715","6,010,688",NA,NA,NA,NA,NA
+"35",".Montana","989,415","989,415","990,958","998,199",NA,NA,NA,NA,NA
+"36",".Nebraska","1,826,341","1,826,341","1,830,141","1,842,641",NA,NA,NA,NA,NA
+"37",".Nevada","2,700,551","2,700,551","2,704,283","2,723,322",NA,NA,NA,NA,NA
+"38",".New Hampshire","1,316,470","1,316,472","1,316,807","1,318,194",NA,NA,NA,NA,NA
+"39",".New Jersey","8,791,894","8,791,894","8,799,593","8,821,155",NA,NA,NA,NA,NA
+"40",".New Mexico","2,059,179","2,059,180","2,065,913","2,082,224",NA,NA,NA,NA,NA
+"41",".New York","19,378,102","19,378,104","19,395,206","19,465,197",NA,NA,NA,NA,NA
+"42",".North Carolina","9,535,483","9,535,475","9,560,234","9,656,401",NA,NA,NA,NA,NA
+"43",".North Dakota","672,591","672,591","674,629","683,932",NA,NA,NA,NA,NA
+"44",".Ohio","11,536,504","11,536,502","11,537,968","11,544,951",NA,NA,NA,NA,NA
+"45",".Oklahoma","3,751,351","3,751,354","3,760,184","3,791,508",NA,NA,NA,NA,NA
+"46",".Oregon","3,831,074","3,831,074","3,838,332","3,871,859",NA,NA,NA,NA,NA
+"47",".Pennsylvania","12,702,379","12,702,379","12,717,722","12,742,886",NA,NA,NA,NA,NA
+"48",".Rhode Island","1,052,567","1,052,567","1,052,528","1,051,302",NA,NA,NA,NA,NA
+"49",".South Carolina","4,625,364","4,625,364","4,637,106","4,679,230",NA,NA,NA,NA,NA
+"50",".South Dakota","814,180","814,180","816,598","824,082",NA,NA,NA,NA,NA
+"51",".Tennessee","6,346,105","6,346,110","6,357,436","6,403,353",NA,NA,NA,NA,NA
+"52",".Texas","25,145,561","25,145,561","25,253,466","25,674,681",NA,NA,NA,NA,NA
+"53",".Utah","2,763,885","2,763,885","2,775,479","2,817,222",NA,NA,NA,NA,NA
+"54",".Vermont","625,741","625,741","625,909","626,431",NA,NA,NA,NA,NA
+"55",".Virginia","8,001,024","8,001,030","8,023,953","8,096,604",NA,NA,NA,NA,NA
+"56",".Washington","6,724,540","6,724,540","6,742,950","6,830,038",NA,NA,NA,NA,NA
+"57",".West Virginia","1,852,994","1,852,996","1,854,368","1,855,364",NA,NA,NA,NA,NA
+"58",".Wisconsin","5,686,986","5,686,986","5,691,659","5,711,767",NA,NA,NA,NA,NA
+"59",".Wyoming","563,626","563,626","564,554","568,158",NA,NA,NA,NA,NA
+"60","","","","","",NA,NA,NA,NA,NA
+"61","Puerto Rico","3,725,789","3,725,789","3,721,978","3,706,690",NA,NA,NA,NA,NA
+"62","Note: The April 1, 2010 Population Estimates base reflects changes to the Census 2010 population from geographic program revisions.  It does not reflect changes from the Count Question Resolution program.  See Geographic Terms and Definitions at http://www.census.gov/popest/about/geo/terms.html for a list of the states that are included in each region.","","","","",NA,NA,NA,NA,NA
+"63","Suggested Citation:","","","","",NA,NA,NA,NA,NA
+"64","Table 1. Annual Estimates of the Population for the United States, Regions, States, and Puerto Rico: April 1, 2010 to July 1, 2011 (NST-EST2011-01)","","","","",NA,NA,NA,NA,NA
+"65","Source: U.S. Census Bureau, Population Division","","","","",NA,NA,NA,NA,NA
+"66","Release Date: December 2011","","","","",NA,NA,NA,NA,NA
