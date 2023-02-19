@@ -1,0 +1,42 @@
+0. docker-compose start jupyter neo4j
+launch localhost:7474/browser
+:server connect # password SU2orange!
+:play northwind
+MATCH (s:Supplier) RETURN s;
+MATCH (c:Category) RETURN c;
+MATCH (p:Product) RETURN p;
+
+MATCH (s:Supplier)-->(:Product)-->(c:Category)
+RETURN s.companyName as Company, collect(distinct c.categoryName) as Categories
+
+MATCH (c:Category)<-[:PART_OF]-(p:Product)<-
+[:SUPPLIES]-(s:Supplier) RETURN c,p,s;
+
+# 2. Select a supplier contact name of your choosing. Write a Cypher query to display the supplier’s
+# name, the supplier’s company name, the names of the products it supplies, and the unit price of 
+# those products for only products that are not discontinued. Display this information in a table.
+
+MATCH (s:Supplier {contactName:"Martin Bein"})-[:SUPPLIES]->(p:Product) 
+WHERE p.discontinued=false
+return s.contactName, s.companyName, p.productName, p.unitPrice, p.discontinued;
+
+# 3. Select two products of your choosing. Write a Cypher query to display a graph of the supplier and 
+# category for those products. Based on the graph displayed as output, are the two products you 
+# selected in the same category?
+
+MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category)
+WHERE p.productName IN ['Alice Mutton', 'Perth Pastries']
+REturn s,p,c;
+
+# 4. You just sold 30 units of `laughing lumberjack lager`; update the node to reflect the proper stock and 
+# display the output
+
+MATCH (p:Product)
+WHERE p.productName = 'Laughing Lumberjack Lager'
+SET p.unitsInStock = p.unitsInStock - 30
+RETURN p.productName, p.unitsInStock;
+
+
+
+
+
