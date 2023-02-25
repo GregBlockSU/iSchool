@@ -1,0 +1,25 @@
+cd advanced-databases
+docker-compose start jupyter elasticsearch kibana
+
+# 1. urn on tweets from the example J-Elasticsearch notebook. Search for tweets in the last 5 minutes 
+# from the (Windows or Linux) with curl (do the math yourself—don’t make this calculation 
+# automatic). 
+
+curl -X GET "http://elastic-search:9200/tweets/_search?pretty=true&q=Fudgemart"
+
+# 4. Use a curl command from the command line to hit the Elasticsearch API and demonstrate that there 
+are 1,600 documents in the weather index.
+
+curl -X GET "http://elastic-search:9200/weather/_count?pretty=true"
+
+{
+  "count" : 1600,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  }
+}
+
+
