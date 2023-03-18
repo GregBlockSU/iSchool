@@ -1,0 +1,33 @@
+cd advanced-databases
+docker-compose up -d
+docker-compose start jupyter drill zookeeper broker ksqldb-server ksqldb-cli schema-registry connect
+docker-compose exec ksqldb-cli ksql http://ksqldb-server:8088
+
+# 3. Write KSQL to create a stream named weblogs from the JSON keys in the weblogs Kafka topic. Make 
+# sure to set the TIMESTAMP property to the timestamp from the stream.
+
+CREATE STREAM weblogs (Uri varchar, User varchar, TimeStamp bigint, Browser varchar, OS varchar)
+WITH (KAFKA_TOPIC='weblogs', VALUE_FORMAT='JSON', TIMESTAMP='TimeStamp');
+
+# 4. Write a KSQL statement to create a persistent stream/table called homepage that only displays 
+# visitors to the root of the website (/). It should display all columns from the weblogs stream.
+
+CREATE STREAM homepage AS SELECT * FROM weblogs WHERE Uri = '/';
+
+SHOW QUERIES;
+
+SHOW STREAMS;
+
+DESCRIBE weblogs;
+
+SELECT * FROM homepage EMIT CHANGES;
+
+# 5. Write a KSQL statement to count operating systems users (OS) in 60-second windows. After 
+#60 seconds, the counter should reset and counts should begin again.
+
+SELECT Os, COUNT(*) FROM weblogs WINDOW TUMBLING (SIZE 60 SECONDS) GROUP BY Os EMIT CHANGES;
+
+# 6. Write a KSQL persistent stream/table called user_activity, which will display a count of user activity 
+# on the website within 1-minute sessions.
+
+CREATE TABLE user_activity AS SELECT User, COUNT(*) FROM weblogs WINDOW TUMBLING (SIZE 60 SECONDS) GROUP BY User EMIT CHANGES;
