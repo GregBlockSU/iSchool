@@ -3,6 +3,28 @@ docker-compose up -d
 docker-compose start jupyter drill zookeeper broker ksqldb-server ksqldb-cli schema-registry connect
 docker-compose exec ksqldb-cli ksql http://ksqldb-server:8088
 
+# 0. Start the ATM producer example from Jupyter, located at:
+# /work/examples/Kafka-Producer.ipynb
+
+CREATE STREAM atm (Id varchar, Location varchar, User varchar, TimeStamp bigint, Amount int, Status varchar) 
+WITH (KAFKA_TOPIC='atm', VALUE_FORMAT='JSON', TIMESTAMP='TimeStamp');
+
+# 1. Write a Drill query to display only the ATM transactions that ended in an Error status. Show all 
+# columns and sort output so the newest errors are first. 
+# NOTE: It is strongly suggested you use `backticks` and table aliases when working in Drill.
+
+SELECT *
+FROM kafka.`atm`
+WHERE Status = 'error'
+ORDER BY 'TimeStamp' DESC 
+
+# 2. Write a Drill query to display the total amount withdrawn by user and do not include error 
+# transactions in the totals.
+
+SELECT a.`User`, SUM(Amount) AS TotalAmountWithdran
+FROM kafka.`atm` AS A
+GROUP BY a.`User`
+
 # 3. Write KSQL to create a stream named weblogs from the JSON keys in the weblogs Kafka topic. Make 
 # sure to set the TIMESTAMP property to the timestamp from the stream.
 
