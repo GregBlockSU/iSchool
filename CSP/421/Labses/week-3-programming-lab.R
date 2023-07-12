@@ -9,6 +9,7 @@ library(readr)
 library(stringr)
 #library(tidyverse)
 library(ggplot2)
+install.packages("ggmap")
 library(ggmap)
 
 # when working with files, it is a good idea to establish your 'working directory'

@@ -44,3 +44,4 @@ ggplot(iris, aes(x = Sepal.Length)) +
 ggplot(iris, aes(x = Sepal.Length)) +
   geom_density(aes(color=Species)) +
   facet_wrap(~Species)
+

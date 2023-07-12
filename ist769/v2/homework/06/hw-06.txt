@@ -1,5 +1,5 @@
 cd advanced-databases
-docker-compose start jupyter cassandras
+docker-compose start jupyter cassandra
 
 # 1. InCQL, create a keyspace called glab with a replication factor of 1 and a Simple replication strategy. Use the keyspace.
 docker-compose exec cassandra cqlsh
