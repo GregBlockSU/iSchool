@@ -10,7 +10,7 @@
 #
 #install.packages('rsconnect')
 #install.packages(c("maps", "mapproj"))
-install.packages(c("htmltools"))
+#install.packages(c("htmltools"))
 
 #this code will execute once when the program loads
 library(shiny)
