@@ -1,0 +1,10 @@
+IssueId,IssueTypeId,Symbol,Issuer,IndustryId,ListingIndexId
+1,1,AAPL,Apple,1,2
+2,1,AMD,AMD,1,2
+3,1,NVDA,NVidia,1,2
+4,1,JPM,JP Morgan Chase,3,1
+5,1,BIIB,Biogen,2,2
+6,1,WFC,Wells Fargo,3,1
+7,1,AMGN,Amgen,2,2
+8,1,BAC,,3,1
+9,1,ABBV,,2,2
