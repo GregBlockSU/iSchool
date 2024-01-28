@@ -1,5 +1,6 @@
 <?php include '../view/header.php'; ?>
 <main>
+<a href='../cart/index.php'>Shopping cart (<?php echo $cartCount?>)</a><br/>
     <aside>
         <h1>Categories</h1>
         <nav>

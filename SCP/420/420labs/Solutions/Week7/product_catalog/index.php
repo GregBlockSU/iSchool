@@ -4,6 +4,7 @@ require('../model/category.php');
 require('../model/category_db.php');
 require('../model/product.php');
 require('../model/product_db.php');
+require('../model/cart_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -11,7 +12,9 @@ if ($action == NULL) {
     if ($action == NULL) {
         $action = 'list_products';
     }
-}  
+}
+$orderNumber = CartDB::getCustomerOrder(2);
+$cartCount = CartDB::countItems($orderNumber);
 
 switch($action) {
     case 'list_products':
@@ -20,7 +23,6 @@ switch($action) {
         if (empty($category_id)) {
             $category_id = 1;
         }
-
         $current_category = CategoryDB::getCategory($category_id);
         $categories = CategoryDB::getCategories();
         $products = ProductDB::getProductsByCategory($category_id);

@@ -4,9 +4,9 @@
 <head>
     <title>My Guitar Shop</title>
     <link rel="stylesheet" type="text/css"
-          href="/ex_solutions/ch15_ex2_sol/main.css">
+          href="/420Labs/Solutions/Week7/main.css">
 </head>
 
 <!-- the body section -->
 <body>
-<header><h1>My Guitar Shop</h1></header>
+<header><h1><a href='/420Labs/Solutions/Week7'>My Guitar Shop</a></h1></header>

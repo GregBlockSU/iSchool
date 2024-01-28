@@ -5,15 +5,8 @@ require('../model/category_db.php');
 require('../model/product.php');
 require('../model/product_db.php');
 
-require('../model/fields.php');
-require('../model/validate.php');
 
 // Set up fields
-$validate = new Validate();
-$fields = $validate->getFields();
-$fields->addField('code');
-$fields->addField('name');
-$fields->addField('price', 'Must be a valid number.');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -70,23 +63,12 @@ switch($action) {
         $name = filter_input(INPUT_POST, 'name');
         $price = filter_input(INPUT_POST, 'price');
 
-        // Validate form data
-        $validate->text('code', $code, 1, 10);
-        $validate->text('name', $name);
-        $validate->number('price', $price);
+        $current_category = CategoryDB::getCategory($category_id);
+        $product = new Product($current_category, $code, $name, $price);
+        ProductDB::addProduct($product);
 
-        // Load appropriate view based on hasErrors
-        if ($fields->hasErrors()) {
-            $categories = CategoryDB::getCategories();
-            include 'product_add.php';
-        } else {
-            $current_category = CategoryDB::getCategory($category_id);
-            $product = new Product($current_category, $code, $name, $price);
-            ProductDB::addProduct($product);
-
-            // Display the Product List page for the current category
-            header("Location: .?category_id=$category_id");
-        }
+        // Display the Product List page for the current category
+        header("Location: .?category_id=$category_id");
         break;
 }
 ?>

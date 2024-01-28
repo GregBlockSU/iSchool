@@ -19,11 +19,11 @@ class Validate {
         
         // Check field and set or clear error message
         if ($field->isRequired() && $field->isEmpty()) {
-            $field->setErrorMessage('Required.');
+            $field->setErrorMessage('Field '.$name.' is required.');
         } else if (strlen($value) < $min && !$field->isEmpty()) {
-            $field->setErrorMessage('Too short.');
+            $field->setErrorMessage('Field '.$name.' is too short.');
         } else if (strlen($value) > $max) {
-            $field->setErrorMessage('Too long.');
+            $field->setErrorMessage('Field '.$name.' is too long.');
         } else {
             $field->clearErrorMessage();
         }
@@ -39,7 +39,7 @@ class Validate {
         // if OK after text field check, move on to number check
         if (!$field->hasError() && !$field->isEmpty()) {
             if (!is_numeric($value)) {
-                $field->setErrorMessage('Must be a valid number.');
+                $field->setErrorMessage('Field '.$name.' must be a valid number.');
             } else {
                 $field->clearErrorMessage();
             }
