@@ -58,4 +58,6 @@ click on http://localhost:5601/app/maps to add a map
 
 create a dashboard - http://localhost:5601/app/dashboards
 
+Line 
+
 
