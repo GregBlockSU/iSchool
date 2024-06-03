@@ -1,16 +1,35 @@
 cd advanced-databases
 docker-compose start jupyter elasticsearch kibana
 
-# 1. urn on tweets from the example J-Elasticsearch notebook. Search for tweets in the last 5 minutes 
+# 1. turn on tweets from the example J-Elasticsearch notebook. Search for tweets in the last 5 minutes 
 # from the (Windows or Linux) with curl (do the math yourself—don’t make this calculation 
 # automatic). 
 
-curl -X GET "http://elastic-search:9200/tweets/_search?pretty=true&q=Fudgemart"
+# use a terminal window in Jupyter
+
+curl -X GET "http://elasticsearch:9200/tweets/_search?pretty=true&q=Fudgemart"
+
+# 2 Do the same thing from the Kibana UI for Elasticsearch. What must you do before you can do that and why? 
+# Turn off the tweets.
+
+click on http://localhost:5601/app/home#/
+click on menu | discover -> create index pattern 
+enter "tweets" with "timestamp_format" as timestamp field
+click "create index pattern"
+click on menu | discover
+Turn off the tweets. Launch jupyter notebook
+
+#  3. Write PySpark to load the 1,600-line weather data set into Elasticsearch under the 
+# index `weather` with default index type.
 
 # 4. Use a curl command from the command line to hit the Elasticsearch API and demonstrate that there 
 are 1,600 documents in the weather index.
 
-curl -X GET "http://elastic-search:9200/weather/_count?pretty=true"
+# using Jupyter, navigate to the terminal and run this command:
+
+curl -X GET "http://elasticsearch:9200/weather/_count?pretty=true"
+
+# result
 
 {
   "count" : 1600,
@@ -21,5 +40,22 @@ curl -X GET "http://elastic-search:9200/weather/_count?pretty=true"
     "failed" : 0
   }
 }
+
+# 5 Set up a weather index pattern in Kibana based on the weather index from Elasticsearch. Make 
+# sure you have a geo_point based on lat/lon type and have selected a @timestamp field using the date field. 
+# Provide a screenshot including the fields in question.
+
+launch http://localhost:5601/app/home#/
+click on http://localhost:5601/app/management/kibana/indexPatterns | create index pattern
+choose weather
+choose "date" as timestamp field
+click "create index pattern"
+click "add field"; name it "latlong" and change type to "geopoint"
+emit(doc['latitude'].value, doc['longitude'].value)
+click save
+absolute date - 10/10/21 - 10/25/2021
+click on http://localhost:5601/app/maps to add a map
+
+create a dashboard - http://localhost:5601/app/dashboards
 
 
