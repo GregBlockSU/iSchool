@@ -5,7 +5,7 @@ def get_text(path):
         lines = [x.rstrip() for x in f]
         return lines
 
-if len(sys.argv) == 0:
+if len(sys.argv) == 1:
     print("Usage: python files.py file_name")
 else:
     path = sys.argv[1]
