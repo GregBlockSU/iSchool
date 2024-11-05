@@ -55,5 +55,6 @@ public class Grapevines
       
       // Display the result.
       System.out.println("You can fit " + vines + " vines in a row.");
+      
    }
 }
