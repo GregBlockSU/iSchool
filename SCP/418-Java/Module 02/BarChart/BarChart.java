@@ -37,10 +37,18 @@ public class BarChart
       // Create a Scanner object for keyboard input.
       Scanner keyboard = new Scanner(System.in);
             
-      // Get the sales for store 1.
-      System.out.print("Enter today's sales for store 1: ");
-      sales1 = keyboard.nextDouble();
+      for(int x = 0; x < 5;x++)
+      {
+         // Get the sales for store 1.
+         System.out.print("Enter today's sales for store 1: ");
+         sales1 = keyboard.nextDouble();
 
+         bar = "";
+         numStars = (int) (sales1 / 100);
+         for (int i = 0; i < numStars; i++)
+            bar = bar + "*";
+         System.out.println(bar);         
+      }
       // Get the sales for store 2.
       System.out.print("Enter today's sales for store 2: ");
       sales2 = keyboard.nextDouble();
@@ -61,11 +69,7 @@ public class BarChart
       System.out.println("\nSALES BAR CHART");
       
       // Display the chart for store 1.
-      bar = "";
-      numStars = (int) (sales1 / 100);
-      for (int i = 0; i < numStars; i++)
-         bar = bar + "*";
-      System.out.println(bar);
+
       
       // Display the chart for store 2.
       bar = "";

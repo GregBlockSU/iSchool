@@ -1,14 +1,14 @@
 class Patient
 {
-   String firstName;
-   String middleName;
-   String lastName;
-   String address;
-   String city;
-   String state;
-   String zip;
-   String emergencyName;
-   String emergencyPhone;
+   private String firstName;
+   private String middleName;
+   private String lastName;
+   private String address;
+   private String city;
+   private String state;
+   private String zip;
+   private String emergencyName;
+   private String emergencyPhone;
    
    // Constructor
    public Patient(String first, String middle, String last, String addr,
@@ -28,7 +28,10 @@ class Patient
    // Mutators
    public void setFirstName(String fn)
    {
-      firstName = fn;
+      if !(fn == "")
+      {
+         firstName = fn;
+      }
    }
    
    public void setMiddleName(String mn)
@@ -85,6 +88,11 @@ class Patient
    public String getLastName()
    {
       return lastName;
+   }
+
+   public String getFullName()
+   {
+      return firstName + " " + middleName + " " + lastName;
    }
    
    public String getAddress()
