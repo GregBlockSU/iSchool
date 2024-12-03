@@ -1,7 +1,7 @@
 # from the command line
 docker-compose start jupyter drill mongo mongoapp mongoexpress
 docker-compose ps
-docker-compose exec mongo mongo -u admin -p mongopw --authenticationDatabase=admin
+docker-compose exec mongo mongosh -u admin -p mongopw --authenticationDatabase=admin
 
 # 2. From the Mongo client, retrieve the firstname lastname, state, and party 
 # for those senators in either the “Republican,” “Democrat,” or “Independent” party.

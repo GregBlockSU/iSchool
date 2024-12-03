@@ -11,40 +11,42 @@ class PatientCharges
                                     "MyTown", "CA", "01234", "Bill Santori", 
                                     "777-555-1212");
                             
+                                   
       // Create some Procedure instances.
-      Procedure procedure1 = new Procedure("Physical Exam", "7/20/2019", "Dr. Irvine", 250.0);
-      Procedure procedure2 = new Procedure("X-ray", "7/20/2019", "Dr. Jamison", 500.0);
-      Procedure procedure3 = new Procedure("Blood Test", "7/20/2019", "Dr. Smith", 200.0);
+      Procedure procedure1 = new Procedure(patient, "Physical Exam", "7/20/2019", "Dr. Irvine", 250.0);
+      Procedure procedure2 = new Procedure(patient, "X-ray", "7/20/2019", "Dr. Jamison", 500.0);
+      Procedure procedure3 = new Procedure(patient, "Blood Test", "7/20/2019", "Dr. Smith", 200.0);
       
       // Display the information.
-      displayPatient(patient);
-      displayProcedure(procedure1);
-      displayProcedure(procedure2);
-      displayProcedure(procedure3);
+      display(patient);
+      display(procedure1);
+      display(procedure2);
+      display(procedure3);
    } 
    
    /**
       The displayPatient method displays a Patient object's information.
    */
    
-   public static void displayPatient(Patient p)
+   public static void display(Patient patient)
    {
-      System.out.println("Patient name: " + p.getFirstName() + " " +
-                         p.getMiddleName() + " " + p.getLastName());
-      System.out.println("Address: " + p.getAddress());
-      System.out.println("City: " + p.getCity());
-      System.out.println("State: " + p.getState());
-      System.out.println("ZIP: " + p.getZip());
-      System.out.println("Emergency Contact: " + p.getEmergencyName() + " " +
-                         p.getEmergencyPhone());
+      System.out.println("Patient name: " + patient.getFirstName() + " " +
+         patient.getMiddleName() + " " + patient.getLastName());
+      System.out.println("Address: " + patient.getAddress());
+      System.out.println("City: " + patient.getCity());
+      System.out.println("State: " + patient.getState());
+      System.out.println("ZIP: " + patient.getZip());
+      System.out.println("Emergency Contact: " + patient.getEmergencyName() + " " +
+         patient.getEmergencyPhone());
    }
    
    /**
       The displayProcedure method displays a Procedure object's information.
    */
 
-   public static void displayProcedure(Procedure pr)
+   public static void display(Procedure pr)
    {
+      display(pr.getPatient());
       System.out.println("Procedure: " + pr.getProcedureName());
       System.out.println("Procedure Date: " + pr.getProcedureDate());
       System.out.println("Practitioner: " + pr.getPractitioner());

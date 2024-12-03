@@ -1,13 +1,15 @@
 class Procedure
 {
+   Patient patient;
    String procedureName;
    String procedureDate;
    String practitioner;
    double charge;
    
    // Constructor
-   public Procedure(String procName, String procDate, String pract, double ch)
+   public Procedure(Patient pat,String procName, String procDate, String pract, double ch)
    {
+      patient = pat;
       procedureName = procName;
       procedureDate = procDate;
       practitioner = pract;
@@ -15,6 +17,10 @@ class Procedure
    }
    
    // Mutators
+   public void setPatient(Patient pat)
+   {
+      patient = pat;
+   }
    public void setProcedureName(String procName)
    {
       procedureName = procName;
@@ -54,5 +60,10 @@ class Procedure
    public double getCharge()
    {
       return charge;
+   }
+
+   public Patient getPatient()
+   {
+      return patient;
    }
 }

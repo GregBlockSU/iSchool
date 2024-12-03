@@ -28,6 +28,10 @@ public class TestScoresDemo
       {
          System.out.println("Invalid score found.\n" + e.getMessage());
       }
+      catch(Exception e)
+      {
+         System.out.println("Oops.Something unexpected happened.\n" + e.getMessage());
+      }
    
       // Create a TestScores object initialized with goodScores.
       try

@@ -32,6 +32,7 @@ public class FileManager
            String input = scanner.nextLine();
            System.out.println(input);
         }
+
      }
      catch(FileNotFoundException ex)
      {
