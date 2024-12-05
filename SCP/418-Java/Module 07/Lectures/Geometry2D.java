@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Circle;
 
-public class Lab14 extends Application
+public class Geometry2D extends Application
 {
    public static void main(String[] args)
    {
