@@ -9,11 +9,11 @@ SELECT ITEM.item_type,
        Count(item_id)              AS item_rsv_count,
        Min(item_reserve)           AS item_rsv_min,
        Max(item_reserve)           AS item_rsv_max,
-       Round(Avg(item_reserve), 2) AS item_rsv_avg
+       Avg(item_reserve) AS item_rsv_avg
 FROM   vb_items AS ITEM
-INNER OIN vb_item_types_lookup AS ITEML ON ITEM.item_type = ITEML.item_type
-GROUP  BY ITEM.item_type;
-
+INNER	JOIN vb_item_types_lookup AS ITEML ON ITEM.item_type = ITEML.item_type
+GROUP  BY ITEM.item_type
+ORDER BY ITEM.item_type;
 go 
 
 -- 2. Perform an analysis of each item in the “Antiques” and “Collectables” item types. 
@@ -56,6 +56,7 @@ AS
            Count(rating_for_user_id) AS number_of_ratings,
            ROUND(AVG(CAST(rating_value AS FLOAT)), 2) AS avg_rating
      FROM   vb_user_ratings AS RATE
+	 WHERE	[rating_astype] = 'Seller'
      GROUP  BY RATE.rating_for_user_id
 )
 SELECT USERS.user_firstname,
@@ -78,7 +79,7 @@ FROM   vb_items AS ITEMS
                ON ITEMS.item_id = BIDS.bid_item_id
 WHERE  ITEMS.item_type = 'Collectables'
 GROUP  BY ITEMS.item_name
-HAVING Count(*) > 1
+HAVING Count(*) > 5
 ORDER  BY number_of_bids DESC;
 
 go 
@@ -94,9 +95,7 @@ AS
             ITEMS.item_id,
             ITEMS.item_name,
             BIDS.bid_amount,
-            Row_number()
-                OVER (
-                partition BY BIDS.bid_item_id
+            ROW_NUMBER() OVER (PARTITION BY BIDS.bid_item_id
                 ORDER BY BIDS.bid_datetime) AS bid_order
     FROM   vb_bids AS BIDS
             INNER JOIN vb_items AS ITEMS ON BIDS.bid_item_id = ITEMS.item_id
@@ -189,7 +188,7 @@ AS
 SELECT USERS.user_firstname,
        USERS.user_lastname,
 	   USERS.user_email,
-	   count(test.bid_user_id),
+	   count(b.bid_user_id),
        Count(bid_id) AS num_bids_per_item,
        Cast(Count(*) / Count(item_id) AS DECIMAL(4, 3)) AS ratio
 FROM   vb_bids b

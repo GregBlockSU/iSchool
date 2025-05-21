@@ -12,7 +12,7 @@ b.	Test your stored procedure by executing it to make these changes:
 i.	Change : CSC—Computer Sciences to CSC—Computer Science
 ii.	Add: FIN—Finance
 */
-CREATE OR ALTER PROCEDURE [dbo].p_upsert_major 
+CREATE OR ALTER PROCEDURE [dbo].[p_upsert_major]
 	@major_code varchar(3),
 	@major_name varchar(50)
 AS
@@ -22,9 +22,9 @@ IF EXISTS (
 	WHERE [major_code] = @major_code
 		)
 BEGIN
-	UPDATE [dbo].[majors]
-	SET [major_name] = @major_name
-	WHERE [major_code] = @major_code;
+	UPDATE	[dbo].[majors]
+	SET		[major_name] = @major_name
+	WHERE	[major_code] = @major_code;
 END
 ELSE
 BEGIN
@@ -33,7 +33,7 @@ BEGIN
 END
 go
 
-EXEC p_upsert_major @major_code = 'CSC', @major_name = 'Computer Science'
+EXEC [dbo].[p_upsert_major] @major_code = 'CSC', @major_name = 'Computer Science'
 go
 
 EXEC p_upsert_major @major_code = 'FIN', @major_name = 'Finance';
@@ -48,9 +48,12 @@ go
 a.	Write a user-defined function called f_concat that combines the any two varchars @a and @b together with  a one-character @sep in between. 
 For example:
  
-b.	Now create a view called v_students that displays the student_id, student name (first last), student name (last, first), GPA, and name of major. You should call the function you created in 2.a. After you create the view, execute it with a SELECT statement.
+b.	Now create a view called v_students that displays the student_id, student name 
+(first last), student name (last, first), GPA, and name of major. You should call 
+the function you created in 2.a. After you create the view, execute it with a 
+SELECT statement.
 */
-CREATE OR ALTER FUNCTION dbo.f_concat 
+CREATE OR ALTER FUNCTION [dbo].[f_concat]
 (
 	@a varchar(50),
 	@b varchar(50),
@@ -63,10 +66,14 @@ BEGIN
 END 
 go
 
+SELECT [dbo].[f_concat]('hello', 'world',' ');
+go
+
 CREATE OR ALTER VIEW [dbo].[v_students]
 AS
 SELECT	[student_id],
-		dbo.f_concat([student_firstname], [student_lastname], ',') AS student_name,
+		[dbo].[f_concat]([student_firstname], [student_lastname], ' ') AS student_name1,
+		[dbo].[f_concat]([student_lastname], [student_firstname], ',') AS student_name2,
 		[student_gpa],
 		MJR.major_name
 FROM	[dbo].[students] AS STU
@@ -77,8 +84,19 @@ SELECT *
 FROM [dbo].[v_students];
 go
 
+/*
+3.	In the TinyU database:
+a.	Write a query on the majors table so that the major_name is 
+broken up into keywords, one per row. HINT: You must use 
+string_split() with cross-apply. 
+ 
+b.	Then use the query in 3.a to create a table-valued 
+function f_search_majors that allows you to search the majors by 
+keyword. Demonstrate calling the TVF by querying all majors with 
+the “Science” keyword.
+*/
 -- Q3
-CREATE OR ALTER FUNCTION dbo.f_search_majors 
+CREATE OR ALTER FUNCTION [dbo].[f_search_majors]
 (
 	@keyword AS varchar(50)
 )
@@ -106,6 +124,21 @@ SELECT	*
 FROM	dbo.f_search_majors('Science')
 go
 
+/*
+4.	In the TinyU database: 
+a.	Alter the students table and add the following columns:
+i.	student_active char(1) default (‘Y’) not null
+ii.	student_inactive_date date null 
+b.	Create a trigger on the students table: when there is an 
+	student_inactive_date set, set student_active to ‘N’, and 
+	whenever there is not a student_inactive_date, then 
+	student_active is set to ‘Y’.
+c.	Write SQL code to deactivate all the ‘Graduate’ students 
+	with a date of ‘2020-08-01’.
+d.	Write SQL code to reactivate all the ‘Graduate’ students.
+Provide a screen shot of your code from 4.a. and 4.b working. Provide another screen shot demonstrating 4.c worked. Then, provide a final screen shot of code and demonstration of 4.d working.
+
+*/
 ALTER TABLE [dbo].[students] DROP CONSTRAINT IF EXISTS [DF_students_student_active];
 go
 
@@ -122,7 +155,6 @@ go
 
 ALTER TABLE [dbo].[students] ADD [student_inactive_date] date NULL;
 go
-
 
 DROP TRIGGER IF EXISTS [dbo].[student_update_trigger];
 go
@@ -146,7 +178,7 @@ go
 
 UPDATE	[dbo].[students]
 SET		[student_inactive_date] = NULL
-WHERE	[student_inactive_date] = '2024-08-20';
+WHERE	[student_year_name] = 'Senior';
 go
 
 SELECT	*

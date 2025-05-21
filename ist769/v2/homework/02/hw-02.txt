@@ -1,5 +1,31 @@
+window 1
+cd .\advanced-databases
+docker-compose exec hive-server bash
+ls /datasets
+ls /datasets/customers
+ls /datasets/tweets
 
--- window 1
+hadoop fs -mkdir -p /user/root/labc/customers
+hadoop fs -put /datasets/customers/customers.csv /user/root/labc/customers/customers.csv
+hadoop fs -ls /user/root/labc/customers
+
+hadoop fs -mkdir -p /user/root/labc/surveys
+hadoop fs -put /datasets/customers/surveys.csv /user/root/labc/surveys/surveys.csv
+hadoop fs -ls /user/root/labc/surveys
+
+hadoop fs -mkdir -p /user/root/labc/tweets
+hadoop fs -put /datasets/tweets/tweets.psv /user/root/labc/tweets/tweets.psv
+hadoop fs -ls /user/root/labc/tweets
+
+hadoop fs -cat /user/root/labc/tweets/tweets.psv
+
+hadoop fs -cat /user/root/labc/customers/customers.csv
+
+hadoop fs -ls /user/hive/warehouse
+
+hadoop fs -cat /user/root/labc/surveys/surveys.csv
+
+-- window 2
 cd .\advanced-databases
 docker-compose start jupyter namenode datanode hive-server hive-metastore hive-metastore-postgresql
 docker-compose exec hive-server bash
@@ -59,29 +85,3 @@ INSERT OVERWRITE LOCAL DIRECTORY '/user/root/marketing'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
 SELECT * FROM labc.marketing;
 
-window 2
-cd .\advanced-databases
-docker-compose exec hive-server bash
-ls /datasets
-ls /datasets/customers
-ls /datasets/tweets
-
-hadoop fs -mkdir -p /user/root/labc/customers
-hadoop fs -put /datasets/customers/customers.csv /user/root/labc/customers/customers.csv
-hadoop fs -ls /user/root/labc/customers
-
-hadoop fs -mkdir -p /user/root/labc/surveys
-hadoop fs -put /datasets/customers/surveys.csv /user/root/labc/surveys/surveys.csv
-hadoop fs -ls /user/root/labc/surveys
-
-hadoop fs -mkdir -p /user/root/labc/tweets
-hadoop fs -put /datasets/tweets/tweets.psv /user/root/labc/tweets/tweets.psv
-hadoop fs -ls /user/root/labc/tweets
-
-hadoop fs -cat /user/root/labc/tweets/tweets.psv
-
-hadoop fs -cat /user/root/labc/customers/customers.csv
-
-hadoop fs -ls /user/hive/warehouse
-
-hadoop fs -cat /user/root/labc/surveys/surveys.csv

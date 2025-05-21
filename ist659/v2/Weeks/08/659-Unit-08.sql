@@ -5,10 +5,11 @@ DROP PROCEDURE IF EXISTS dbo.p_upsert_major
 GO
 
 /*
-1.	Provide a screen shot of your code execution from the walkthrough where you modified p_upsert_major  in the TinyU database to be transaction safe.
+1.	Provide a screen shot of your code execution from the walkthrough where you 
+modified p_upsert_major  in the TinyU database to be transaction safe.
 */
 
-CREATE PROCEDURE dbo.p_upsert_major 
+CREATE OR ALTER PROCEDURE dbo.p_upsert_major 
     @major_code CHAR(3),
     @major_name VARCHAR(50)
 AS
@@ -18,7 +19,7 @@ BEGIN
         IF EXISTS (SELECT * FROM majors WHERE major_code = @major_code)
         BEGIN
             UPDATE majors
-               SET major_code = @major_code
+               SET major_name = @major_name
              WHERE major_code = @major_code
             if @@ROWCOUNT <> 1
                 THROW 50001, 'p_upsert_major: Update Error', 1
@@ -33,7 +34,7 @@ BEGIN
             IF @@ROWCOUNT <> 1
                 THROW 50002, 'p_upsert_major: Insert Error', 1
         END
-        COMMIT
+        --COMMIT
     END TRY
     BEGIN CATCH
         ROLLBACK;
@@ -48,6 +49,9 @@ GO
 
 EXEC p_upsert_major @major_code = 'FIN', @major_name = 'Finance'
 GO
+ROLLBACK
+
+SELECT @@TRANCOUNT
 
 /*
 3.	Rewrite the p_place_bid stored procedure from the vBay database so that it is transaction safe. Provide a screen shot of the code and its execution.
@@ -92,7 +96,7 @@ begin try
                          bid_status)
     values (@bid_user_id, @bid_item_id, @bid_amount, @bid_status)
     return SCOPE_IDENTITY();
-    commit
+    @@IDENTITY
 end try
 begin catch
     rollback;
@@ -143,8 +147,8 @@ begin try
                                  rating_value,
                                  rating_comment)
     values (@rating_by_user_id, @rating_for_user_id, @rating_astype, @rating_value, @rating_comment)
-    return @@identity
     commit
+    return SCOPE_IDENTITY();
 end try
 begin catch
     print 'rolled back'

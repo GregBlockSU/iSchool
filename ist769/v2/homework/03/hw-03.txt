@@ -17,7 +17,7 @@ mc mb minio/labd
 mc mb minio/labd/logs
 mc mb minio/labd/iplookup
 
-mc cp /hpme/jovyan/datasets/clickstream/iplookup.json minio/labd/iplookup
+mc cp /home/jovyan/datasets/clickstream/iplookup.json minio/labd/iplookup
 mc cp /home/jovyan/datasets/clickstream/u_ex160211.log minio/labd/logs
 mc cp /home/jovyan/datasets/clickstream/u_ex160212.log minio/labd/logs
 mc cp /home/jovyan/datasets/clickstream/u_ex160213.log minio/labd/logs
