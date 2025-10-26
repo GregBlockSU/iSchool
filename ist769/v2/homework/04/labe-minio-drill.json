@@ -1,0 +1,101 @@
+{
+  "type": "file",
+  "connection": "s3a://labe/",
+  "config": {
+    "fs.s3a.access.key": "minio",
+    "fs.s3a.secret.key": "SU2orange!",
+    "fs.s3a.endpoint": "http://minio:9000",
+    "fs.s3a.connection.ssl.enabled": "false",
+    "fs.s3a.path.style.access": "true"
+  },
+  "workspaces": {
+    "default": {
+      "location": "/",
+      "writable": true,
+      "defaultInputFormat": "parquet",
+      "allowAccessOutsideWorkspace": false
+    }
+  },
+  "formats": {
+    "psv": {
+      "type": "text",
+      "extensions": [
+        "tbl"
+      ],
+      "lineDelimiter": "\n",
+      "fieldDelimiter": "|",
+      "quote": "\"",
+      "escape": "\"",
+      "comment": "#"
+    },
+    "csv": {
+      "type": "text",
+      "extensions": [
+        "csv"
+      ],
+      "lineDelimiter": "\n",
+      "fieldDelimiter": ",",
+      "quote": "\"",
+      "escape": "\"",
+      "comment": "#"
+    },
+    "tsv": {
+      "type": "text",
+      "extensions": [
+        "tsv"
+      ],
+      "lineDelimiter": "\n",
+      "fieldDelimiter": "\t",
+      "quote": "\"",
+      "escape": "\"",
+      "comment": "#"
+    },
+    "excel": {
+      "type": "excel",
+      "extensions": [
+        "xlsx"
+      ],
+      "lastRow": 1048576,
+      "ignoreErrors": true,
+      "maxArraySize": -1,
+      "thresholdBytesForTempFiles": -1
+    },
+    "parquet": {
+      "type": "parquet"
+    },
+    "json": {
+      "type": "json",
+      "extensions": [
+        "json",
+        "jsn",
+        "jsonfile"
+      ]
+    },
+    "avro": {
+      "type": "avro",
+      "extensions": [
+        "avro"
+      ]
+    },
+    "sequencefile": {
+      "type": "sequencefile",
+      "extensions": [
+        "seq"
+      ]
+    },
+    "csvh": {
+      "type": "text",
+      "extensions": [
+        "csvh"
+      ],
+      "lineDelimiter": "\n",
+      "fieldDelimiter": ",",
+      "quote": "\"",
+      "escape": "\"",
+      "comment": "#",
+      "extractHeader": true
+    }
+  },
+  "authMode": "SHARED_USER",
+  "enabled": true
+}

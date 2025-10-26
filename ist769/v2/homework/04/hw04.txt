@@ -18,6 +18,8 @@ upload file syracuse-ny.csv from Downloads
 # open file minio-drill.json and put all text into the clipboard
 code .
 
+launch http://localhost:8047
+
 # in drill browser, click on storage tab
 # create a new storage plugin called labe and paste JSON code
 # be sure to change bucket to labe
@@ -39,6 +41,21 @@ SELECT * FROM labe.`syracuse-ny.csv`
 -- the average minimum temperature for that month, and the average 
 -- maximum temperature for that month.
 -- EST: 1970-01-01
+
+WITH
+Source 
+AS
+(
+	SELECT 	cast(split(EST, '-')[0] AS int) AS year, 
+	        cast(split(EST, '-')[1] AS int) AS month, 
+		    cast(Min_TemperatureF AS int) as mintemp, 
+		    cast(Max_TemperatureF AS int) AS maxtemp
+	FROM labe.`syracuse-ny.csv`
+)
+SELECT year, month, AVG(mintemp) AS avgmintemp, AVG(maxtemp) AS avgmaxtemp
+FROM Source
+GROUP BY year, month
+ORDER BY year, month
 
 CREATE VIEW labe.monthly_syracuse_weather_averages
 AS
