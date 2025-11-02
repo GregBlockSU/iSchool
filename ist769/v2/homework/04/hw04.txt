@@ -57,7 +57,7 @@ FROM Source
 GROUP BY year, month
 ORDER BY year, month
 
-CREATE VIEW labe.monthly_syracuse_weather_averages
+CREATE OR REPLACE VIEW labe.monthly_syracuse_weather_averages
 AS
 WITH
 Source 

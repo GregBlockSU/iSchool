@@ -1,11 +1,16 @@
 # from the command line
 docker-compose start jupyter drill mongo mongoapp mongoexpress
 docker-compose ps
+
+# 1. Use Spark to load the /datasets/json-samples/US-Senators.json into the MongoDB database labf under 
+# the collection senators. 
+
 docker-compose exec mongo mongosh -u admin -p mongopw --authenticationDatabase=admin
 
 # 2. From the Mongo client, retrieve the firstname lastname, state, and party 
 # for those senators in either the “Republican,” “Democrat,” or “Independent” party.
 
+use labf
 db.senators.find({party: 'Independent'}, {party:1, person : { firstname: 2, lastname: 3}, state: 4})
 
 # 3. From the Mongo Client, write an MQL index to improve the query performance of 
@@ -13,18 +18,37 @@ db.senators.find({party: 'Independent'}, {party:1, person : { firstname: 2, last
 # the index. Then use explain to prove the index is being used.
 
 db.senators.find({party: 'Independent'}, {party:1, person : { firstname: 2, lastname: 3}, state: 4}).explain('executionStats')
+# look for  stage: 'COLLSCAN'
+
 db.senators.createIndex({party:1})
 
+db.senators.getIndexes()
+
+# look for
+#  { v: 2, key: { _id: 1 }, name: '_id_' },
+#  { v: 2, key: { party: 1 }, name: 'party_1' }
+
+db.senators.find({party: 'Independent'}, {party:1, person : { firstname: 2, lastname: 3}, state: 4}).explain('executionStats')
+
+# look for stage: 'IXSCAN'
+
+# 4. Use Spark to load in the /datasets/netflix-canceled-2021/*.json into MongoDB database labf under the 
+# collection nfcan.
 
 # 5. Using Drill, write a query to list the name, premier date, and average rating 
 # of cancelled Netflix 2021 shows. Limit the shows to those with an average rating under 7.
 
 # remember to enable the mongo plugin and add labf to URI...
 
-SELECT NF.name, NF.premiered, NF,rating.average as average_rating
-FROM mongo.labf.nfcan AS NF
-WHERE NF.rating.average < 7
-
+WITH all_ratings
+AS
+(
+    SELECT NF.name, NF.premiered, CAST(NF.rating.average AS decimal) as average_rating
+    FROM mongo.labf.nfcan AS NF
+)
+SELECT * FROM all_ratings
+WHERE average_rating < 7
+ORDER BY average_rating
 
 # 6. Using Drill, write a query to list the name, premier date, and genre for only those shows in the History or Family genres. Make sure to include a column to display the name of the genre
 
