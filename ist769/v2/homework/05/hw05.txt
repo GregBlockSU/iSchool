@@ -40,15 +40,9 @@ db.senators.find({party: 'Independent'}, {party:1, person : { firstname: 2, last
 
 # remember to enable the mongo plugin and add labf to URI...
 
-WITH all_ratings
-AS
-(
-    SELECT NF.name, NF.premiered, CAST(NF.rating.average AS decimal) as average_rating
-    FROM mongo.labf.nfcan AS NF
-)
-SELECT * FROM all_ratings
-WHERE average_rating < 7
-ORDER BY average_rating
+SELECT NF.name, NF.premiered, CAST(NF.rating.average AS decimal) as average_rating
+FROM mongo.labf.nfcan AS NF
+WHERE `rating.average` < 7;
 
 # 6. Using Drill, write a query to list the name, premier date, and genre for only those shows in the History or Family genres. Make sure to include a column to display the name of the genre
 
