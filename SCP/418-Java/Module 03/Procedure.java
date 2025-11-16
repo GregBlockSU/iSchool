@@ -1,10 +1,10 @@
-class Procedure
+public class Procedure
 {
-   Patient patient;
-   String procedureName;
-   String procedureDate;
-   String practitioner;
-   double charge;
+   private Patient patient;
+   private String procedureName;
+   private String procedureDate;
+   private String practitioner;
+   private double charge;
    
    // Constructor
    public Procedure(Patient pat,String procName, String procDate, String pract, double ch)

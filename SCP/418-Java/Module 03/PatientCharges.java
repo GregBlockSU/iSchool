@@ -8,8 +8,8 @@ class PatientCharges
    {
       // Create an instance of the Patient class.
       Patient patient = new Patient("Jenny", "Elaine", "Santori", "123 Main Street",
-                                    "MyTown", "CA", "01234", "Bill Santori", 
-                                    "777-555-1212");
+         "MyTown", "CA", "01234", "Bill Santori", 
+         "777-555-1212");
                             
                                    
       // Create some Procedure instances.

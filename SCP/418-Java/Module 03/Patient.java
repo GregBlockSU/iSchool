@@ -1,4 +1,5 @@
-class Patient
+
+public class Patient
 {
    private String firstName;
    private String middleName;
@@ -28,7 +29,7 @@ class Patient
    // Mutators
    public void setFirstName(String fn)
    {
-      if !(fn == "")
+      if (fn != "")
       {
          firstName = fn;
       }
