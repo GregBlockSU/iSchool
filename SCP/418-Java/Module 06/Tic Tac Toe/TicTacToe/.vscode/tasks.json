@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile JavaFX",
+      "type": "shell",
+      "command": "javac",
+      "args": [
+        "--module-path",
+        "C:/javafx-sdk-25.0.1/lib",
+        "--add-modules",
+        "javafx.controls,javafx.fxml",
+        "src/TicTacToe.java"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

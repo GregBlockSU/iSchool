@@ -51,6 +51,7 @@ public abstract class BankAccount
 
    public void withdraw(double amount)
    {
+      System.out.println("In BankAccount.withdraw");
       balance -= amount;
       numWithdrawals++;
    }

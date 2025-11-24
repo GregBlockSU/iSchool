@@ -1,0 +1,14 @@
+{
+    "java.project.referencedLibraries": [
+        "C:/javafx-sdk-25.0.1/lib/*.jar"
+    ],
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-25",
+            "path": "C:\\jdk-25.0.1",
+            "default": true
+        }
+    ],
+    "notebook.lineNumbers": "on",
+    "security.workspace.trust.untrustedFiles": "open"
+}
