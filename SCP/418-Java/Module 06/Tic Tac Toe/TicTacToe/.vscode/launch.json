@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "LaunchT icTacToe App",
+      "request": "launch",
+      "mainClass": "TicTacToe",
+      "vmArgs": "--module-path C:/javafx-sdk-25.0.1/lib --add-modules javafx.controls"
+    }
+  ]
+}
