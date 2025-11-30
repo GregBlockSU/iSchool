@@ -48,7 +48,7 @@ lrange snap:inbox:Che 0 -1
 # 4 It’s first thing in the morning and eight people are waiting outside for the department to open! 
 # Add them to your queue: Amy, Beth, Chris, Dee, Erin, Fran, Greg, Hela	
 
-lpush dmv:queue Amy, Beth Chis Dee Erin Fran Greg Hela
+lpush dmv:queue Amy Beth Chis Dee Erin Fran Greg Hela
 lrange dmv:queue 0 -1
 
 #5 The department is now open! Assign the first four people to Windows A, B, C, and D, respectively.
