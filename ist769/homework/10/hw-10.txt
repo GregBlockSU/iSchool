@@ -6,12 +6,21 @@ docker-compose exec ksqldb-cli ksql http://ksqldb-server:8088
 # 0. Start the ATM producer example from Jupyter, located at:
 # /work/examples/Kafka-Producer.ipynb
 
+In the CLI, type:
+
 CREATE STREAM atm (Id varchar, Location varchar, User varchar, TimeStamp bigint, Amount int, Status varchar) 
 WITH (KAFKA_TOPIC='atm', VALUE_FORMAT='JSON', TIMESTAMP='TimeStamp');
+
+# note, semi-colon is required
+
+type SHOW STREAMS; to view the new stream
 
 # 1. Write a Drill query to display only the ATM transactions that ended in an Error status. Show all 
 # columns and sort output so the newest errors are first. 
 # NOTE: It is strongly suggested you use `backticks` and table aliases when working in Drill.
+
+# be sure to enable the Kafka plugin; update the line below
+# "bootstrap.servers": "broker:29092",
 
 SELECT *
 FROM kafka.`atm`
@@ -21,15 +30,22 @@ ORDER BY 'TimeStamp' DESC
 # 2. Write a Drill query to display the total amount withdrawn by user and do not include error 
 # transactions in the totals.
 
-SELECT a.`User`, SUM(Amount) AS TotalAmountWithdran
+SELECT a.`User`, SUM(Amount) AS TotalAmountWithdrawn
 FROM kafka.`atm` AS A
+WHERE Status <> 'error'
 GROUP BY a.`User`
+
+# terminate the ATM example in the /work/examples/Kafka-Producer.ipynb and start the weblogs simulation
 
 # 3. Write KSQL to create a stream named weblogs from the JSON keys in the weblogs Kafka topic. Make 
 # sure to set the TIMESTAMP property to the timestamp from the stream.
 
+# use the CLI
+
 CREATE STREAM weblogs (Uri varchar, User varchar, TimeStamp bigint, Browser varchar, OS varchar)
 WITH (KAFKA_TOPIC='weblogs', VALUE_FORMAT='JSON', TIMESTAMP='TimeStamp');
+
+type SHOW STREAMS; to view the new stream
 
 # 4. Write a KSQL statement to create a persistent stream/table called homepage that only displays 
 # visitors to the root of the website (/). It should display all columns from the weblogs stream.
@@ -42,6 +58,16 @@ SHOW STREAMS;
 
 DESCRIBE weblogs;
 
+#Name                 : WEBLOGS
+# Field     | Type
+#-----------------------------
+# URI       | VARCHAR(STRING)
+# USER      | VARCHAR(STRING)
+# TIMESTAMP | BIGINT
+# BROWSER   | VARCHAR(STRING)
+# OS        | VARCHAR(STRING)
+#-----------------------------
+
 SELECT * FROM homepage EMIT CHANGES;
 
 # 5. Write a KSQL statement to count operating systems users (OS) in 60-second windows. After 
@@ -52,4 +78,11 @@ SELECT Os, COUNT(*) FROM weblogs WINDOW TUMBLING (SIZE 60 SECONDS) GROUP BY Os E
 # 6. Write a KSQL persistent stream/table called user_activity, which will display a count of user activity 
 # on the website within 1-minute sessions.
 
-CREATE TABLE user_activity AS SELECT User, COUNT(*) FROM weblogs WINDOW TUMBLING (SIZE 60 SECONDS) GROUP BY User EMIT CHANGES;
+CREATE TABLE user_activity AS SELECT User, COUNT(*) AS PageCount FROM weblogs WINDOW TUMBLING (SIZE 60 SECONDS) GROUP BY User EMIT CHANGES;
+
+SHOW QUERIES;
+
+# 7. Write a KSQL statement to display users who have more than one page of activity in a 1-minute window.  
+SELECT * FROM user_activity WHERE PageCount > 1 EMIT CHANGES;
+
+# launch Jupyter notebook
