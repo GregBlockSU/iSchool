@@ -64,33 +64,97 @@ print(Evennumbers[1], Evennumbers[3], Evennumbers[7], Temp)
     },
     {
       title: "List Slicing",
-      desc1: "Covers wildlife and biological classification.",
-      desc2: "Focuses on habitats and behavior."
+      desc1: ["Consider the following list:",
+      `<pre><code>
+Suitcase = ["sunglasses", "hat", "passport", "laptop", "suit", "shoes"]
+print(Suitcase[1:], Suitcase[:4])    
+</code></pre>`,
+"What would be the result of the print statement above?`<pre><ul>",
+      "<li>[\"hat\", \"passport\", \"laptop\", \"suit\", \"shoes\"] and [\"sunglasses\", \"hat\", \"passport\", \"laptop\"]</li>",
+      "<li>[\"sunglasses\"] and [\"laptop\"]</li>",
+      "<li>[\"hat\"] and [\"suit\"]</li>",
+      "<li>[\"sunglasses\", \"hat\", \"passport\", \"laptop\", \"suit\", \"shoes\"] and [\"sunglasses\"]</li></ul></pre>"
+    ],
+      desc2: "What is [\"hat\", \"passport\", \"laptop\", \"suit\", \"shoes\"] and [\"sunglasses\", \"hat\", \"passport\", \"laptop\"]."
     },
     {
       title: "Logical Operators",
-      desc1: "Topics include cooking, cuisine, and ingredients.",
-      desc2: "Covers cultural dishes and techniques."
+      desc1: ["Which of the following expressions will make the condition inside the IF statement \"TRUE\" with the following value for x, and would result in printing the message “Welcome to the world of logical operators”?",
+      `<pre><code>
+x = 5
+if(choose the expression from the options given below):
+   print("Welcome to the world of logical operators")
+else:
+   print("Try Again")</code></pre>`,
+"What would be the result of the print statement above?`<pre><ul>",
+      "<li>x <= 0 and x < 0</li>",
+      "<li>x <= 0 or x > 5</li>",
+      "<li>x >= 0 or x < 0</li>",
+      "<li>x == 5 and x < 5</li></ul></pre>"
+    ],
+      desc2: "What is  x >= 0 or x < 0."
     },
     {
       title: "Looping Through Lists",
-      desc1: "Numbers, equations, and problem solving.",
-      desc2: "Includes algebra, geometry, and calculus."
+       desc1: ["Consider the following code:",
+      `<pre><code>
+xlist = [1, 2, 3, 4]
+for x in xlist:
+     print(x + 1)      
+</code></pre>`,
+"What will the output be (where the numbers will be on separate lines)?`<pre><ul>",
+      "<li>1 2 3 4 5</li>",
+      "<li>2 3 4 5</li>",
+      "<li>2 3 4 5 6</li>",
+      "<li>TypeError</li></ul></pre>"
+    ],
+      desc2: "What is 2 3 4 5."
     },
     {
-      title: "Comparing User Inputs",
-      desc1: "Covers planets, stars, and galaxies.",
-      desc2: "Includes NASA missions and astronomy."
+      title: "Aggregation",
+       desc1: ["Consider the following program:",
+      `<pre><code>
+nlist = [8, 92, 79, 55, 23, 17, 4, 45, 63, 9, 100]
+threshold = input('Type Threshold: ')
+if (max(nlist) > int(threshold)):
+    print('Great')
+else:
+    print('Not great')     
+</code></pre>`,
+"If the user types in 55, what will the result be?`<pre><ul>",
+      "<li>Great</li>",
+      "<li>Not great</li>",
+      "<li>TypeError</li>",
+      "<li>55</li></ul></pre>"
+    ],
+      desc2: "What is Great."
     },
     {
-      title: "Data Quality",
-      desc1: "Genres, artists, and music theory.",
-      desc2: "Includes instruments and famous compositions."
+      title: "Data Analysis",
+       desc1: ["In the blog post “Data Science: A Kaggle Walkthrough—Understanding the Data,” Brett Romero creates Chart 2—Reported Ages of Users. In this chart, we see that there are a number of people whose ages are between 100 and 1,000. This is an example of:`<pre><ul>",
+      "<li>Using data inspection on a small number of examples</li>",
+      "<li>Showing the number of each type of data in categorical data</li>",
+      "<li>Using outliers to identify errors in data</li>",
+      "<li>Summarizing a numeric field with statistics</li></ul></pre>"
+    ],
+      desc2: "What is Using outliers to identify errors in data."
     },
     {
       title: "String Slicing",
-      desc1: "Painting, sculpture, and visual expression.",
-      desc2: "Includes famous artists and movements."
+      desc1: ["Given the code below:",
+      `<pre><code>
+fruitlist = ['apple', 'pear', 'banana']
+fruitlist_new = []
+for x in fruitlist:
+     fruitlist_new.append(x[0:3])     
+</code></pre>`,
+"What would be in the fruitlist_new?`<pre><ul>",
+      "<li>['app', 'pea', 'ban']</li>",
+      "<li>['appl', 'pear', 'bana']</li>",
+      "<li>['ap', 'pe', 'ba']</li>",
+      "<li>None of these</li></ul></pre>"
+    ],
+      desc2: "What is ['app', 'pea', 'ban']."
     },
     {
       title: "",
