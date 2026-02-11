@@ -26,7 +26,7 @@ public class CSSDemo5 extends Application
       
       // Create a Scene and display it.
       Scene scene = new Scene(vbox);
-      scene.getStylesheets().add("demo5.css");
+      //scene.getStylesheets().add("demo5.css");
       primaryStage.setScene(scene);
       primaryStage.show();
    }

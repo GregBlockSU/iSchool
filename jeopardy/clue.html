@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    
+pre, code {
+    text-align: left;
+    display: block;
+    white-space: pre;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+    body {
+      margin: 0;
+      background: #0b1a4a;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .card {
+      background: #011f5b;
+      border: 4px solid #d3a625;
+      padding: 40px;
+      width: 80%;
+      max-width: 800px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 44px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    .desc {
+      font-size: 24px;
+      margin: 18px 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .btn0 {
+      margin-top: 20px;
+      padding: 8px 14px;
+      border: 1px solid #d3a625;
+      background: transparent;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      text-transform: lowercase;
+      border-radius: 3px;
+      transition: 0.2s;
+    }
+    .btn {
+      margin-top: 40px;
+      padding: 12px 20px;
+      border: 2px solid #d3a625;
+      background: transparent;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      text-transform: uppercase;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #072a77;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div id="title" class="title"></div>
+
+  <div id="desc1" class="desc"></div>
+
+  <!-- Description #2 is hidden until button click -->
+<br/>  <button id="showBtn" class="btn0">more...</button>
+
+  <div id="desc2" class="desc hidden"></div>
+<br/>
+<br/>
+<button class="btn" onclick="history.back()">Back</button></div>
+
+<script>
+  const card = JSON.parse(sessionStorage.getItem("currentCard"));
+
+  if (card) {
+    document.getElementById("title").textContent = card.title;
+    document.getElementById("desc1").innerHTML = card.desc1.join("<br/>");
+    document.getElementById("desc2").textContent = card.desc2;
+  }
+
+  // Reveal second description when button clicked
+  document.getElementById("showBtn").addEventListener("click", () => {
+    document.getElementById("desc2").classList.remove("hidden");
+    document.getElementById("showBtn").style.display = "none";
+  });
+</script>
+
+</body>
+</html>

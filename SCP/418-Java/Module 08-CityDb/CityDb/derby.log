@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun Dec 07 14:08:52 EST 2025:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217): instance a816c00e-019a-fa37-7e15-00000f0ab7e8 
+on database directory C:\repos\iSchool\SCP\418-Java\Module 08-CityDb\CityDb\CityDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@33909752 
+Loaded from file:/C:/db-derby-10.17.1.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=21.0.8+12-LTS-250
+user.dir=C:\repos\iSchool\SCP\418-Java\Module 08-CityDb\CityDb
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
