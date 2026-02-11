@@ -1,7 +1,7 @@
 cd advanced-databases
 docker-compose start jupyter elasticsearch kibana
 
-# 1. turn on tweets from the example J-Elasticsearch notebook. Search for tweets in the last 5 minutes 
+# 1. turn on tweets from the example work/content/J-Search notebook. Search for tweets in the last 5 minutes 
 # from the (Windows or Linux) with curl (do the math yourself—don’t make this calculation 
 # automatic). 
 
@@ -13,10 +13,10 @@ curl -X GET "http://elasticsearch:9200/tweets/_search?pretty=true&q=Fudgemart"
 # Turn off the tweets.
 
 click on http://localhost:5601/app/home#/
-click on menu | discover -> create index pattern 
-enter "tweets" with "timestamp_format" as timestamp field
-click "create index pattern"
-click on menu | discover
+click on the pulldown menu in the upper left | discover -> create data view
+enter the name and index pattern of"tweets" with "timestamp_format" as timestamp field
+click "save data view to Kabana"
+click on menu | discover to view the tweets
 Turn off the tweets. Launch jupyter notebook
 
 #  3. Write PySpark to load the 1,600-line weather data set into Elasticsearch under the 
@@ -46,18 +46,24 @@ curl -X GET "http://elasticsearch:9200/weather/_count?pretty=true"
 # Provide a screenshot including the fields in question.
 
 launch http://localhost:5601/app/home#/
-click on http://localhost:5601/app/management/kibana/indexPatterns | create index pattern
-choose weather
+click on Discover | tweets dropdown | create a data view
+Enter weather for name and index pattern
 choose "date" as timestamp field
-click "create index pattern"
-click "add field"; name it "latlong" and change type to "geopoint"
+click "save data view to Kabana"
+
+Using menu, go to Management | Stack management
+Click on the "weather" index pattern, then the Mappings tab
+click "add field"; name it "latlong" and change type to "geopoint", add the field
+be sure to check "set value" and enter the script below
+#Look for "pending fields" and click on "1" to view the new field
 emit(doc['latitude'].value, doc['longitude'].value)
 click save
-absolute date - 10/10/21 - 10/25/2021
-click on http://localhost:5601/app/maps to add a map
-
-create a dashboard - http://localhost:5601/app/dashboards
-
-Line 
+Click on Menu and choose "maps"
+Add layer - weather
+Change data filter to absolute date - 10/10/21 - 10/25/2021, click update or refresh
+add tooltip - city,state, temperatures
+change layer style to marker with color based on value -> temperature
+change symbol size to by value based on value temperature
+click save to add to dashboard
 
 
