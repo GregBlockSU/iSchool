@@ -1,0 +1,170 @@
+Question 1
+Question Score
+5
+ / 5 pts
+Which of the following is NOT a valid dictionary definition?
+  d = (3,'three',5,'five')
+  d = {} 
+  d = {3:'three',5:'five'}
+  d = {'3':'three','5':'five'}
+Additional Comments:
+ 
+Correct answer
+Question 2
+Question Score
+5
+ / 5 pts
+Suppose we have defined the following dictionary:
+
+people = {'hugh':49,'kate':35,'lucy':24,'bob':36}
+
+In the following list, three of the code snippets will correctly sum the values in this dictionary. Please select the one snippet that is NOT correct.
+
+  
+ 
+
+total = 0
+for key in people:
+     total += key
+
+  
+ 
+
+total = 0
+for x in people.values():
+     total += x
+
+  
+ 
+
+total = sum(people.values())
+
+  
+ 
+
+total = 0
+for key in people:
+     total += people[key]
+
+Additional Comments:
+ 
+Correct answer
+Question 3
+Question Score
+5
+ / 5 pts
+If we have the same people dictionary as above, what happens when we try to access the element people['dan']?
+  Since 'dan' is not a value in the dictionary, Python raises a KeyError exception.
+  Since 'dan' is not a key in the dictionary, Python raises a KeyError exception.
+  It is executed fine, no exception is raised, and it returns the Python key value None. 
+  Since 'dan' is not a key in the dictionary, Python raises a syntax error.
+Additional Comments:
+ 
+Correct answer
+Question 4
+Question Score
+5
+ / 5 pts
+Suppose we have the following list of dictionaries and associated loop of code:
+
+peoplelist = [{'name':'bob','age':28},{'name':'dylan','age':43},{'name':'cat','age':17}]
+for item in peoplelist:
+      if item['age']>30:
+       print(item['name'])
+
+What will be the result if we execute this code?
+
+  bob dylan 
+  ('dylan',43)
+  dylan 
+  ('name:':'dylan')
+Additional Comments:
+ 
+Correct answer
+Question 5
+Question Score
+5
+ / 5 pts
+Suppose we define the following mystery function:
+
+def mystery(x):
+      if x > 0:
+          return −x
+      else:
+          return x
+
+Which of the following is NOT a true statement?
+
+  Calling mystery(0) returns −5. 
+  Calling mystery(5) returns −5. 
+  Calling mystery(−5) returns −5. 
+  Calling mystery(0) returns 0. 
+Additional Comments:
+ 
+Correct answer
+Question 6
+Question Score
+5
+ / 5 pts
+Suppose we define a NumPy array from a list of lists: (Please note that the print statement leaves out commas between elements in the array below.)
+
+import numpy as np
+c = np.array([[2,4,6,8],[12,14,16,18],[22,24,26,28]])
+print(c)
+[[2,4,6,8]
+ [12,14,16,18]
+ [22,24,26,28]]
+
+What is the shape of this array as defined by c.shape?
+
+  (4,3) 
+  (2,3) 
+  (3,2) 
+  (3,4) 
+Additional Comments:
+ 
+Correct answer
+Question 7
+Question Score
+5
+ / 5 pts
+If we have the same NumPy array c as defined in the previous question, how would we index the array using slices to get the second row [12,14,16,18]?
+  c[:,1] 
+  c[1,:] 
+  c[2,:] 
+  c[:,2] 
+Additional Comments:
+ 
+Correct answer
+Question 8
+Question Score
+5
+ / 5 pts
+Suppose we define a NumPy array:
+
+d = np.array([6,16,26])
+
+How would you use a Boolean mask to assign all the values greater than 10 to be the value 0?
+
+  d = 0 
+  d[d<=10]=0
+  d[d>10]=0
+  d[d>10]=d
+Additional Comments:
+ 
+Correct answer
+Question 9
+Question Score
+5
+ / 5 pts
+Suppose we use the datetime package to create two datetime objects:
+
+D1 = datetime(2017,2,22,9,30)
+D2 = datetime(2017,2,23,10,45)
+
+Which of the following are operations you can do with the datetime objects?
+
+  Compare the two dates to see which is earlier: D1 < D2
+  Subtract the two dates to get a timedelta object: D1−D2 
+  Use the function strftime to convert a datetime object to a formatted string 
+  All of these 

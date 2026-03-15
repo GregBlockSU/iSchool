@@ -35,21 +35,23 @@ public class Grapevines
    {
       // Variables
       int vines,              // Number of vines
-             rowLength,          // Length of a row
-             endpost;//,            // Endpost assembly space
+          rowLength,          // Length of a row
+          endpost;            // Endpost assembly space
       int vineSpacing;        // Space between vines
       
       // Create a Scanner object for keyboard input.
-      Scanner keyboard = new Scanner(System.in);
+      // this approach ensures that the Scanner is closed when we're done with it, 
+      // which is a good practice to prevent resource leaks.
+      try(Scanner keyboard = new Scanner(System.in)) {
 
-      // Get the necessary input.
-      System.out.print("What is the length of a row, in feet? ");
-      rowLength = keyboard.nextInt();
-      System.out.print("How many feet does an endpost assembly require? ");
-      endpost = keyboard.nextInt();
-      System.out.print("What is the space between vines, in feet? ");
-      vineSpacing = keyboard.nextInt();
-      
+         // Get the necessary input.
+         System.out.print("What is the length of a row, in feet? ");
+         rowLength = keyboard.nextInt();
+         System.out.print("How many feet does an endpost assembly require? ");
+         endpost = keyboard.nextInt();
+         System.out.print("What is the space between vines, in feet? ");
+         vineSpacing = keyboard.nextInt();
+      }
 
          // Calculate the number of vines.
          vines = (rowLength - 2 * endpost) / vineSpacing;

@@ -101,7 +101,8 @@ pre, code {
   if (card) {
     document.getElementById("title").textContent = card.title;
     document.getElementById("desc1").innerHTML = card.desc1.join("<br/>");
-    document.getElementById("desc2").textContent = card.desc2;
+    //document.getElementById("desc2").textContent = card.desc2;
+    document.getElementById("desc2").innerHTML = card.desc2;
   }
 
   // Reveal second description when button clicked
