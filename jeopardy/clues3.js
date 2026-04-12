@@ -52,6 +52,12 @@ const CARD_DATA = [
     desc2: "What is: Taylor"
   },
   {
+    title: "Syntax",
+    desc1: ["This is the reason developers stare at their screen for 20 minutes before realizing they forgot one space."     
+    ],
+    desc2: "What is: Indentation"
+  },
+  {
     title: "Useless Function",
     desc1: ["Suppose we define the following mystery function:<br/>",
       "<pre><code>def mystery(x):",
@@ -89,6 +95,8 @@ const CARD_DATA = [
   {
     title: "numpy Array Slicing",
     desc1: ["If we have the same NumPy array c as defined in the previous question, how would we index the array using slices to get the second row [12,14,16,18]:<br/>",
+      "<pre><code>import numpy as np",
+      "c = np.array([[2,4,6,8],[12,14,16,18],[22,24,26,28]])",
       "<pre><ul>",
       "<li>c[:,1]</li>",
       "<li>c[1,:]</li>",
@@ -109,6 +117,12 @@ const CARD_DATA = [
       "<li>d[d>10]=d</li></ul></pre>"      
     ],
     desc2: "What is: d[d>10]=0"
+  },
+  {
+    title: "Performance",
+    desc1: ["This is the reason your script takes 14 minutes instead of 0.14 seconds."     
+    ],
+    desc2: "What is: using Python loops instead of vectorization"
   },
   {
     title: "Datetimes",
