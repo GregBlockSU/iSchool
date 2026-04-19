@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Run JavaFX",
+            "request": "launch",
+            "mainClass": "FontSizeSelector",
+            "vmArgs": "--module-path \"C:/javafx-sdk-26/lib\" --add-modules javafx.controls,javafx.fxml"
+        }
+    ]
+}

@@ -4,3 +4,4 @@ github-recovery-codes.txt
 *.class
 *.zip
 *.dat
+*.pyc
