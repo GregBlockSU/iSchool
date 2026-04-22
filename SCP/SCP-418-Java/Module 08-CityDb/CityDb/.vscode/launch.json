@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "CityDb_b08b8277"
+        },
+        {
+            "type": "java",
+            "name": "Population",
+            "request": "launch",
+            "mainClass": "Population",
+            "projectName": "CityDb_b08b8277"
+        },
+        {
+            "type": "java",
+            "name": "Run JavaFX",
+            "request": "launch",
+            "mainClass": "CSSDemo5",
+            "vmArgs": "--module-path \"C:/db-derby-10.17.1.0-bin/lib/\" --add-modules derby"
+        }
+    ]
+}

@@ -1,14 +1,13 @@
 {
-    "java.project.referencedLibraries": [
-        "C:/db-derby-10.17.1.0-bin/lib/*.jar"
-    ],
+    "java.configuration.defaultRuntime": "JavaSE-25",
     "java.configuration.runtimes": [
         {
-            "name": "derbytools",
-            "path": "C:/Program Files/Java/jdk-21",
-            "default": true
+            "name": "JavaSE-25",
+            "path": "C:/Adoptium/jdk-25/"
         }
     ],
-    "notebook.lineNumbers": "on",
-    "security.workspace.trust.untrustedFiles": "open"
+    "java.project.referencedLibraries": [
+        "C:/db-derby-10.17.1.0-bin/lib/*.jar"
+    ]
+
 }

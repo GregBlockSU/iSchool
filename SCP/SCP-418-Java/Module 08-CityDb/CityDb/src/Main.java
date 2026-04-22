@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
-public class Population
+public class Main
 {
    public static void main(String[] args)
    {
-      int choice = 0;
-      displayAll();
+      int choice = -1;
       
       while (choice != 8)
       {
@@ -18,6 +17,7 @@ public class Population
    {
       System.out.println();
       System.out.println("              MENU");
+      System.out.println("0) Create the CityDB database");
       System.out.println("1) Sorted by Population in Ascending Order");
       System.out.println("2) Sorted by Population in Descending Order");
       System.out.println("3) Sorted by name");
@@ -31,18 +31,23 @@ public class Population
    
    public static int dispatch()
    {
+      int choice = -1;
       Scanner keyboard = new Scanner(System.in);
-      int choice = keyboard.nextInt();
-      
-      while (choice < 1 || choice > 8)
+
+      choice = keyboard.nextInt();
+   
+      while (choice < 0 || choice > 8)
       {
-         System.out.println("Your selection must be in the range 1-8.");
+         System.out.println("Your selection must be in the range 0-8.");
          System.out.print("Enter your choice: ");
          choice = keyboard.nextInt();
       }
-      
+   
+   
       switch(choice)
       {
+         case 0: createDatabase();
+                  break;
          case 1:  displayAscending();
                   break;
          case 2:  displayDescending();
@@ -60,6 +65,12 @@ public class Population
       }
       
       return choice;
+   }
+
+   public static void createDatabase()
+   {
+      CreateCityDB.createTable();
+      displayAll();
    }
    
    public static void displayAll()

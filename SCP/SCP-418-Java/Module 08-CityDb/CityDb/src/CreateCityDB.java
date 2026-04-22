@@ -9,15 +9,46 @@ This program creates the CityDB database. *
 public class CreateCityDB
 {
     final static String DB_URL = "jdbc:derby:CityDB;create=true";
+    final static String DROP_TABLE_SQL = "DROP TABLE CITY";
     final static String CREATE_TABLE_SQL = """
-    CREATE TABLE City
+    CREATE TABLE CITY
     (
         CityName CHAR(25) NOT NULL PRIMARY KEY,
         Population DOUBLE
     )""";
-    public static void main(String[] args) throws Exception, SQLException
+
+    public static void dropTable()
     {
-        HashMap<String, Integer> cities = new HashMap();
+        try
+        {             
+            // Create a connection to the database.
+            // Create a Statement object.
+            Connection conn = DriverManager.getConnection(DB_URL);
+            Statement stmt = conn.createStatement();
+             
+             DatabaseMetaData meta = conn.getMetaData();
+             ResultSet rs = meta.getTables(null, "APP", "CITY", null);
+             if (rs.next()) {
+                System.out.println("Dropping the CITY table...");
+                stmt.executeUpdate(DROP_TABLE_SQL);                
+             } else {
+                System.out.println("The CITY table does not exist.");
+             }
+        }
+        catch(SQLException ex)
+        {
+            System.out.println("ERROR: " + ex.getMessage());
+        }
+        catch(Exception ex)
+        {
+            System.out.println("ERROR: " + ex.getMessage());
+        }
+    }
+
+    public static void createTable()
+    {
+        dropTable();
+        HashMap<String, Integer> cities = new HashMap<String, Integer>();
         cities.put("Beijing", 12500000);
         cities.put("Buenos Aires", 13170000);
         cities.put("Cairo", 14450000);
