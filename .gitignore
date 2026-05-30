@@ -5,3 +5,5 @@ github-recovery-codes.txt
 *.zip
 *.dat
 *.pyc
+*.RHistory
+*.log
