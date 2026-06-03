@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kristopher Plantz Final Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Stint+Ultra+Expanded" rel="stylesheet">
+<style>
+@import url(styles.css);
+    ol, ul {
+        list-style-type: none;
+    }
+</style>
+
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>Contact Info</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main>
+    <h2>Tell us how to contact you</h2>
+    <form action="IDidntWriteAnyProcessingCode.php" method="POST">
+        <fieldset>
+            <legend>Contact Details</legend>
+            <fieldset>
+                <legend>Personal Information</legend>
+                <ul>
+                    <li><label for="form-name">Name:</label> <input type="text" name="customername" id="form-name" /></li>
+                    <li><label for="form-address">Address:</label> <input type="text" name="address" id="form-address" /></li>
+                    <li><label for="form-dob">Date of Birth:</label> <input type="date" name="dob" id="form-dob" /></li>
+                    <li><label for="form-tel">Telephone Number:</label> <input type="tel" name="telephone" id="form-tel" /></li>
+                    <li><label for="form-email">Email:</label> <input type="email" name="email" id="form-email" /></li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend>Preferred contact method:</legend>
+                <ul>
+                    <li><label><input type="radio" name="contact" value="email" />Email</label></li>
+                    <li><label><input type="radio" name="contact" value="text" />SMS Text</label></li>
+                    <li><label><input type="radio" name="contact" value="phone" />Phone Call</label></li>
+                    <li><label><input type="radio" name="contact" value="post" />Snail Mail</label></li>
+                </ul>
+            </fieldset>
+        </fieldset>
+
+        <h2>Tell us more about yourself</h2>
+        <fieldset>
+            <legend>Demographic Information</legend>
+
+            <fieldset>
+                <legend>Ethinicity <em>(Optional)</em>:</legend>
+                <ul>
+                    <li><label><input type="checkbox" name="toppings[]" value="1" />Celt</label></li>
+                    <li><label><input type="checkbox" name="toppings[]" value="2" />Haudenosaunee</label></li>
+                    <li><label><input type="checkbox" name="toppings[]" value="4" />Ryukyuan</label></li>
+                    <li><label><input type="checkbox" name="toppings[]" value="8" />Viking</label></li>
+                    <li><label><input type="checkbox" name="toppings[]" value="16" />Qin</label></li>
+                    <li><label><input type="checkbox" name="toppings[]" value="32" />Akan</label></li>
+                    <li><label><input type="checkbox" name="toppings[]" value="64" />Awesome Sauce</label></li>
+
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend>Income</legend>
+                <p>
+                    How rich are you:
+                    <select name="number" size="1">
+                        <option>Dirt Poor</option>
+                        <option>I love my shack</option>
+                        <option>I can buy veggies</option>
+                        <option>I trust my car</option>
+                        <option>I'm comfortable</option>
+                        <option>Everyone can travel the world</option>
+                        <option>What's money?</option>
+
+                    </select>
+                </p>
+            </fieldset>
+        </fieldset>
+        <p><input type="submit" value="Submit Request" /><input type="reset" value="Clear Form" /></p>
+    </form>
+</main>
+
+
+<footer>
+<p>All content copyright &copy; 2024, Kristopher Plantz.</p>
+</footer>
+
+
+</body>
+</html>
