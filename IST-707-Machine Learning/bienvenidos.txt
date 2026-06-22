@@ -1,0 +1,29 @@
+Welcome to IST 707 Applied Machine Learning at SU!
+
+First – Be sure to review the course syllabus (attached to this announcement).
+
+A few quick notes:
+
+The first day of live classes this term is Wednesday, April 8th. However, since we meet i  Tuesdays, our first live session will be Tuesday, April 14th at 6:30 PM.
+Please get started on the first day because this is a flipped class, and all of the Week 1 participation and reading must be complete before our first live session.
+
+Please note that you are responsible for drop and withdrawal deadlines. You can find the latest calendar for the term here:
+
+https://www.syracuse.edu/academics/calendars/quarter-term/#spring-2026
+
+Final Exam Week: we do not have a final exam – but we do have activities in week 11.
+
+I will update the due dates for all assignments and exercises in the course site on the Digital Campus.
+
+The required course textbooks are:
+
+Hands-On Machine Learning with Scikit-Learn, Keras
+TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems by Aurélien Géron (Third edition, 2022)
+
+Later editions are acceptable.
+
+I will be setting up a Microsoft Teams site for this course. We will use Teams for communicating, announcements, file uploads, etc. For our weekly asynchronous we will use Zoom, and for assignments, schedules and gradebook, we will be using the Digital Campus site.
+
+I look forward to meeting everyone in two weeks!
+
+Dr. Block

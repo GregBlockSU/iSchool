@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gradient Descent Interactive Visualizer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              900: '#0b1d35', 800: '#0e2440', 700: '#112847',
+              600: '#163050', 500: '#1a3a5c',
+            },
+            teal: {
+              400: '#00c9a7', 300: '#33d4b8', 200: '#66dfca',
+              100: '#99eadb', 50: '#ccf5ed', 600: '#00a88c', 700: '#008770',
+            },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-primary: #0b1d35; --bg-card: #112847; --bg-card-hover: #163050;
+      --teal: #00c9a7; --teal-dim: rgba(0,201,167,0.3); --teal-glow: rgba(0,201,167,0.5);
+      --text-primary: #ffffff; --text-secondary: rgba(255,255,255,0.7);
+      --text-muted: rgba(255,255,255,0.45);
+      --red: #ff4d6a; --orange: #ffa94d; --green: #51cf66;
+    }
+    * { box-sizing: border-box; }
+    body { background: var(--bg-primary); color: var(--text-primary); font-family: 'Inter', system-ui, sans-serif; margin: 0; min-height: 100vh; }
+    input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); outline: none; cursor: pointer; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal-glow); cursor: pointer; transition: transform 0.15s ease; }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal-glow); cursor: pointer; border: none; }
+    canvas { display: block; border-radius: 12px; }
+    .stat-card { background: var(--bg-card); border: 1px solid rgba(0,201,167,0.15); border-radius: 12px; padding: 16px 20px; transition: all 0.3s ease; }
+    .stat-card:hover { border-color: rgba(0,201,167,0.3); background: var(--bg-card-hover); }
+    .behavior-box { background: var(--bg-card); border: 1px solid rgba(0,201,167,0.2); border-radius: 12px; padding: 16px 24px; font-size: 0.95rem; line-height: 1.6; transition: all 0.4s ease; }
+    .btn-primary { background: var(--teal); color: var(--bg-primary); font-weight: 600; padding: 10px 22px; border-radius: 10px; border: none; cursor: pointer; font-size: 0.875rem; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-primary:hover { background: #33d4b8; transform: translateY(-1px); box-shadow: 0 4px 16px var(--teal-dim); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+    .btn-secondary { background: rgba(255,255,255,0.08); color: var(--text-primary); font-weight: 500; padding: 10px 22px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); cursor: pointer; font-size: 0.875rem; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.2); }
+    .canvas-panel { background: var(--bg-card); border: 1px solid rgba(0,201,167,0.15); border-radius: 16px; padding: 16px; position: relative; }
+    .canvas-label { font-size: 0.8rem; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .slider-group label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); font-weight: 500; }
+    .slider-value { font-variant-numeric: tabular-nums; color: var(--teal); font-weight: 600; font-size: 0.95rem; }
+    @keyframes pulse-glow { 0%,100% { box-shadow: 0 0 0 0 var(--teal-dim); } 50% { box-shadow: 0 0 12px 4px var(--teal-dim); } }
+    .animating { animation: pulse-glow 1s infinite; }
+  </style>
+</head>
+<body class="flex flex-col">
+
+  <!-- Header -->
+  <header class="px-6 py-4 border-b border-white/10 flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-teal-400/15 flex items-center justify-center">
+        <i data-lucide="trending-down" class="w-5 h-5 text-teal-400"></i>
+      </div>
+      <h1 class="text-xl font-bold tracking-tight">Gradient Descent Visualizer</h1>
+    </div>
+    <div class="text-sm text-white/50 font-mono">f(x) = x²&nbsp; | &nbsp;df/dx = 2x</div>
+  </header>
+
+  <!-- Controls -->
+  <section class="px-4 md:px-6 py-5">
+    <div class="max-w-7xl mx-auto bg-navy-700 border border-white/10 rounded-2xl p-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-5">
+        <div class="slider-group">
+          <div class="flex justify-between items-center mb-2">
+            <label>Learning Rate (α)</label>
+            <span id="lr-value" class="slider-value">0.10</span>
+          </div>
+          <input type="range" id="lr-slider" min="0.01" max="1.5" step="0.01" value="0.1" />
+        </div>
+        <div class="slider-group">
+          <div class="flex justify-between items-center mb-2">
+            <label>Starting x₀</label>
+            <span id="x0-value" class="slider-value">9.0</span>
+          </div>
+          <input type="range" id="x0-slider" min="-10" max="10" step="0.5" value="9" />
+        </div>
+        <div class="slider-group">
+          <div class="flex justify-between items-center mb-2">
+            <label>Iterations (n)</label>
+            <span id="n-value" class="slider-value">20</span>
+          </div>
+          <input type="range" id="n-slider" min="1" max="40" step="1" value="20" />
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <button id="btn-reset" class="btn-secondary">
+          <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Reset
+        </button>
+        <button id="btn-animate" class="btn-primary">
+          <i data-lucide="play" class="w-4 h-4"></i> Animate Steps
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Canvas Panels -->
+  <section class="px-4 md:px-6 flex-1">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div class="canvas-panel">
+        <div class="canvas-label">
+          <i data-lucide="move-down-right" class="w-4 h-4 inline-block mr-1 align-text-bottom"></i>
+          Descent Path on f(x)
+        </div>
+        <canvas id="canvas-descent" width="600" height="420"></canvas>
+      </div>
+      <div class="canvas-panel">
+        <div class="canvas-label">
+          <i data-lucide="line-chart" class="w-4 h-4 inline-block mr-1 align-text-bottom"></i>
+          Convergence: x value over iterations
+        </div>
+        <canvas id="canvas-convergence" width="600" height="420"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stat Cards -->
+  <section class="px-4 md:px-6 py-5">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="stat-card">
+        <div class="text-xs uppercase tracking-wider text-white/40 font-medium mb-1">Final x</div>
+        <div id="stat-x" class="text-2xl font-bold text-teal-400 tabular-nums">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="text-xs uppercase tracking-wider text-white/40 font-medium mb-1">Final f(x)</div>
+        <div id="stat-fx" class="text-2xl font-bold text-teal-400 tabular-nums">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="text-xs uppercase tracking-wider text-white/40 font-medium mb-1">Status</div>
+        <div id="stat-status" class="text-2xl font-bold">—</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Behavior Panel -->
+  <section class="px-4 md:px-6 pb-6">
+    <div class="max-w-7xl mx-auto">
+      <div id="behavior-box" class="behavior-box">
+        <span id="behavior-text">Adjust the sliders above to explore how the learning rate affects gradient descent on f(x) = x².</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-6 mt-auto text-center border-t border-white/5">
+    <p class="text-xs text-white/30">Gradient Descent Visualizer</p>
+  </footer>
+
+  <script>
+    if (typeof lucide !== "undefined") lucide.createIcons();
+
+    const f  = x => x * x;
+    const df = x => 2 * x;
+
+    function gradientDescent(x0, lr, n) {
+      const path = [x0];
+      for (let i = 0; i < n; i++) {
+        const grad = df(path[path.length - 1]);
+        const newX = path[path.length - 1] - lr * grad;
+        path.push(newX);
+        if (Math.abs(newX) > 1e6) break;
+      }
+      return path;
+    }
+
+    const lrSlider = document.getElementById('lr-slider');
+    const x0Slider = document.getElementById('x0-slider');
+    const nSlider  = document.getElementById('n-slider');
+    const lrValue  = document.getElementById('lr-value');
+    const x0Value  = document.getElementById('x0-value');
+    const nValue   = document.getElementById('n-value');
+    const btnReset   = document.getElementById('btn-reset');
+    const btnAnimate = document.getElementById('btn-animate');
+    const statX      = document.getElementById('stat-x');
+    const statFx     = document.getElementById('stat-fx');
+    const statStatus = document.getElementById('stat-status');
+    const behaviorText = document.getElementById('behavior-text');
+    const behaviorBox  = document.getElementById('behavior-box');
+    const canvasD = document.getElementById('canvas-descent');
+    const canvasC = document.getElementById('canvas-convergence');
+    const ctxD = canvasD.getContext('2d');
+    const ctxC = canvasC.getContext('2d');
+
+    let animationTimer = null;
+    let animStepIndex  = 0;
+    let isAnimating    = false;
+
+    const TEAL='#00c9a7',RED='#ff4d6a',ORANGE='#ffa94d',GREEN='#51cf66';
+    const WHITE='#ffffff',GRID='rgba(255,255,255,0.06)',AXIS_COLOR='rgba(255,255,255,0.2)';
+    const LABEL_COLOR='rgba(255,255,255,0.45)',CARD_BG='#112847';
+
+    function resizeCanvases() {
+      document.querySelectorAll('.canvas-panel').forEach((panel, i) => {
+        const cv   = i === 0 ? canvasD : canvasC;
+        const rect = panel.getBoundingClientRect();
+        const w    = rect.width - 32;
+        const h    = Math.max(320, Math.min(440, w * 0.7));
+        cv.width   = w * devicePixelRatio;
+        cv.height  = h * devicePixelRatio;
+        cv.style.width  = w + 'px';
+        cv.style.height = h + 'px';
+        cv.getContext('2d').setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+      });
+    }
+
+    function clearCanvas(ctx, cv) {
+      const w = cv.width / devicePixelRatio, h = cv.height / devicePixelRatio;
+      ctx.fillStyle = CARD_BG;
+      ctx.fillRect(0, 0, w, h);
+    }
+
+    function drawDescent(path, animUpTo) {
+      const cv = canvasD, ctx = ctxD;
+      const W  = cv.width / devicePixelRatio, H = cv.height / devicePixelRatio;
+      clearCanvas(ctx, cv);
+      const m = { top:20, right:25, bottom:45, left:55 };
+      const pw = W - m.left - m.right, ph = H - m.top - m.bottom;
+      const xMin=-12, xMax=12, yMin=-5, yMax=150;
+      const toX = x => m.left + (x - xMin) / (xMax - xMin) * pw;
+      const toY = y => m.top  + (1 - (y - yMin) / (yMax - yMin)) * ph;
+
+      ctx.strokeStyle = GRID; ctx.lineWidth = 1;
+      for (let gx=-10; gx<=10; gx+=5) { ctx.beginPath(); ctx.moveTo(toX(gx),m.top); ctx.lineTo(toX(gx),H-m.bottom); ctx.stroke(); }
+      for (let gy=0; gy<=150; gy+=25) { ctx.beginPath(); ctx.moveTo(m.left,toY(gy)); ctx.lineTo(W-m.right,toY(gy)); ctx.stroke(); }
+
+      ctx.strokeStyle = AXIS_COLOR; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(m.left,toY(0)); ctx.lineTo(W-m.right,toY(0)); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(toX(0),m.top);  ctx.lineTo(toX(0),H-m.bottom); ctx.stroke();
+
+      ctx.fillStyle = LABEL_COLOR; ctx.font = '11px Inter,system-ui,sans-serif';
+      ctx.textAlign = 'center';
+      for (let gx=-10; gx<=10; gx+=5) { if (gx!==0) ctx.fillText(gx, toX(gx), H-m.bottom+16); }
+      ctx.textAlign = 'right';
+      for (let gy=0; gy<=150; gy+=25) { if (gy!==0) ctx.fillText(gy, m.left-8, toY(gy)+4); }
+
+      ctx.fillStyle = 'rgba(255,255,255,0.55)'; ctx.font = '600 12px Inter,system-ui,sans-serif';
+      ctx.textAlign = 'center'; ctx.fillText('x', W/2, H-4);
+      ctx.save(); ctx.translate(14, H/2); ctx.rotate(-Math.PI/2); ctx.fillText('f(x) = x²', 0, 0); ctx.restore();
+
+      ctx.strokeStyle = TEAL; ctx.lineWidth = 2.5;
+      ctx.shadowColor = 'rgba(0,201,167,0.3)'; ctx.shadowBlur = 6;
+      ctx.beginPath();
+      for (let px=0; px<=pw; px++) {
+        const x=xMin+(px/pw)*(xMax-xMin), y=f(x);
+        if (px===0) ctx.moveTo(m.left+px, toY(y)); else ctx.lineTo(m.left+px, toY(y));
+      }
+      ctx.stroke(); ctx.shadowBlur = 0;
+
+      ctx.beginPath(); ctx.arc(toX(0),toY(0),6,0,Math.PI*2);
+      ctx.fillStyle = TEAL; ctx.shadowColor=TEAL; ctx.shadowBlur=12; ctx.fill(); ctx.shadowBlur=0;
+      ctx.fillStyle='rgba(0,201,167,0.8)'; ctx.font='600 10px Inter,system-ui,sans-serif';
+      ctx.textAlign='center'; ctx.fillText('Minimum', toX(0), toY(0)+18);
+
+      const steps = animUpTo != null ? Math.min(animUpTo+1, path.length) : path.length;
+      if (steps > 0) {
+        for (let i=0; i<steps-1; i++) {
+          const px1=toX(path[i]), py1=toY(f(path[i]));
+          const px2=toX(path[i+1]), py2=toY(f(path[i+1]));
+          if (py1 < m.top-50 || py2 < m.top-50) continue;
+          ctx.strokeStyle=RED; ctx.lineWidth=1.8;
+          ctx.beginPath(); ctx.moveTo(px1,py1); ctx.lineTo(px2,py2); ctx.stroke();
+          const angle=Math.atan2(py2-py1, px2-px1), mx=(px1+px2)/2, my=(py1+py2)/2, al=7;
+          ctx.fillStyle=RED; ctx.beginPath();
+          ctx.moveTo(mx+al*Math.cos(angle), my+al*Math.sin(angle));
+          ctx.lineTo(mx+al*Math.cos(angle+2.5), my+al*Math.sin(angle+2.5));
+          ctx.lineTo(mx+al*Math.cos(angle-2.5), my+al*Math.sin(angle-2.5));
+          ctx.closePath(); ctx.fill();
+        }
+        for (let i=0; i<steps; i++) {
+          const px=toX(path[i]), py=toY(f(path[i]));
+          if (py < m.top-30) continue;
+          const r = (i===0||i===steps-1) ? 5 : 3.5;
+          ctx.beginPath(); ctx.arc(px,py,r,0,Math.PI*2);
+          ctx.fillStyle='#ff6b8a'; ctx.fill();
+          if (i===0||i===steps-1) {
+            ctx.strokeStyle='rgba(255,77,106,0.4)'; ctx.lineWidth=2;
+            ctx.beginPath(); ctx.arc(px,py,8,0,Math.PI*2); ctx.stroke();
+          }
+        }
+        ctx.fillStyle=WHITE; ctx.font='600 11px Inter,system-ui,sans-serif'; ctx.textAlign='center';
+        const sp=toX(path[0]), sy=toY(f(path[0]));
+        if (sy>m.top) ctx.fillText('x₀ = '+path[0].toFixed(1), sp, sy-14);
+        if (steps>1) {
+          const lx=path[steps-1], lp=toX(lx), ly=toY(f(lx));
+          if (ly>m.top && ly<H-m.bottom) { ctx.fillStyle='#ff6b8a'; ctx.fillText('x = '+lx.toFixed(2), lp, ly-14); }
+        }
+      }
+    }
+
+    function drawConvergence(path, animUpTo) {
+      const cv=canvasC, ctx=ctxC;
+      const W=cv.width/devicePixelRatio, H=cv.height/devicePixelRatio;
+      clearCanvas(ctx, cv);
+      const m={top:20,right:25,bottom:45,left:55};
+      const pw=W-m.left-m.right, ph=H-m.top-m.bottom;
+      const steps = animUpTo!=null ? Math.min(animUpTo+1,path.length) : path.length;
+      const dp = path.slice(0,steps);
+      const maxIter=path.length-1;
+      let absMax=0; for (let v of dp) absMax=Math.max(absMax,Math.abs(v));
+      absMax=Math.max(absMax,1);
+      const yRange=absMax*1.15, yMin=-yRange, yMax=yRange;
+      const toX = i => m.left+(i/Math.max(maxIter,1))*pw;
+      const toY = y => m.top+(1-(y-yMin)/(yMax-yMin))*ph;
+
+      ctx.strokeStyle=GRID; ctx.lineWidth=1;
+      const iStep=maxIter<=10?1:maxIter<=20?2:5;
+      for (let gi=0;gi<=maxIter;gi+=iStep){ctx.beginPath();ctx.moveTo(toX(gi),m.top);ctx.lineTo(toX(gi),H-m.bottom);ctx.stroke();}
+      const yStep=yRange>50?50:yRange>20?10:yRange>5?2:1;
+      for (let gy=-Math.ceil(yRange/yStep)*yStep;gy<=Math.ceil(yRange/yStep)*yStep;gy+=yStep){
+        const py=toY(gy);if(py>=m.top&&py<=H-m.bottom){ctx.beginPath();ctx.moveTo(m.left,py);ctx.lineTo(W-m.right,py);ctx.stroke();}
+      }
+      ctx.setLineDash([6,4]); ctx.strokeStyle='rgba(0,201,167,0.4)'; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.moveTo(m.left,toY(0)); ctx.lineTo(W-m.right,toY(0)); ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle=LABEL_COLOR; ctx.font='11px Inter,system-ui,sans-serif';
+      ctx.textAlign='center';
+      for(let gi=0;gi<=maxIter;gi+=iStep) ctx.fillText(gi,toX(gi),H-m.bottom+16);
+      ctx.textAlign='right';
+      for(let gy=-Math.ceil(yRange/yStep)*yStep;gy<=Math.ceil(yRange/yStep)*yStep;gy+=yStep){
+        const py=toY(gy);if(py>=m.top&&py<=H-m.bottom) ctx.fillText(gy.toFixed(gy===Math.round(gy)?0:1),m.left-8,py+4);
+      }
+      ctx.fillStyle='rgba(255,255,255,0.55)'; ctx.font='600 12px Inter,system-ui,sans-serif';
+      ctx.textAlign='center'; ctx.fillText('Iteration',W/2,H-4);
+      ctx.save(); ctx.translate(14,H/2); ctx.rotate(-Math.PI/2); ctx.fillText('x value',0,0); ctx.restore();
+
+      const lastX=dp[dp.length-1], absLast=Math.abs(lastX);
+      const growing = dp.length>3 && Math.abs(dp[dp.length-1])>Math.abs(dp[dp.length-2])*1.05;
+      const lineColor = (absLast>100||growing) ? RED : absLast>0.5 ? ORANGE : GREEN;
+
+      if (dp.length>1) {
+        ctx.strokeStyle=lineColor; ctx.lineWidth=2.5; ctx.lineJoin='round';
+        ctx.beginPath();
+        for (let i=0;i<dp.length;i++){
+          const py=Math.max(m.top,Math.min(H-m.bottom,toY(dp[i])));
+          if(i===0) ctx.moveTo(toX(i),py); else ctx.lineTo(toX(i),py);
+        }
+        ctx.stroke();
+      }
+      for (let i=0;i<dp.length;i++){
+        const py=Math.max(m.top,Math.min(H-m.bottom,toY(dp[i])));
+        ctx.beginPath(); ctx.arc(toX(i),py,3.5,0,Math.PI*2);
+        ctx.fillStyle=lineColor; ctx.fill();
+      }
+      ctx.fillStyle='rgba(0,201,167,0.6)'; ctx.font='600 10px Inter,system-ui,sans-serif';
+      ctx.textAlign='left'; ctx.fillText('optimum (x=0)',m.left+4,toY(0)-6);
+      ctx.strokeStyle=AXIS_COLOR; ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(m.left,m.top);ctx.lineTo(m.left,H-m.bottom);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(m.left,H-m.bottom);ctx.lineTo(W-m.right,H-m.bottom);ctx.stroke();
+    }
+
+    function updateStats(path, lr) {
+      const lastX=path[path.length-1], lastFx=f(lastX), absLast=Math.abs(lastX);
+      statX.textContent  = isFinite(lastX)  ? lastX.toFixed(4)  : '∞';
+      statFx.textContent = isFinite(lastFx) ? lastFx.toFixed(4) : '∞';
+      if (absLast<0.01)        { statStatus.textContent='✅ Converged';   statStatus.style.color=GREEN; }
+      else if (absLast>100)    { statStatus.textContent='🔴 Diverging';   statStatus.style.color=RED; }
+      else                     { statStatus.textContent='⚠️ Oscillating'; statStatus.style.color=ORANGE; }
+
+      let msg='', bc='rgba(0,201,167,0.2)';
+      if      (lr < 0.05)                   { msg='⚡ Very slow convergence. Steps are tiny — many iterations needed to reach the minimum.'; bc='rgba(81,207,102,0.2)'; }
+      else if (lr < 0.5)                    { msg='✅ Good learning rate. Smooth, stable convergence toward x=0.'; bc='rgba(81,207,102,0.2)'; }
+      else if (Math.abs(lr-0.5) < 0.005)   { msg='🔄 Critical point. Steps exactly halve each iteration — converges but slowly.'; bc='rgba(255,169,77,0.2)'; }
+      else if (lr < 1.0)                    { msg='⚠️ Oscillating but converging. The algorithm overshoots each step but still settles.'; bc='rgba(255,169,77,0.2)'; }
+      else if (Math.abs(lr-1.0) < 0.005)   { msg='🔄 Boundary case. Steps jump between +x₀ and −x₀ indefinitely — never converges.'; bc='rgba(255,77,106,0.2)'; }
+      else                                  { msg='🔴 Diverging! Learning rate too large. Each step overshoots further — algorithm explodes.'; bc='rgba(255,77,106,0.3)'; }
+      behaviorText.textContent = msg;
+      behaviorBox.style.borderColor = bc;
+    }
+
+    function getParams() {
+      return { lr: parseFloat(lrSlider.value), x0: parseFloat(x0Slider.value), n: parseInt(nSlider.value) };
+    }
+
+    function updateAll() {
+      const {lr,x0,n} = getParams();
+      lrValue.textContent = lr.toFixed(2);
+      x0Value.textContent = x0.toFixed(1);
+      nValue.textContent  = n.toString();
+      const path = gradientDescent(x0, lr, n);
+      drawDescent(path, null); drawConvergence(path, null); updateStats(path, lr);
+    }
+
+    function stopAnimation() {
+      if (animationTimer) { clearTimeout(animationTimer); animationTimer=null; }
+      isAnimating=false; btnAnimate.disabled=false;
+      btnAnimate.classList.remove('animating');
+      btnAnimate.innerHTML='<i data-lucide="play" class="w-4 h-4"></i> Animate Steps';
+      if (typeof lucide!=="undefined") lucide.createIcons();
+    }
+
+    function startAnimation() {
+      stopAnimation(); isAnimating=true; btnAnimate.disabled=true;
+      btnAnimate.classList.add('animating');
+      btnAnimate.innerHTML='<i data-lucide="loader" class="w-4 h-4"></i> Animating...';
+      if (typeof lucide!=="undefined") lucide.createIcons();
+      const {lr,x0,n}=getParams(), path=gradientDescent(x0,lr,n);
+      animStepIndex=0;
+      function step() {
+        if (animStepIndex>=path.length) { stopAnimation(); updateAll(); return; }
+        drawDescent(path, animStepIndex); drawConvergence(path, animStepIndex);
+        updateStats(path.slice(0, animStepIndex+1), lr);
+        animStepIndex++;
+        animationTimer=setTimeout(step, 300);
+      }
+      step();
+    }
+
+    lrSlider.addEventListener('input', ()=>{ stopAnimation(); updateAll(); });
+    x0Slider.addEventListener('input', ()=>{ stopAnimation(); updateAll(); });
+    nSlider.addEventListener('input',  ()=>{ stopAnimation(); updateAll(); });
+    btnReset.addEventListener('click', ()=>{ stopAnimation(); lrSlider.value='0.1'; x0Slider.value='9'; nSlider.value='20'; updateAll(); });
+    btnAnimate.addEventListener('click', startAnimation);
+    window.addEventListener('resize', ()=>{ resizeCanvases(); if(!isAnimating) updateAll(); });
+
+    resizeCanvases();
+    updateAll();
+  </script>
+</body>
+</html>
