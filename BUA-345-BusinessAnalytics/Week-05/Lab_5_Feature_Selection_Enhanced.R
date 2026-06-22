@@ -22,9 +22,9 @@ library(scales)
 library(reshape2)
 
 # NOTE: glmulti requires Java.  Set your JAVA_HOME before loading if needed:
-# Sys.setenv(JAVA_HOME = "C:/jdk-25.0.1")
-# library(glmulti)
-# library(leaps)
+Sys.setenv(JAVA_HOME = "C:/jdk-25.0.1")
+library(glmulti)
+library(leaps)
 
 # --------------------------------------------------------------------------
 # Shared theme for a clean, consistent look
@@ -160,13 +160,13 @@ grid.arrange(p_genre, p_runtime, ncol = 2,
 # =============================================================================
 
 # ── Option A: use glmulti (requires Java + rJava installed) ──────────────────
-# library(glmulti)
-# glmulti(`REVENUE/M` ~ ., data = MOVIES, fitfunction = lm, level = 1) -> RESULTS
-# summary(RESULTS)
-# best_formula <- summary(RESULTS)$bestmodel
+library(glmulti)
+RESULTS <- glmulti(`REVENUE/M` ~ ., data = MOVIES, fitfunction = lm, level = 1)
+summary(RESULTS)
+best_formula <- summary(RESULTS)$bestmodel
 
 # ── Option B: use the formula glmulti identifies (used below) ────────────────
-best_formula <- "`REVENUE/M` ~ 1 + GENRE1 + GENRE2 + RATED + RUNTIME + BUDGET_M"
+#best_formula <- "`REVENUE/M` ~ 1 + GENRE1 + GENRE2 + RATED + RUNTIME + BUDGET_M"
 Best_Movie_Model <- lm(as.formula(best_formula), data = MOVIES)
 
 
