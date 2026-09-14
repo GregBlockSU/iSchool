@@ -3,7 +3,10 @@ rm(list = ls()) # remove variables
 graphics.off() # clear graphs
 
 # Step 1 - Load Week 3 Data Set
-data_path <- "C:/Users/gregb/OneDrive/Syracuse/Courses/College of Professional Studies/BUA-345 - Business Analytics/Week-03"
+data_path <- "C:\\repos\\iSchool\\BUA-345-BusinessAnalytics\\Week-03"
+
+# note that this form also works:
+# data_path <- "C:/repos/iSchool/BUA-345-BusinessAnalytics/Week-03"
 setwd(data_path)
 getwd()
 load("Week 3 - Lab Data.RData")

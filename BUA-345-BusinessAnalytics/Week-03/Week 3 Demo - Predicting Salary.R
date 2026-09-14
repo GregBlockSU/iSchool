@@ -1,5 +1,9 @@
 # Modeled after problem at https://www.statology.org/predict-in-r-multiple-regression/
 
+# Step 0 - Reset R Studio
+rm(list = ls()) # remove variables
+graphics.off() # clear graphs
+
 #Turn off Scientific notation
 options(scipen = 50)
 
@@ -30,7 +34,7 @@ qplot(df$salary, df$rebounds) +
 
 
 #Which dependent variable looks most closely correlated with salary?
-
+# points
 #------------------------------------------------------
 
 #fit multiple linear regression model

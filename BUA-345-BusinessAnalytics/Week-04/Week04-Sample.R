@@ -13,6 +13,7 @@ graphics.off() # clear graphs
 # Install packages if needed --------------------------------
 pkgs <- c("ggplot2", "dplyr", "ggiraphExtra")
 to_install <- pkgs[!pkgs %in% installed.packages()[, "Package"]]
+to_install
 if (length(to_install) > 0) install.packages(to_install)
 
 library(ggplot2)
@@ -32,14 +33,24 @@ df <- df %>% sample_n(5000)
 
 # Structure and summary
 str(df)
+
 summary(df[, c("price", "carat", "cut")])
 
-# Distribution of cut
+# price           carat               cut      
+# Min.   :  335   Min.   :0.2200   Fair     : 139  
+# 1st Qu.:  942   1st Qu.:0.4000   Good     : 463  
+# Median : 2428   Median :0.7100   Very Good:1130  
+# Mean   : 3941   Mean   :0.7984   Premium  :1289  
+# 3rd Qu.: 5292   3rd Qu.:1.0400   Ideal    :1979  
+# Max.   :18795   Max.   :3.0200  
+
+# Distribution of cut with absolute values
 table(df$cut)
 
 # Fair      Good Very Good   Premium     Ideal 
 # 139       463      1130      1289      1979 
 
+# Distribution of cut with proportions
 prop.table(table(df$cut))
 
 # Fair      Good Very Good   Premium     Ideal 
@@ -117,9 +128,56 @@ summary(m2)
 # Multiple R-squared:  0.8624,	Adjusted R-squared:  0.8621 
 # F-statistic:  3475 on 9 and 4990 DF,  p-value: < 2.2e-16
 
+# Model 2 is better because the slope of price vs. carat is not constant 
+# across cut categories, and the interaction terms are highly significant, 
+# meaning the data demands different slopes.
+# Model 1 incorrectly forces parallel lines, which is contradicted 
+# by the evidence.
+
+
+# Why Model 2 wins (the real reasons)
+# 1. Residual standard error improves
+# Model 1 RSE: 1510
+# Model 2 RSE: 1493
+
+# A drop of 17 points may look small, but with ~5000 observations, 
+# that’s meaningful.
+# Lower RSE = better fit.
+
+# 2. Adjusted R² improves
+# Model 1: 0.8589
+# Model 2: 0.8621
+
+#Adjusted R² penalizes extra parameters.
+# Model 2 still improves → the added complexity is justified.
 
 # Compare models
 anova(m1, m2)
+
+# Analysis of Variance Table
+
+# Model 1: price ~ carat + cut
+# Model 2: price ~ carat * cut
+# Res.Df        RSS Df Sum of Sq      F    Pr(>F)    
+# 1   4994 1.1389e+10                                  
+# 2   4990 1.1117e+10  4 271866169 30.508 < 2.2e-16 ***
+#   ---
+#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+# Model 1 assumes:
+# “Cut only shifts the intercept; the slope of price vs. carat is 
+# the same for all cuts.”
+# Model 2 allows:
+# “Cut changes both the intercept and the slope.”
+# The ANOVA shows that letting slopes differ across cut categories 
+# dramatically improves the model.
+
+# Conclusion
+# Model 2 is statistically, structurally, and practically better.
+# The ANOVA confirms that the interaction terms explain a large 
+# amount of additional variance.
+# The improvement is far too big to be random.
+# The simpler model (parallel slopes) is rejected.
 
 # Add fitted values from interaction model
 df$pred_m2 <- fitted(m2)
