@@ -8,3 +8,4 @@ github-recovery-codes.txt
 *.RHistory
 *.log
 *.pyc
+*.RDataTmp

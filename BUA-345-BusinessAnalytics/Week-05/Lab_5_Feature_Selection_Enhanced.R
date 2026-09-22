@@ -49,8 +49,31 @@ load(file_path)   # adjust path as needed
 
 # Quick look
 cat("── Dataset dimensions:", nrow(MOVIES), "rows ×", ncol(MOVIES), "cols\n")
+
+# 0── Dataset dimensions: 1016 rows × 8 cols
+
 cat("── Column names:", paste(names(MOVIES), collapse = ", "), "\n\n")
+
+# ── Column names: RUNTIME, BUDGET_M, LANGUAGE, GENRE1, GENRE2, RATED, RELEASED, REVENUE/M 
 print(summary(MOVIES))
+
+
+# RUNTIME       BUDGET_M          LANGUAGE         GENRE1   
+# Min.   : 65   Min.   :  0.00   Chinese :  7   Action   :255  
+# 1st Qu.: 95   1st Qu.:  5.00   English :929   Drama    :220  
+# Median :103   Median : 12.00   French  : 17   Comedy   :183  
+# Mean   :106   Mean   : 18.65   Hindi   : 24   Horror   : 88  
+# 3rd Qu.:114   3rd Qu.: 25.00   Japanese: 14   Crime    : 85  
+# Max.   :197   Max.   :200.00   Russian : 13   Adventure: 61  
+# Spanish : 12   (Other)  :124  
+# GENRE2      RATED       RELEASED     REVENUE/M     
+# Drama    :245   G    : 22   Fall  :314   Min.   :  0.00  
+# Comedy   :156   NR   :104   Spring:245   1st Qu.:  5.00  
+# Thriller :133   PG   :104   Summer:225   Median : 20.00  
+# Crime    : 94   PG-13:250   Winter:232   Mean   : 44.40  
+# Romance  : 93   R    :536                3rd Qu.: 60.25  
+# Adventure: 71                            Max.   :586.00  
+# (Other)  :224 
 
 
 # =============================================================================
@@ -162,13 +185,18 @@ grid.arrange(p_genre, p_runtime, ncol = 2,
 # ── Option A: use glmulti (requires Java + rJava installed) ──────────────────
 library(glmulti)
 RESULTS <- glmulti(`REVENUE/M` ~ ., data = MOVIES, fitfunction = lm, level = 1)
-summary(RESULTS)
+summary(RESULTS)$bestmodel
+
+# $bestmodel
+# [1] "`REVENUE/M` ~ 1 + GENRE1 + GENRE2 + RATED + RUNTIME + BUDGET_M"
+
 best_formula <- summary(RESULTS)$bestmodel
+best_formula
 
 # ── Option B: use the formula glmulti identifies (used below) ────────────────
 #best_formula <- "`REVENUE/M` ~ 1 + GENRE1 + GENRE2 + RATED + RUNTIME + BUDGET_M"
 Best_Movie_Model <- lm(as.formula(best_formula), data = MOVIES)
-
+Best_Movie_Model
 
 # =============================================================================
 #  STEP 4 – Model Summary
@@ -178,6 +206,54 @@ cat(" BEST MODEL SUMMARY\n")
 cat("══════════════════════════════════════════\n")
 print(summary(Best_Movie_Model))
 
+# Call:
+#   lm(formula = as.formula(best_formula), data = MOVIES)
+# 
+# Residuals:
+#   Min      1Q  Median      3Q     Max 
+# -87.795 -18.305  -1.987  15.607 170.540 
+# 
+# Coefficients:
+#   Estimate Std. Error t value Pr(>|t|)    
+# (Intercept)      -2.23529   11.61996  -0.192 0.847495    
+# GENRE1Adventure  13.58074    5.23829   2.593 0.009667 ** 
+#   GENRE1Animation  46.13146    9.39097   4.912 1.05e-06 ***
+#   GENRE1Comedy     14.39031    3.70056   3.889 0.000108 ***
+#   GENRE1Crime       7.36356    4.51815   1.630 0.103470    
+# GENRE1Drama      -0.60339    3.47617  -0.174 0.862232    
+# GENRE1Fantasy    -4.04900    7.96938  -0.508 0.611518    
+# GENRE1Horror     22.39987    4.52443   4.951 8.69e-07 ***
+#   GENRE1Music     -51.12658   18.92228  -2.702 0.007013 ** 
+#   GENRE1Mystery    19.88882    9.40050   2.116 0.034620 *  
+#   GENRE1Romance    10.87058    6.86269   1.584 0.113513    
+# GENRE1SciFi      -8.82760   12.18456  -0.724 0.468937    
+# GENRE1Thriller   11.77417    5.80965   2.027 0.042967 *  
+#   GENRE1War       -66.50891   23.20259  -2.866 0.004240 ** 
+#   GENRE2Adventure -10.12881    6.48797  -1.561 0.118806    
+# GENRE2Animation -13.97946   12.56337  -1.113 0.266103    
+# GENRE2Comedy    -22.14566    5.39930  -4.102 4.44e-05 ***
+#   GENRE2Crime     -21.28126    5.94274  -3.581 0.000359 ***
+#   GENRE2Drama     -26.20466    5.39125  -4.861 1.36e-06 ***
+#   GENRE2Fantasy     0.41230    8.67284   0.048 0.962093    
+# GENRE2Horror    -11.67984    6.91605  -1.689 0.091574 .  
+# GENRE2Music     -19.17916    9.57055  -2.004 0.045347 *  
+#   GENRE2Mystery   -20.91200    6.86506  -3.046 0.002380 ** 
+#   GENRE2Romance    -9.86303    5.97996  -1.649 0.099396 .  
+# GENRE2SciFi     -21.53652    7.80553  -2.759 0.005903 ** 
+#   GENRE2Thriller  -17.53452    5.63375  -3.112 0.001909 ** 
+#   GENRE2War       -33.16473   11.37656  -2.915 0.003636 ** 
+#   RATEDNR         -26.28956    8.02617  -3.275 0.001092 ** 
+#   RATEDPG         -12.52140    7.80737  -1.604 0.109081    
+# RATEDPG-13      -31.14222    7.65510  -4.068 5.12e-05 ***
+#   RATEDR          -29.32743    7.50409  -3.908 9.94e-05 ***
+#   RUNTIME           0.35972    0.06792   5.296 1.46e-07 ***
+#   BUDGET_M          2.51458    0.05711  44.027  < 2e-16 ***
+#   ---
+#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+# 
+# Residual standard error: 32.31 on 983 degrees of freedom
+# Multiple R-squared:  0.7562,	Adjusted R-squared:  0.7483 
+# F-statistic: 95.29 on 32 and 983 DF,  p-value: < 2.2e-16
 
 # =============================================================================
 #  STEP 5 – R² Visualization
@@ -237,6 +313,9 @@ cat(sprintf(" Adjusted R² = %.4f\n", adj_r2))
 cat(sprintf(" Unexplained = %.4f  (%s residual variance)\n\n",
             unexplained, percent(unexplained, accuracy = 0.1)))
 
+# R²         = 0.7562  (75.6% of variance explained)
+# Adjusted R² = 0.7483
+# Unexplained = 0.2438  (24.4% residual variance)
 
 # =============================================================================
 #  STEP 6 – ANOVA Table and Visualization
@@ -247,6 +326,32 @@ cat("\n════════════════════════�
 cat(" ANOVA TABLE\n")
 cat("══════════════════════════════════════════\n")
 print(anova_tbl)
+
+# Analysis of Variance Table
+# 
+# Response: REVENUE/M
+# Df  Sum Sq Mean Sq  F value    Pr(>F)    
+# GENRE1     13  394173   30321   29.052 < 2.2e-16 ***
+#   GENRE2     13  200826   15448   14.802 < 2.2e-16 ***
+#   RATED       4  223930   55983   53.640 < 2.2e-16 ***
+#   RUNTIME     1  340428  340428  326.183 < 2.2e-16 ***
+#   BUDGET_M    1 2023012 2023012 1938.361 < 2.2e-16 ***
+#   Residuals 983 1025929    1044                       
+# ---
+#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+# Analysis of Variance Table
+# 
+# Response: REVENUE/M
+# Df  Sum Sq Mean Sq  F value    Pr(>F)    
+# GENRE1     13  394173   30321   29.052 < 2.2e-16 ***
+#   GENRE2     13  200826   15448   14.802 < 2.2e-16 ***
+#   RATED       4  223930   55983   53.640 < 2.2e-16 ***
+#   RUNTIME     1  340428  340428  326.183 < 2.2e-16 ***
+#   BUDGET_M    1 2023012 2023012 1938.361 < 2.2e-16 ***
+#   Residuals 983 1025929    1044                       
+# ---
+#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 # Prepare ANOVA data (exclude Residuals row)
 anova_df <- data.frame(
@@ -304,6 +409,7 @@ top_pred <- anova_df$Predictor[which.max(anova_df$Fvalue)]
 cat(sprintf("\n Most influential predictor (highest F): %s (F = %.1f)\n\n",
             top_pred, max(anova_df$Fvalue)))
 
+# Most influential predictor (highest F): BUDGET_M (F = 1938.4)
 
 # =============================================================================
 #  STEP 7 – Goodness-of-Fit Diagnostic Plots
@@ -568,3 +674,7 @@ cat(sprintf("║    Point estimate     = $%-6.1fM                   ║\n", pred
 cat(sprintf("║    95%% PI lower      = $%-6.1fM                   ║\n", pred_lower))
 cat(sprintf("║    95%% PI upper      = $%-6.1fM                   ║\n", pred_upper))
 cat("╚══════════════════════════════════════════════════════╝\n\n")
+
+# R²                   = 0.7562  (75.6% explained) 
+# Adjusted R²          = 0.7483
+# Unexplained variance = 0.2438  (24.4% residual) 

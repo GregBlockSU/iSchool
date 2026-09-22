@@ -4,6 +4,7 @@ rm(list = ls()) # remove variables
 graphics.off() # clear graphs
 
 
+
 #Turn off Scientific notation
 options(scipen = 50)
 #------------------------------------------------------
@@ -26,13 +27,13 @@ if (!requireNamespace("ggplot2", quietly = TRUE)) {
 library(ggiraphExtra)
 library(ggplot2)
 
-# Step 2 - Exploratory Data Analysis - Open Data Frame RIHANA (Not sure why 
+# Step 2 - Exploratory Data Analysis - Open Data Frame RIHANNA (Not sure why 
 # named that?)
 
 # Identify data elements by Name and describe type 
 head(RIHANNA)
 
-# CUT           WEIGHT PRICE
+# CUT WEIGHT PRICE
 # 1 very good   0.28   433
 # 2 excellent   0.44  1982
 # 3 excellent   0.52  3323
@@ -42,6 +43,11 @@ head(RIHANNA)
 
 # Structure and summary
 str(RIHANNA)
+
+# 'data.frame':	150 obs. of  3 variables:
+#   $ CUT   : Factor w/ 3 levels "excellent","ideal",..: 3 1 1 2 1 3 1 3 1 3 ...
+# $ WEIGHT: num  0.28 0.44 0.52 1.32 1.36 0.52 0.44 0.27 1.1 1.01 ...
+# $ PRICE : int  433 1982 3323 10685 7800 1981 1979 1498 6399 3557 ...
 
 summary(RIHANNA)
 
@@ -155,7 +161,7 @@ ggPredict(pricemodel, interactive = TRUE)
 # Hint (Week 2 filtering and Week 3 Predict command for a specific cut )
 
 # Create new Data Frame and lm for Cut = Excellent
-cut_excellent <- Diamonds[RIHANNA$CUT == "excellent", ]
+cut_excellent <- RIHANNA[RIHANNA$CUT == "excellent", ]
 
 head(cut_excellent)
 
