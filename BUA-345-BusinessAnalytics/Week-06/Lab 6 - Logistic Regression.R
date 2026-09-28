@@ -24,11 +24,72 @@ library(readr)
 setwd("C:/repos/iSchool/BUA-345-BusinessAnalytics/Week-06")
 getwd()
 Telco_Churn <- read_csv("Telco_Churn.csv")
-#View(Telco_Churn)
+str(Telco_Churn)
+
+# spc_tbl_ [999 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+# $ Churn           : num [1:999] 0 0 1 0 1 1 0 0 1 0 ...
+# $ gender          : chr [1:999] "Female" "Male" "Male" "Male" ...
+# $ SeniorCitizen   : num [1:999] 0 0 0 0 0 0 0 0 0 0 ...
+# $ Partner         : chr [1:999] "Yes" "No" "No" "No" ...
+# $ Dependents      : chr [1:999] "No" "No" "No" "No" ...
+# $ tenure          : num [1:999] 1 34 2 45 2 8 22 10 28 62 ...
+# $ PhoneService    : chr [1:999] "No" "Yes" "Yes" "No" ...
+# $ Contract        : chr [1:999] "Month-to-month" "One year" "Month-to-month" "One year" ...
+# $ PaperlessBilling: chr [1:999] "Yes" "No" "Yes" "No" ...
+# $ PaymentMethod   : chr [1:999] "Electronic check" "Mailed check" "Mailed check" "Bank transfer (automatic)" ...
+# $ MonthlyCharges  : num [1:999] 29.9 57 53.9 42.3 70.7 ...
+# $ TotalCharges    : num [1:999] 29.9 1889.5 108.2 1840.8 151.7 ...
+# - attr(*, "spec")=
+#   .. cols(
+#     ..   Churn = col_double(),
+#     ..   gender = col_character(),
+#     ..   SeniorCitizen = col_double(),
+#     ..   Partner = col_character(),
+#     ..   Dependents = col_character(),
+#     ..   tenure = col_double(),
+#     ..   PhoneService = col_character(),
+#     ..   Contract = col_character(),
+#     ..   PaperlessBilling = col_character(),
+#     ..   PaymentMethod = col_character(),
+#     ..   MonthlyCharges = col_double(),
+#     ..   TotalCharges = col_double()
+#     .. )
 
 # running a logistic regression via a general linear model. Describe model
 Pred_Churn <- glm(Churn ~ ., family="binomial", data = Telco_Churn)
 summary(Pred_Churn)
+
+# Call:
+#   glm(formula = Churn ~ ., family = "binomial", data = Telco_Churn)
+# 
+# Coefficients:
+#   Estimate Std. Error z value Pr(>|z|)    
+# (Intercept)                          -0.8694788  0.4671378  -1.861 0.062703 .  
+# genderMale                            0.0993947  0.1733482   0.573 0.566386    
+# SeniorCitizen                         0.1329217  0.2194046   0.606 0.544628    
+# PartnerYes                            0.0397037  0.2124106   0.187 0.851724    
+# DependentsYes                        -0.3496872  0.2479756  -1.410 0.158490    
+# tenure                               -0.0481394  0.0170266  -2.827 0.004694 ** 
+#   PhoneServiceYes                      -0.7860173  0.3387047  -2.321 0.020305 *  
+#   ContractOne year                     -1.1061937  0.3008525  -3.677 0.000236 ***
+#   ContractTwo year                     -2.1615768  0.5189170  -4.166 3.11e-05 ***
+#   PaperlessBillingYes                   0.1726637  0.1956491   0.883 0.377497    
+# PaymentMethodCredit card (automatic) -0.4953962  0.3052938  -1.623 0.104656    
+# PaymentMethodElectronic check         0.5509493  0.2381433   2.314 0.020694 *  
+#   PaymentMethodMailed check            -0.0915648  0.2958577  -0.309 0.756949    
+# MonthlyCharges                        0.0218014  0.0054779   3.980 6.89e-05 ***
+#   TotalCharges                          0.0002054  0.0001902   1.080 0.280221    
+# ---
+#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+# 
+# (Dispersion parameter for binomial family taken to be 1)
+# 
+# Null deviance: 1135.29  on 995  degrees of freedom
+# Residual deviance:  819.97  on 981  degrees of freedom
+# (3 observations deleted due to missingness)
+# AIC: 849.97
+# 
+# Number of Fisher Scoring iterations: 6
 
 # ❌ Non-Significant Predictors (p > 0.05)
 # gender, SeniorCitizen, Partner, Dependents, PaperlessBilling, 
@@ -68,7 +129,8 @@ RESULTS <- glmulti(Churn ~ ., data=Telco_Churn, fitfunction = glm, level = 1)
 #Examine Results  - What is this step showing us?, How many iterations did it take? why so many?
 
 # 🧠 In short
-# The IC profile graph is a ranked plot of model quality, showing how each candidate model compares in terms of AIC/AICc/BIC. It tells you:
+# The IC profile graph is a ranked plot of model quality, showing how each candidate model compares in terms of 
+# AIC/AICc/BIC. It tells you:
 #   
 #   Which model is best
 # 
@@ -85,6 +147,9 @@ RESULTS <- glmulti(Churn ~ ., data=Telco_Churn, fitfunction = glm, level = 1)
 
 summary(RESULTS)  
 summary(RESULTS)$bestmodel
+
+# [1] "Churn ~ 1 + Dependents + Contract + PaymentMethod + MonthlyCharges + "
+# [2] "    TotalCharges" 
 
 # It evaluated 2,100 different model combinations of your predictor variables —
 # every different subset it could construct — before converging on a winner.
@@ -187,7 +252,7 @@ anova(Best_Model)
 # TotalCharges proxies tenure. Despite their correlation, each contributes
 # independent signal.
 
-# Make an Automated Prediction Generate data frame to store indepedent values
+# Make an Automated Prediction Generate data frame to store independent values
 # you wist to use in your prediction.
 
 Predict_Churn <- data.frame(Dependents="Yes", Contract="One year", PaymentMethod = "Electronic check", MonthlyCharges=90, TotalCharges=200)
@@ -196,28 +261,37 @@ Predict_Churn <- data.frame(Dependents="Yes", Contract="One year", PaymentMethod
 log_odds <- predict(Best_Model,Predict_Churn)
 log_odds
 
-# -1.098348 
+# -0.5880827  
 
 # Convert to probability (two equivalent ways)
 probs <- plogis(log_odds)                    # cleanest R-native way
 probs
-# .2500495
+# 0.3570749
 
 probs <- 1 / (1 + exp(-log_odds))           # manual sigmoid formula
 probs
-# .2500495
+# 0.3570749
 
-# -1.098348 
-# 0.2500495
 
-# 🎯 Core interpretation
-# plogis(-1.098348) ≈ 0.2499
+# 🎯 Interpretation in logistic regression terms
+# The log‑odds are negative, so the event is less likely than not.
 # 
-# So the model is saying:
+# Probability ≈ 0.36.
+# 
+# Corresponding odds:
 #   
-#   The event has about a 25% chance of occurring.
+#   0.3579
+# 1
+# −
+# 0.3579
+# ≈
+# 0.557
+# Meaning roughly 0.56:1 (about one chance of happening for every two chances of not happening).
 # 
-# The log‑odds are negative, meaning the event is less likely than not.
+# 🧠 Intuition
+# Log‑odds 0 → probability 0.5
 # 
-# The corresponding odds are roughly 1:3 (one chance of happening for every three chances of not happening).
+# Log‑odds –0.588 → probability 0.36
+# 
+# Log‑odds +0.588 → probability 0.64
 
