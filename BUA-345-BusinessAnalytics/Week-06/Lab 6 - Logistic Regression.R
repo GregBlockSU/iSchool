@@ -271,7 +271,7 @@ probs
 probs <- 1 / (1 + exp(-log_odds))           # manual sigmoid formula
 probs
 # 0.3570749
-
++
 
 # 🎯 Interpretation in logistic regression terms
 # The log‑odds are negative, so the event is less likely than not.

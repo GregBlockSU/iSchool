@@ -4,7 +4,7 @@ graphics.off() # clear graphs
 
 # To use the missForest and amelia package, you first need to install and load 1st
 # Install packages if needed --------------------------------
-pkgs <- c("forecast", "highcharter")
+pkgs <- c("forecast", "highcharter", "zoo", "dplyr", "lubridate")
 to_install <- pkgs[!pkgs %in% installed.packages()[, "Package"]]
 if (length(to_install) > 0) install.packages(to_install)
 library(forecast)
@@ -15,7 +15,40 @@ getwd()
 
 pricesDF = read_csv("MCD-monthly-prices.csv")
 head(pricesDF)
+
+# Year Month Close
+# <dbl> <dbl> <dbl>
+#   1  2021     6  231.
+# 2  2021     7  243.
+# 3  2021     8  237.
+# 4  2021     9  241.
+# 5  2021    10  246.
+# 6  2021    11  245.
+
 str(pricesDF)
+
+# spc_tbl_ [61 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+# $ Year : num [1:61] 2021 2021 2021 2021 2021 ...
+# $ Month: num [1:61] 6 7 8 9 10 11 12 1 2 3 ...
+# $ Close: num [1:61] 231 243 237 241 246 ...
+# - attr(*, "spec")=
+#   .. cols(
+#     ..   Year = col_double(),
+#     ..   Month = col_double(),
+#     ..   Close = col_double()
+#     .. )
+# - attr(*, "problems")=<pointer: 0x000001d660ca7c90> 
+#   
+
+summary(pricesDF)
+
+# Year          Month            Close      
+# Min.   :2021   Min.   : 1.000   Min.   :230.7  
+# 1st Qu.:2022   1st Qu.: 4.000   1st Qu.:259.4  
+# Median :2023   Median : 6.000   Median :281.8  
+# Mean   :2023   Mean   : 6.492   Mean   :279.0  
+# 3rd Qu.:2025   3rd Qu.: 9.000   3rd Qu.:296.5  
+# Max.   :2026   Max.   :12.000   Max.   :341.1
 
 # convert to a time series
 pricesTS <- ts(
@@ -25,7 +58,13 @@ pricesTS <- ts(
 )
 
 head(pricesTS)
+
+# Jun    Jul    Aug    Sep    Oct    Nov
+# 2021 230.99 242.71 237.46 241.11 245.55 244.60
+
 str(pricesTS)
+
+# Time-Series [1:61] from 2021 to 2026: 231 243 237 241 246 ...
 
 library(dplyr)
 library(lubridate)
@@ -36,8 +75,8 @@ pricesDF2 <- pricesDF %>%
   ) %>%
   arrange(Date)
 
+# create a new column called Date_ms 
 pricesDF2$Date_ms <- datetime_to_timestamp(pricesDF2$Date)
-
 
 highchart(type = "stock") %>%
   hc_add_theme(hc_theme_darkunica()) %>%
@@ -112,6 +151,21 @@ highchart(type = "stock") %>%
 pricesFC <- forecast(pricesFIT, h = 12, level=c(80,95))
 
 pricesFC
+
+# Point Forecast    Lo 80    Hi 80    Lo 95    Hi 95
+# Jul 2026         284.77 267.4242 302.1158 258.2419 311.2981
+# Aug 2026         284.77 260.2394 309.3006 247.2537 322.2863
+# Sep 2026         284.77 254.7262 314.8138 238.8220 330.7180
+# Oct 2026         284.77 250.0785 319.4615 231.7139 337.8261
+# Nov 2026         284.77 245.9837 323.5563 225.4515 344.0885
+# Dec 2026         284.77 242.2817 327.2583 219.7898 349.7502
+# Jan 2027         284.77 238.8774 330.6626 214.5833 354.9567
+# Feb 2027         284.77 235.7088 333.8312 209.7373 359.8027
+# Mar 2027         284.77 232.7327 336.8073 205.1858 364.3542
+# Apr 2027         284.77 229.9179 339.6221 200.8809 368.6591
+# May 2027         284.77 227.2406 342.2994 196.7864 372.7536
+# Jun 2027         284.77 224.6825 344.8575 192.8741 376.6659
+
 
 library(zoo)
 library(highcharter)
